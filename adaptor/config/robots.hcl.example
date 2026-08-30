@@ -1,0 +1,111 @@
+# Robot fleet definition.
+# robots.hcl is the adapter identity source. amr-adaptor.service always reads
+# this file: one robot block starts one main.py --robot process, two or more
+# blocks start run_multi.py under the same service.
+#
+# 사용:
+#   cp config/robots.hcl.example config/robots.hcl   # 값 수정 후
+#   sudo systemctl restart amr-adaptor.service        # service chooses single/multi
+#   python main.py --robot HN-SH6-TR-001              # optional one-robot debug path
+#   ./run-multi.sh                                    # optional direct multi debug path
+#
+# 경로 키의 상대 경로는 이 파일이 있는 디렉터리를 기준으로 해석된다.
+#
+# Key reference:
+#   robot "HN-SH6-TR-001" { ... }
+#     One robot inventory entry. The block label IS the robot id; it becomes the
+#     VDA5050 serialNumber and MQTT topic suffix, so it must be unique per
+#     running adapter. Real deployments normally have one block on a robot
+#     onboard PC and multiple blocks only on a host that intentionally
+#     supervises several adapters.
+#
+#   vehicle_ip = "10.0.0.11"
+#     Optional but expected for real robots. JIBOT TCP control address.
+#   vehicle_port = 7273
+#     Optional. Omit only when the robot uses the default port 7273.
+#   ezi_io = "10.8.8.87"
+#     Optional but expected when the robot has a dedicated EZI IO module.
+#   ezi_motor = "10.8.8.2"
+#     Optional but expected when the robot has a dedicated EZI motor driver.
+#   mqtt_host = "192.168.3.108"
+#     Optional. Overrides config.toml [mqtt_broker].host for this robot only.
+#   mqtt_port = 11883
+#     Optional. Overrides config.toml [mqtt_broker].port for this robot only.
+#   config = "robot-a.toml"
+#     Optional. Per-robot config.toml path, resolved against this file's
+#     directory. Use only when a robot truly needs a separate config file.
+#   extensions = "a-ext.hcl"
+#     Optional. Per-robot extensions.hcl path, resolved against this file's
+#     directory. Use only when a robot truly needs separate extension settings
+#     (PIO/EZI/air shower/elevator tuning, action modules/plugins).
+#   recipes = "a-recipes.hcl"
+#     Optional. Per-robot recipes.hcl path, resolved against this file's
+#     directory. Replaces the default config/recipes.hcl for this robot rather
+#     than adding to it, so copy over anything from that file you still need.
+#   enabled = false
+#     Optional, default true. false leaves the block in the file but takes the
+#     robot out of the fleet entirely: it is not started, not listed, and not
+#     counted when the service decides single vs multi.
+#
+#     현장 로봇을 전부 이 파일에 적어 두고 기계마다 자기 블록만 켜는 데 쓴다.
+#     그러면 robots.hcl도 공통본으로 배포할 수 있고, 블록을 지웠을 때와 달리
+#     그 로봇의 IP/하드웨어 값이 파일에 남는다.
+#
+#   simulator = true
+#     Optional. true starts the Python JIBOT simulator instead of connecting to
+#     a real AMR vehicle.
+#   extra_args = ["--vehicle-smoke-test"]
+#     Optional. Additional main.py CLI arguments appended for this robot.
+#
+#   extension "pio" { pio_serial_port = "/dev/ttyUSB0" }
+#     Optional, repeatable. extensions.hcl의 같은 섹션 값을 이 로봇에서만 덮는다.
+#     라벨(pio/ezi/airshower/elevator)과 키 이름은 extensions.hcl과 똑같고,
+#     extensions.hcl을 먼저 병합한 뒤 얹히므로 여기 적은 값이 이긴다. 적지 않은
+#     키는 extensions.hcl 값이 그대로 남는다.
+#
+#     기기마다 다른 값(USB 포트, 설비에 보내는 차량 번호, 실측 클램프 위치)은
+#     여기에 두고 extensions.hcl은 현장 공통본을 그대로 배포한다 — 그래야
+#     update-jibot-adapter-over-ssh.sh --configure-device로 덮어도 그 로봇의
+#     하드웨어 값이 살아남는다. 반대로 두면 배포 때마다 이 값들이 날아간다.
+
+robot "HN-SH6-TR-001" {
+  enabled      = true          # 기본값. 이 기계가 띄울 로봇 하나만 켠다
+  vehicle_ip   = "10.0.0.11"
+  vehicle_port = 7273
+  ezi_io       = "10.8.8.87"
+  ezi_motor    = "10.8.8.2"
+  # mqtt_host  = "192.168.3.108"
+  # mqtt_port  = 11883
+  # config     = "HN-SH6-TR-001.toml"
+  # simulator  = false
+  # extra_args = []
+}
+
+# 이 기계가 2호기가 아니라면 꺼 둔다. 켜진 블록이 2개 이상이면 run_multi.py로
+# adapter가 두 개 뜬다.
+robot "HN-SH6-TR-002" {
+  enabled      = false
+  vehicle_ip   = "10.0.0.12"
+  vehicle_port = 7273
+  ezi_io       = "10.8.8.88"
+  ezi_motor    = "10.8.8.3"
+
+  # 이 로봇에서만 다른 하드웨어 값. 나머지는 extensions.hcl 공통본을 따른다.
+  extension "pio" {
+    pio_serial_port = "/dev/ttyUSB0"     # PIO 변환기가 꽂힌 포트 (로봇마다 다르다)
+    vehicle_num     = "AMR002"           # 설비에 전달할 이 로봇의 식별자
+  }
+
+  extension "ezi" {
+    clamp_position   = 30000             # 이 축의 실측 닫힘 위치
+    unclamp_position = -20000            # 이 축의 실측 열림 위치
+  }
+}
+
+# 시뮬레이터로 두 대 띄우는 예시:
+# robot "SIM-001" {
+#   vehicle_ip = "127.0.0.1"
+#   mqtt_host  = "127.0.0.1"
+#   mqtt_port  = 11883
+#   simulator  = true
+# }

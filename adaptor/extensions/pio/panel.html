@@ -1,0 +1,85 @@
+<!-- PIO extension의 WebUI 조작 패널. 실제 출력 변경은 confirm 확인이 필요하다.
+     파라미터 칸은 $$field_<actionType>_<name>으로 액션 스키마에서 끌어온다 —
+     signal/stationId 선택지는 extensions.hcl에서 오므로 여기 박으면 설정을 고쳐도
+     따라오지 않는다. 액션을 추가하면 이 파일에도 카드를 추가한다(빠뜨리면
+     "PIO — 그 외" 그룹에 생성 폼으로 나온다). -->
+<section class="command-group">
+  <div class="command-head"><h2>PIO</h2></div>
+  <div class="command-body"><div class="cmd-wrap">
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioInit">
+      <span class="ac-info"><strong>PIO init</strong><span>PIO 보드 연결/초기화 — media/stationId/channel/port는 필수</span></span>
+      <span class="command-fields">
+        $field_pioInit_media
+        $field_pioInit_stationId
+        $field_pioInit_channel
+        $field_pioInit_port
+        $field_pioInit_timeoutSec
+      </span>
+      <button class="btn">Init</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioPing">
+      <span class="ac-info"><strong>PIO 연결 확인</strong><span>연결 → 출력 1~8 하나씩 on/off → 해제까지 자동 — 실제 출력 변동. stationId/channel 필수 — extension "airshower"의 pio_station_id/channel, extension "elevator" motion_rules의 pio_station_id + extension "elevator"의 channel, 또는 이 레시피의 pioInit에서 확인</span></span>
+      <span class="command-fields">
+        $field_pioPing_media
+        $field_pioPing_stationId
+        $field_pioPing_channel
+        $field_pioPing_port
+        $field_pioPing_timeoutSec
+      </span>
+      <div class="ac-actions"><label class="confirm"><input type="checkbox" name="confirm" required> confirm</label>
+      <button class="btn warning">Ping</button></div>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioReadIn">
+      <span class="ac-info"><strong>PIO read inputs</strong><span>입력 비트 스냅샷 요청</span></span>
+      <button class="btn primary">Read</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioDisconnect">
+      <span class="ac-info"><strong>PIO disconnect</strong><span>SELECT 토글로 unpair 후 GO 내려가는지 확인하고 포트 닫음</span></span>
+      <span class="command-fields">
+        $field_pioDisconnect_clearOutputs
+        $field_pioDisconnect_timeoutSec
+      </span>
+      <button class="btn danger">Disconnect</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioWriteOut">
+      <span class="ac-info"><strong>PIO write output</strong><span>설비 신호 이름(signal) 또는 출력 핀(index 1-8)에 on/off 기록 — 실제 출력 변동</span></span>
+      <span class="command-fields">
+        $field_pioWriteOut_signal
+        $field_pioWriteOut_index
+        $field_pioWriteOut_state
+      </span>
+      <div class="ac-actions"><label class="confirm"><input type="checkbox" name="confirm" required> confirm</label>
+      <button class="btn warning">Write</button></div>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="pioScenario">
+      <span class="ac-info"><strong>PIO scenario 실행</strong><span>out/in/blink/delay step을 JSON 배열로 실행 — 실제 출력 변동</span></span>
+      <span class="command-fields">
+        $field_pioScenario_stationId
+        $field_pioScenario_channel
+        $field_pioScenario_scenario
+        $field_pioScenario_pair
+        $field_pioScenario_disconnect
+      </span>
+      <div class="ac-actions"><label class="confirm"><input type="checkbox" name="confirm" required> confirm</label>
+      <button class="btn warning">Run</button></div>
+    </form>
+  </div></div>
+</section>

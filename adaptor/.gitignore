@@ -1,0 +1,7 @@
+__pycache__/
+BK/
+a-offline_packages/
+config/__pycache__/
+.venv/
+web-credentials.toml
+config/web-credentials.toml

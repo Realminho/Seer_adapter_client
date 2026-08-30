@@ -1,0 +1,30 @@
+[Unit]
+# Bridges the 8BitDo Ultimate 2 receiver into a virtual evdev gamepad for the
+# adapter's joystick runtime, on kernels that have uinput but no joydev.
+# The supervisor script owns the xboxdrv lifetime because the receiver swaps
+# its USB product id when the controller sleeps (310b awake, 3109 asleep) and
+# xboxdrv neither re-binds nor exits on its own. Installed by
+# scripts/setup-adaptor-service.sh, which points ExecStart at this host's
+# deployed scripts/ so an over-ssh update also refreshes the supervisor.
+Description=8BitDo Ultimate 2 xboxdrv uinput bridge
+After=systemd-modules-load.service
+Before=amr-adaptor.service
+
+[Service]
+Type=simple
+# Ignore modprobe failure when uinput is built into the custom kernel.
+ExecStartPre=-/sbin/modprobe uinput
+ExecStart=__SCRIPTSDIR__/amr-xboxdrv-run.sh
+# The supervisor exits whenever the receiver disappears, so the restart loop is
+# what re-arms the wait for the next controller wake-up.
+Restart=always
+RestartSec=2
+# Default SIGTERM, deliberately not SIGINT: xboxdrv runs as a background job of
+# the supervisor shell and therefore inherits SIGINT as ignored, so a SIGINT
+# stop would reach only the supervisor.
+TimeoutStopSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

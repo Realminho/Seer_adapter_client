@@ -1,0 +1,59 @@
+
+[2026-08-28 10:23:21] launch: C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\python.exe C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\run_adapter.py --config C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\SEER-IP-192-168-43-103\config.toml --seer-extensions-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\extensions.hcl --seer-recipes-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\SEER-IP-192-168-43-103\recipes.hcl --id SEER-IP-192-168-43-103 --vehicle-ip 192.168.43.103 --mqtt-host 127.0.0.1 --mqtt-port 1883 --seer-state-port 19204 --seer-control-port 19205 --seer-task-port 19206 --seer-config-port 19207 --seer-other-port 19210
+[2026-08-28 10:23:23.838] pactl ('set-sink-volume', '70%') failed: [WinError 2] 지정된 파일을 찾을 수 없습니다
+[2026-08-28 10:23:32.228] sound player binary not found: mplayer (sound disabled)
+[2026-08-28 10:23:23.397] [JIBOT CONFIG] id=SEER-IP-192-168-43-103 ip=192.168.43.103 port=19204 source=cli simulator=False
+[2026-08-28 10:23:23.397] [SEER CONFIG WARNING] SEER_MOTOR_NAMES is empty; enableMotor/disableMotor cannot control named motors
+[2026-08-28 10:23:23.760] [JIBOT API CONNECTING] command=UmConnect
+[2026-08-28 10:23:23.760] [JIBOT API CONNECTED] command=UmConnect sent
+[2026-08-28 10:23:23.800] [MQTT CONNECTING] robot=SEER-IP-192-168-43-103 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-43-103-33008 topic_prefix=amr/v3/SEER-IP-192-168-43-103 keepalive=60 mode=async reconnect=automatic
+[2026-08-28 10:23:23.802] [EZI IO] no address configured (ezi.ezi_io); skipping
+[2026-08-28 10:23:23.802] [EZI MOTOR] no address configured (ezi.ezi_motor); skipping
+[2026-08-28 10:23:23.802] [VDA5050 CONNECTION PUBLISHED] topic=connection state=ONLINE qos=1 retain=True
+[2026-08-28 10:23:23.802] [SEER VEHICLE CONNECTION] state=ONLINE reason=startup
+[2026-08-28 10:23:23.806] [MQTT CONNECTED] robot=SEER-IP-192-168-43-103 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-43-103-33008 rc=0
+[2026-08-28 10:23:23.825] [VDA5050 FACTSHEET PUBLISHED] topic=factsheet qos=1 retain=True
+[2026-08-28 10:23:23.828] [HARDWARE SENSOR SERVICE SKIP] photoSensorRead action is disabled
+[2026-08-28 10:23:23.828] [VDA5050 CONNECTION PUBLISHED] topic=connection state=ONLINE qos=1 retain=True
+[2026-08-28 10:23:23.828] [SEER VEHICLE CONNECTION] state=ONLINE reason=mqtt reconnect
+[2026-08-28 10:23:23.828] publish_state is ready!
+[2026-08-28 10:23:23.833] subscribe ACS Command is ready!
+[2026-08-28 10:23:23.833] MQTT subscribing to topic 'amr/v3/SEER-IP-192-168-43-103/order'
+[2026-08-28 10:23:23.833] MQTT subscribing to topic 'amr/v3/SEER-IP-192-168-43-103/instantActions'
+[2026-08-28 10:23:23.833] [JIBOT RECONNECT] monitor ready; retry interval=5.0s rx_timeout=10s
+[2026-08-28 10:23:23.834] [SEER CONTROL TCP] listening on 127.0.0.1:11109
+[2026-08-28 10:23:24.077] [SEER MAP REFRESHED] ip=192.168.43.103 map=minho_map_sam points=13 elapsed=0.13s cache=C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\SEER-IP-192-168-43-103\seer-map.json
+[2026-08-28 10:23:24.838] [JIBOT STOP REASON] None -> NONE
+[2026-08-28 10:23:24.838] [LAST NODE FALLBACK] nearestNodeId=LM13 sequenceId=0 gap=4.7
+[2026-08-28 10:23:31.168] ================================================================================
+[2026-08-28 10:23:31.168] [VDA5050 v3.0 ORDER RECEIVED]
+[2026-08-28 10:23:31.168] topic=amr/v3/SEER-IP-192-168-43-103/order
+[2026-08-28 10:23:31.168] headerId=1880201356 version=3.0.0 manufacturer=seer serialNumber=SEER-IP-192-168-43-103
+[2026-08-28 10:23:31.168] orderId=PathNav-001 orderUpdateId=0 nodes=2 edges=1
+[2026-08-28 10:23:31.168]   node seq=0 id=LM13 released=True actions=0 position=(x=4010.0, y=91.0, theta=0.0, mapId=minho_map_sam, allowedDeviationXY=2.0, allowedDeviationTheta=5.0)
+[2026-08-28 10:23:31.168]   node seq=2 id=LM5 released=True actions=0 position=(x=5058.0, y=91.0, theta=0.0, mapId=minho_map_sam, allowedDeviationXY=2.0, allowedDeviationTheta=5.0)
+[2026-08-28 10:23:31.168]   edge seq=1 id=LM13-LM5 released=True start=LM13 end=LM5 maximumSpeed=None actions=0
+[2026-08-28 10:23:31.168] [ORDER QUEUE] order will be processed by sequenceId.
+[2026-08-28 10:23:31.168] ================================================================================
+[2026-08-28 10:23:31.169] [ORDER BOOTSTRAP] station=LM13 lastNodeId=LM13 lastNodeSequenceId=0
+[2026-08-28 10:23:31.169] [ORDER QUEUE REBUILT] queued=2 remainingNodes=1 remainingEdges=1
+[2026-08-28 10:23:31.169] [ORDER QUEUED] orderId=PathNav-001 steps=2
+[2026-08-28 10:23:31.169] [ORDER STEP START] edge seq=1 id=LM13-LM5 released=True actions=0
+[2026-08-28 10:23:31.169] [ORDER EDGE CLEAR] seq=1 id=LM13-LM5 start=LM13 end=LM5
+[2026-08-28 10:23:31.169] [ORDER STEP CLEAR] orderId=PathNav-001 kind=edge seq=1 id=LM13-LM5 cleared=False nodes=1->1 edges=1->1 queued=1
+[2026-08-28 10:23:31.169] [ORDER STEP START] node seq=2 id=LM5 released=True actions=0
+[2026-08-28 10:23:31.169] [ORDER NODE GOTO_POINT] seq=2 id=LM5
+[2026-08-28 10:23:31.914] [SEER POLL ERROR] 
+[2026-08-28 10:23:32.114] [ORDER NODE WAIT] id=LM5 target=(5058.0, 91.0) zone=square radius=40.0
+[2026-08-28 10:23:38.279] [ORDER NODE REACHED] id=LM5 pos=(5042.5, 95.5)
+[2026-08-28 10:23:40.027] [ORDER EDGE RELEASE] node seq=2 id=LM5 removed=1
+[2026-08-28 10:23:40.028] [ORDER STEP CLEAR] orderId=PathNav-001 kind=node seq=2 id=LM5 cleared=True nodes=1->0 edges=0->0 queued=0
+[2026-08-28 10:23:40.028] [ORDER COMPLETE] all queued node/edge steps processed.
+[2026-08-28 10:23:45.710] [SEER POLL ERROR] 
+[2026-08-28 10:23:52.841] [JIBOT INFO LOOP] poll skipped: TimeoutError()
+
+[2026-08-28 10:23:53.885] Stopping the system...
+[2026-08-28 10:23:53.886] [VDA5050 CONNECTION PUBLISHED] topic=connection state=OFFLINE qos=1 retain=True
+[2026-08-28 10:23:53.886] [MQTT DISCONNECTED] robot=SEER-IP-192-168-43-103 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-43-103-33008 rc=0 reconnect=no
+[2026-08-28 10:23:53.890] [JIBOT RECONNECT] connection down; attempting to reconnect...
+[2026-08-28 10:23:53.891] System stopped

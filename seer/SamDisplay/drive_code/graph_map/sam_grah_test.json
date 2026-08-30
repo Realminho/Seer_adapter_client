@@ -1,0 +1,136 @@
+{
+   "nodes":
+   {
+    "LM1":
+    {
+     "x": 0.041,
+     "y": -0.097,
+     "theta":87.483
+    },
+    "LM2":
+    {
+      "x": 0.385,
+      "y": -3.518,
+      "theta": 103.215
+    },
+    "LM3":
+    {
+     "x": 1.704,
+     "y": -0.156,
+     "theta": 89.072   
+    },
+    "LM4":
+    {
+     "x": 2.741,
+     "y": -1.183,
+     "theta": 88.574
+    },
+    "LM5":
+    {
+      "x": 2.963,
+      "y": -3.438,
+      "theta": 2.189
+    },
+    "LM6":
+    {
+      "x": 1.428,
+      "y": -3.518,
+      "theta": 0.779
+    },
+    "LM7":
+    {
+      "x": -2.001,
+      "y": -0.043,
+      "theta": 90.000
+    },
+    "LM8":
+    {
+      "x": -2.116,
+      "y": -3.518,
+      "theta": 90.000
+    }
+   },
+   "edges":
+   [
+    {
+      "from": "LM1",
+      "to": "LM2",
+      "cost": 3.45,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 103.215,
+      "enable": true,
+      "bidirection": false  
+    },
+    {
+      "from": "LM1",
+      "to": "LM3",
+      "cost": 1.66,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 89.072,
+      "enable": true,
+      "bidirection": false  
+    },
+    {
+      "from": "LM3",
+      "to": "LM4",
+      "cost": 1.46,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 88.574,
+      "enable": true,
+      "bidirection": false  
+    },
+    {
+      "from": "LM4",
+      "to": "LM5",
+      "cost": 1.81,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 31.662,
+      "enable": true,
+      "bidirection": false 
+    },
+    {
+      "from": "LM5",
+      "to": "LM6",
+      "cost": 1.78,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 0.779,
+      "enable": true,
+      "bidirection": false 
+    },
+    {
+      "from": "LM6",
+      "to": "LM2",
+      "cost": 0.89,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 103.215,
+      "enable": true,
+      "bidirection": false 
+    },
+    {
+      "from": "LM1",
+      "to": "LM7",
+      "cost": 5.00,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 90.000,
+      "enable": true,
+      "bidirection": false 
+    },
+    {
+      "from": "LM7",
+      "to": "LM8",
+      "cost": 7.00,
+      "drive_mode": "reverse",
+      "back_mode": 1,
+      "goal_theta": 90.000,
+      "enable": true,
+      "bidirection": false 
+    }
+   ]
+}

@@ -1,0 +1,768 @@
+{
+  "name": "unified-amr-adaptor",
+  "description": "Python AMR adapter and robot communication workspace with Jibot, SEER/SAM, Robokit TCP API, ACS, drive, vision, MQTT, and VDA5050-related modules.",
+  "languages": [
+    "json",
+    "markdown",
+    "python",
+    "toml",
+    "unknown"
+  ],
+  "frameworks": [],
+  "files": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-import-map-input.json",
+      "language": "json",
+      "sizeLines": 474,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-import-map-output.json",
+      "language": "json",
+      "sizeLines": 201,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-files.json",
+      "language": "json",
+      "sizeLines": 589,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/ACS_5050_simulator/readme.md",
+      "language": "markdown",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jibot/ACS_5050_simulator/show.py",
+      "language": "python",
+      "sizeLines": 165,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/ACS_5050_simulator/showaction.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/adapter_jibot.py",
+      "language": "python",
+      "sizeLines": 1220,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/config/config.py",
+      "language": "python",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/config/config.toml",
+      "language": "toml",
+      "sizeLines": 84,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/adapter/main.py",
+      "language": "python",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py",
+      "language": "python",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_instant_actions.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_order.py",
+      "language": "python",
+      "sizeLines": 216,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_state.py",
+      "language": "python",
+      "sizeLines": 342,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_visualization_.py",
+      "language": "python",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/protocol/vda5050_common.py",
+      "language": "python",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/readme.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "jibot/adapter/utils/cls_ezi_io.py",
+      "language": "python",
+      "sizeLines": 233,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/utils/cls_ezi_motor.py",
+      "language": "python",
+      "sizeLines": 358,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/utils/cls_jibot_robot.py",
+      "language": "python",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/utils/cls_mqtt.py",
+      "language": "python",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/adapter/utils/utils.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_startPause.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_stopPause.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_40_F1_CH.json",
+      "language": "json",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_60_F1_40.json",
+      "language": "json",
+      "sizeLines": 114,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger1_2.json",
+      "language": "json",
+      "sizeLines": 180,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger2_1.json",
+      "language": "json",
+      "sizeLines": 180,
+      "fileCategory": "config"
+    },
+    {
+      "path": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/readme.md",
+      "language": "markdown",
+      "sizeLines": 6,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "seer/SamDisplay/answer_aruco_data/answer_aruco.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/avoid_graph_nav.py",
+      "language": "python",
+      "sizeLines": 350,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/dock_commu.py",
+      "language": "python",
+      "sizeLines": 654,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/mqtt_commu.py",
+      "language": "python",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/seer_commu.py",
+      "language": "python",
+      "sizeLines": 750,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/tcp_server_commu_2.py",
+      "language": "python",
+      "sizeLines": 193,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/tcp_server_commu_sam.py",
+      "language": "python",
+      "sizeLines": 491,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/tcp_server_commu.py",
+      "language": "python",
+      "sizeLines": 203,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/custom_package/tts_commu.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/avoid_drive.py",
+      "language": "python",
+      "sizeLines": 188,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/graph_map/sam_grah_test.json",
+      "language": "json",
+      "sizeLines": 135,
+      "fileCategory": "config"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/sam_test_cycle.py",
+      "language": "python",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/sam_test_dock.py",
+      "language": "python",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/drive_code/sam_test.py",
+      "language": "python",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/BYD_No4_Test.py",
+      "language": "python",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/castdServoMotorTest.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/deacccurve.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/deaccTest.py",
+      "language": "python",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/F4kernelNtpClientTest.py",
+      "language": "python",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/gotarget.py",
+      "language": "python",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/macNumTest.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py",
+      "language": "python",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/overspeedTest.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect_1100.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiCopyFile.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiDemo.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiListFile.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryErrorCode.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryIO.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiSetDO.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiStatusTaskReq.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoReloc.py",
+      "language": "python",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoTurn.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/README.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/RelayEnduranceTest.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo.py",
+      "language": "python",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo2.py",
+      "language": "python",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/sam_acs_package/mock_sam_acs_commu.py",
+      "language": "python",
+      "sizeLines": 382,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/sam_acs_package/sam_acs_commu.py",
+      "language": "python",
+      "sizeLines": 673,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/sam_acs_package/sam_acs_driver.py",
+      "language": "python",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/sam_code/mock_acs.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/sam_code/sam_drive.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/amr_cord_test.py",
+      "language": "python",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/aruco_detect.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/battery_info_test.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/charging_time.py",
+      "language": "python",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/drive_test.py",
+      "language": "python",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/free_nav_test.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/freenav_test.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/mqtt_test_publisher.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/mqtt_test_subscriber.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/simple_drive_test.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/test_code/tts_test.py",
+      "language": "python",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/vision_code/object_detect.py",
+      "language": "python",
+      "sizeLines": 302,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/vision_code/save_answer_aruco.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "seer/SamDisplay/vision_code/shake_detect.py",
+      "language": "python",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 93,
+  "filteredByIgnore": 4,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/tmp/ua-import-map-input.json": [],
+    ".understand-anything/tmp/ua-import-map-output.json": [],
+    ".understand-anything/tmp/ua-scan-files.json": [],
+    "jibot/ACS_5050_simulator/readme.md": [],
+    "jibot/ACS_5050_simulator/show.py": [],
+    "jibot/ACS_5050_simulator/showaction.py": [],
+    "jibot/adapter/adapter_jibot.py": [
+      "jibot/adapter/config/config.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_instant_actions.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_order.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_state.py",
+      "jibot/adapter/protocol/vda5050_common.py",
+      "jibot/adapter/utils/cls_ezi_io.py",
+      "jibot/adapter/utils/cls_ezi_motor.py",
+      "jibot/adapter/utils/cls_jibot_robot.py",
+      "jibot/adapter/utils/cls_mqtt.py",
+      "jibot/adapter/utils/utils.py"
+    ],
+    "jibot/adapter/config/config.py": [],
+    "jibot/adapter/config/config.toml": [],
+    "jibot/adapter/main.py": [
+      "jibot/adapter/adapter_jibot.py",
+      "jibot/adapter/config/config.py",
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py",
+      "jibot/adapter/utils/cls_ezi_io.py",
+      "jibot/adapter/utils/cls_ezi_motor.py",
+      "jibot/adapter/utils/cls_jibot_robot.py"
+    ],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py": [],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py": [
+      "jibot/adapter/protocol/vda5050_common.py"
+    ],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_instant_actions.py": [
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py",
+      "jibot/adapter/protocol/vda5050_common.py"
+    ],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_order.py": [
+      "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py",
+      "jibot/adapter/protocol/vda5050_common.py"
+    ],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_state.py": [
+      "jibot/adapter/protocol/vda5050_common.py"
+    ],
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_visualization_.py": [
+      "jibot/adapter/protocol/vda5050_common.py"
+    ],
+    "jibot/adapter/protocol/vda5050_common.py": [],
+    "jibot/adapter/readme.md": [],
+    "jibot/adapter/utils/cls_ezi_io.py": [],
+    "jibot/adapter/utils/cls_ezi_motor.py": [],
+    "jibot/adapter/utils/cls_jibot_robot.py": [
+      "jibot/adapter/config/config.py"
+    ],
+    "jibot/adapter/utils/cls_mqtt.py": [
+      "jibot/adapter/config/config.py"
+    ],
+    "jibot/adapter/utils/utils.py": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_startPause.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_stopPause.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_40_F1_CH.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_60_F1_40.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger1_2.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger2_1.json": [],
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/readme.md": [],
+    "seer/SamDisplay/answer_aruco_data/answer_aruco.json": [],
+    "seer/SamDisplay/custom_package/__init__.py": [],
+    "seer/SamDisplay/custom_package/avoid_graph_nav.py": [],
+    "seer/SamDisplay/custom_package/dock_commu.py": [],
+    "seer/SamDisplay/custom_package/mqtt_commu.py": [],
+    "seer/SamDisplay/custom_package/seer_commu.py": [
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py"
+    ],
+    "seer/SamDisplay/custom_package/tcp_server_commu_2.py": [],
+    "seer/SamDisplay/custom_package/tcp_server_commu_sam.py": [],
+    "seer/SamDisplay/custom_package/tcp_server_commu.py": [],
+    "seer/SamDisplay/custom_package/tts_commu.py": [],
+    "seer/SamDisplay/drive_code/__init__.py": [],
+    "seer/SamDisplay/drive_code/avoid_drive.py": [
+      "seer/SamDisplay/custom_package/avoid_graph_nav.py",
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/drive_code/graph_map/sam_grah_test.json": [],
+    "seer/SamDisplay/drive_code/sam_test_cycle.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py",
+      "seer/SamDisplay/custom_package/tcp_server_commu_sam.py"
+    ],
+    "seer/SamDisplay/drive_code/sam_test_dock.py": [
+      "seer/SamDisplay/custom_package/dock_commu.py",
+      "seer/SamDisplay/custom_package/seer_commu.py",
+      "seer/SamDisplay/custom_package/tcp_server_commu_sam.py"
+    ],
+    "seer/SamDisplay/drive_code/sam_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py",
+      "seer/SamDisplay/custom_package/tcp_server_commu_sam.py"
+    ],
+    "seer/SamDisplay/Robokit_TCP_API_py/__init__.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/BYD_No4_Test.py": [
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py"
+    ],
+    "seer/SamDisplay/Robokit_TCP_API_py/castdServoMotorTest.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/deacccurve.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/deaccTest.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/F4kernelNtpClientTest.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/gotarget.py": [
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/__init__.py",
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py"
+    ],
+    "seer/SamDisplay/Robokit_TCP_API_py/macNumTest.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/__init__.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/overspeedTest.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect_1100.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiCopyFile.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiDemo.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiListFile.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryErrorCode.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryIO.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiSetDO.py": [
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py"
+    ],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiStatusTaskReq.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoReloc.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoTurn.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/README.md": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/RelayEnduranceTest.py": [
+      "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py"
+    ],
+    "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo.py": [],
+    "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo2.py": [],
+    "seer/SamDisplay/sam_acs_package/mock_sam_acs_commu.py": [
+      "seer/SamDisplay/sam_acs_package/sam_acs_commu.py"
+    ],
+    "seer/SamDisplay/sam_acs_package/sam_acs_commu.py": [],
+    "seer/SamDisplay/sam_acs_package/sam_acs_driver.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/sam_code/mock_acs.py": [
+      "seer/SamDisplay/sam_acs_package/mock_sam_acs_commu.py"
+    ],
+    "seer/SamDisplay/sam_code/sam_drive.py": [
+      "seer/SamDisplay/sam_acs_package/sam_acs_driver.py"
+    ],
+    "seer/SamDisplay/test_code/amr_cord_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/aruco_detect.py": [
+      "seer/SamDisplay/custom_package/dock_commu.py"
+    ],
+    "seer/SamDisplay/test_code/battery_info_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/charging_time.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/drive_test.py": [
+      "seer/SamDisplay/custom_package/dock_commu.py",
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/free_nav_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/freenav_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/mqtt_test_publisher.py": [
+      "seer/SamDisplay/custom_package/mqtt_commu.py"
+    ],
+    "seer/SamDisplay/test_code/mqtt_test_subscriber.py": [
+      "seer/SamDisplay/custom_package/mqtt_commu.py"
+    ],
+    "seer/SamDisplay/test_code/simple_drive_test.py": [
+      "seer/SamDisplay/custom_package/seer_commu.py"
+    ],
+    "seer/SamDisplay/test_code/tts_test.py": [
+      "seer/SamDisplay/custom_package/tts_commu.py"
+    ],
+    "seer/SamDisplay/vision_code/object_detect.py": [
+      "seer/SamDisplay/custom_package/mqtt_commu.py"
+    ],
+    "seer/SamDisplay/vision_code/save_answer_aruco.py": [
+      "seer/SamDisplay/custom_package/dock_commu.py"
+    ],
+    "seer/SamDisplay/vision_code/shake_detect.py": [
+      "seer/SamDisplay/custom_package/dock_commu.py",
+      "seer/SamDisplay/custom_package/tcp_server_commu_sam.py"
+    ]
+  }
+}

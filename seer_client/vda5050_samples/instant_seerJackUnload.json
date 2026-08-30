@@ -1,0 +1,15 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-08-19T00:00:00Z",
+  "version": "3.0.0",
+  "manufacturer": "seer",
+  "serialNumber": "SEER-REAL-001",
+  "actions": [
+    {
+      "actionId": "sample-seerJackUnload",
+      "actionType": "seerJackUnload",
+      "blockingType": "NONE",
+      "actionParameters": []
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jibot-client"
+version = "0.1.0"
+description = "Python client for direct JIBOT AMR TCP communication"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]

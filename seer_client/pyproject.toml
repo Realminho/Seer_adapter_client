@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seer_client"
+version = "0.1.0"
+description = "Python client for direct SEER (Robokit) AMR multi-port binary TCP communication"
+requires-python = ">=3.9"
+# Implements the shared contract. Install editable alongside it:
+#   pip install -e amr-client-contract -e seer_client
+# 공용 계약을 구현. 계약과 함께 editable 설치:
+#   pip install -e amr-client-contract -e seer_client
+dependencies = ["amr-client-contract", "prompt-toolkit>=3.0,<4"]
+
+[project.optional-dependencies]
+# Camera Docking is optional so headless/FMS deployments do not need OpenCV or RealSense.
+docking = ["numpy>=1.24,<3", "opencv-contrib-python>=4.8,<5", "pyrealsense2>=2.55"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

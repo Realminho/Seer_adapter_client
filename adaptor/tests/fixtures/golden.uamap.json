@@ -1,0 +1,268 @@
+{
+  "changes": [],
+  "coordinateSystem": {
+    "bounds": {
+      "maxX": 10.0,
+      "maxY": 8.0,
+      "minX": 0.0,
+      "minY": 0.0
+    },
+    "canonicalUnit": "m",
+    "frameId": "map",
+    "origin": {
+      "theta": 0,
+      "x": 0,
+      "y": 0
+    },
+    "resolution": 0.02,
+    "sourceThetaUnit": "deg",
+    "sourceUnit": "mm",
+    "thetaUnit": "rad"
+  },
+  "graph": {
+    "edges": [
+      {
+        "constraints": {},
+        "cost": 1,
+        "direction": "UNIDIRECTIONAL",
+        "enabled": true,
+        "fromNodeId": "PP1",
+        "geometry": {
+          "points": [
+            {
+              "mapId": "contract-map",
+              "theta": 0.0,
+              "x": 3.0,
+              "y": 4.0
+            },
+            {
+              "mapId": "contract-map",
+              "theta": 0.0,
+              "x": 7.0,
+              "y": 4.0
+            }
+          ],
+          "type": "line"
+        },
+        "id": "PP1->PP2",
+        "sourceRefs": [
+          {
+            "path": "Objs.PathPoint[PP1].vertex[0]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "toNodeId": "PP2",
+        "vendorExtensions": {
+          "jibot": {}
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "enabled": true,
+        "id": "G1",
+        "kind": "goal",
+        "name": "G1",
+        "pose": {
+          "mapId": "contract-map",
+          "theta": 0.0,
+          "x": 3.0,
+          "y": 2.0
+        },
+        "sourcePose": {
+          "theta": 0.0,
+          "unit": "mm",
+          "x": 3000.0,
+          "y": 2000.0
+        },
+        "sourceRefs": [
+          {
+            "path": "Objs.Goal[G1]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "vendorExtensions": {
+          "jibot": {
+            "allowPassingThrough": false
+          }
+        }
+      },
+      {
+        "enabled": true,
+        "id": "G2",
+        "kind": "goal",
+        "name": "G2",
+        "pose": {
+          "mapId": "contract-map",
+          "theta": 1.5707963267948966,
+          "x": 7.0,
+          "y": 2.0
+        },
+        "sourcePose": {
+          "theta": 90.0,
+          "unit": "mm",
+          "x": 7000.0,
+          "y": 2000.0
+        },
+        "sourceRefs": [
+          {
+            "path": "Objs.Goal[G2]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "vendorExtensions": {
+          "jibot": {
+            "allowPassingThrough": true
+          }
+        }
+      },
+      {
+        "enabled": true,
+        "id": "D1",
+        "kind": "dock",
+        "name": "D1",
+        "pose": {
+          "mapId": "contract-map",
+          "theta": 3.141592653589793,
+          "x": 5.0,
+          "y": 6.0
+        },
+        "sourcePose": {
+          "theta": 180.0,
+          "unit": "mm",
+          "x": 5000.0,
+          "y": 6000.0
+        },
+        "sourceRefs": [
+          {
+            "path": "Objs.Dock[D1]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "vendorExtensions": {
+          "jibot": {
+            "allowPassingThrough": false
+          }
+        }
+      },
+      {
+        "enabled": true,
+        "id": "PP1",
+        "kind": "pathPoint",
+        "name": "PP1",
+        "pose": {
+          "mapId": "contract-map",
+          "theta": 0.0,
+          "x": 3.0,
+          "y": 4.0
+        },
+        "sourcePose": {
+          "theta": 0.0,
+          "unit": "mm",
+          "x": 3000.0,
+          "y": 4000.0
+        },
+        "sourceRefs": [
+          {
+            "path": "Objs.PathPoint[PP1]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "vendorExtensions": {
+          "jibot": {}
+        }
+      },
+      {
+        "enabled": true,
+        "id": "PP2",
+        "kind": "pathPoint",
+        "name": "PP2",
+        "pose": {
+          "mapId": "contract-map",
+          "theta": 0.0,
+          "x": 7.0,
+          "y": 4.0
+        },
+        "sourcePose": {
+          "theta": 0.0,
+          "unit": "mm",
+          "x": 7000.0,
+          "y": 4000.0
+        },
+        "sourceRefs": [
+          {
+            "path": "Objs.PathPoint[PP2]",
+            "sourceId": "jibot:contract-map"
+          }
+        ],
+        "vendorExtensions": {
+          "jibot": {}
+        }
+      }
+    ]
+  },
+  "layers": {
+    "backgroundImages": [],
+    "featureLines": [],
+    "occupancy": null
+  },
+  "map": {
+    "mapId": "contract-map",
+    "name": "contract-map",
+    "sourceVendor": "jibot",
+    "version": "umcl-map"
+  },
+  "nativeSources": [
+    {
+      "hash": "sha256:25ce1e6d1dc788294b3bb839e77c65b44497653e84f884798c32be58b0b3ee53",
+      "mapId": "contract-map",
+      "rawRef": null,
+      "sourceId": "jibot:contract-map",
+      "sourceType": "um-get-map",
+      "vendor": "jibot"
+    }
+  ],
+  "schemaVersion": "uamap.core.v1",
+  "vendorExtensions": {},
+  "warnings": [],
+  "zones": [
+    {
+      "enabled": true,
+      "geometry": {
+        "points": [
+          {
+            "x": 1.0,
+            "y": 1.0
+          },
+          {
+            "x": 2.0,
+            "y": 1.0
+          },
+          {
+            "x": 2.0,
+            "y": 2.0
+          },
+          {
+            "x": 1.0,
+            "y": 2.0
+          }
+        ],
+        "type": "polygon"
+      },
+      "id": "AVOID1",
+      "kind": "avoid",
+      "name": "AVOID1",
+      "sourceRefs": [
+        {
+          "path": "Objs.AvoidArea[AVOID1]",
+          "sourceId": "jibot:contract-map"
+        }
+      ],
+      "vendorExtensions": {
+        "jibot": {
+          "pose": "1000 1000 0.00"
+        }
+      }
+    }
+  ]
+}

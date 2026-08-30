@@ -1,0 +1,32 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-01-01T00:00:00.000000Z",
+  "version": "3.0.0",
+  "manufacturer": "seer",
+  "serialNumber": "SEER-SIM-001",
+  "orderId": "sample-edge-action",
+  "orderUpdateId": 0,
+  "nodes": [
+    {"nodeId": "LM1", "sequenceId": 0, "released": true, "actions": []},
+    {"nodeId": "LM4", "sequenceId": 2, "released": true, "actions": []}
+  ],
+  "edges": [
+    {
+      "edgeId": "LM1-LM4",
+      "sequenceId": 1,
+      "released": true,
+      "startNodeId": "LM1",
+      "endNodeId": "LM4",
+      "actions": [
+        {
+          "actionId": "sample-wait-edge-1",
+          "actionType": "seerWait",
+          "blockingType": "HARD",
+          "actionParameters": [
+            {"key": "seconds", "value": 0.5}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 300" role="img" aria-labelledby="title desc">
+  <title id="title">원본 Adapter와 SEER 시뮬레이터 연결</title>
+  <desc id="desc">FMS 명령이 원본 Adapter와 브리지, SeerClient, 로컬 TCP 서버를 거쳐 가상 상태로 돌아오는 구조</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker><style>.box{fill:#eaf2ff;stroke:#2563eb;stroke-width:2}.sim{fill:#ecfdf5;stroke:#16a34a;stroke-width:2}.fms{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.line{fill:none;stroke:#64748b;stroke-width:2.3;marker-end:url(#arrow)}.txt{font:500 15px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#172033;text-anchor:middle;dominant-baseline:middle}.sub{font:400 13px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#475569;text-anchor:middle}@media(prefers-color-scheme:dark){.box{fill:#172554;stroke:#60a5fa}.sim{fill:#052e16;stroke:#4ade80}.fms{fill:#431407;stroke:#fb923c}.txt{fill:#f8fafc}.sub{fill:#cbd5e1}.line{stroke:#94a3b8}}</style></defs>
+  <rect class="fms" x="20" y="85" width="170" height="70" rx="10"/><text class="txt" x="105" y="110"><tspan x="105">FMS / MQTT</tspan><tspan class="sub" x="105" dy="22">주문과 상태</tspan></text>
+  <line class="line" x1="190" y1="120" x2="225" y2="120"/>
+  <rect class="box" x="230" y="85" width="190" height="70" rx="10"/><text class="txt" x="325" y="110"><tspan x="325">원본</tspan><tspan class="sub" x="325" dy="22">adaptor/main.py</tspan></text>
+  <line class="line" x1="420" y1="120" x2="455" y2="120"/>
+  <rect class="box" x="460" y="85" width="150" height="70" rx="10"/><text class="txt" x="535" y="120">bridge.py</text>
+  <line class="line" x1="610" y1="120" x2="645" y2="120"/>
+  <rect class="box" x="650" y="85" width="200" height="70" rx="10"/><text class="txt" x="750" y="110"><tspan x="750">공통</tspan><tspan class="sub" x="750" dy="22">SeerClient</tspan></text>
+  <line class="line" x1="850" y1="120" x2="885" y2="120"/>
+  <rect class="sim" x="890" y="85" width="180" height="70" rx="10"/><text class="txt" x="980" y="110"><tspan x="980">로컬 TCP</tspan><tspan class="sub" x="980" dy="22">5포트</tspan></text>
+  <line class="line" x1="1070" y1="120" x2="1105" y2="120"/>
+  <rect class="sim" x="1110" y="70" width="260" height="100" rx="10"/><text class="txt" x="1240" y="98"><tspan x="1240">SeerSimulatorServer</tspan><tspan class="sub" x="1240" dy="23">가상 위치·배터리</tspan><tspan class="sub" x="1240" dy="20">IO·작업 상태</tspan></text>
+  <path class="line" d="M1240 170 C1240 260 325 260 325 165"/>
+  <text class="sub" x="780" y="278">가상 상태가 원본 Adapter를 통해 FMS로 보고됨</text>
+</svg>

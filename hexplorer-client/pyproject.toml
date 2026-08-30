@@ -1,0 +1,9 @@
+[project]
+name = "hexplorer-client"
+version = "0.1.0"
+description = "ROS2 client helpers for Dobot Hexplorer"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

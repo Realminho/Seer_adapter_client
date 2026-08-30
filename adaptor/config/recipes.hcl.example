@@ -1,0 +1,108 @@
+# 현장 workflow recipe 예시.
+#
+# 선택 파일이며 config/recipes.hcl로 복사한 뒤 현장 거리·핀·station ID·map ID를
+# 맞춘다. `${var.NAME}`은 부모 action 파라미터로 치환되며 문자열 전체가
+# placeholder이면 숫자·bool 같은 원래 타입을 보존한다.
+#
+# 실행과 정리:
+# - `step`은 선언 순서대로 실행하고 첫 실패에서 본문을 멈춘다.
+# - `cleanup`은 본문의 성공·실패·timeout·취소와 무관하게 선언 순서대로 항상
+#   실행한다. 출력 OFF, 차량 정지, PIO 연결 해제 같은 안전한 마무리 동작을 둔다.
+# - `cleanup_timeout_sec`는 본문 `timeout_sec`와 별도인 cleanup 시간 예산이다.
+#   각 cleanup의 `timeout_sec`를 적으면 그 단계에서 기본값을 덮어쓴다.
+# - 본문이 성공해도 cleanup이 실패하면 recipe 최종 결과는 `FAILED`다.
+#   본문과 cleanup이 둘 다 실패하면 본문 실패 원인을 유지하고 cleanup 오류를 덧붙인다.
+#
+# step 사이에 시간이나 조건이 필요하면:
+# - `delay_sec = 0.2`  그 step이 성공한 뒤 대기한다(momentary 출력의 pulse 폭).
+#                      남은 timeout_sec 예산 안에서만 쉬고 실패 시엔 쉬지 않는다.
+# - `step "ezioWaitIn" { parameters = { index = 4, state = "on", timeoutSec = 10 } }`
+#                      EZI IO 입력이 기대 상태가 될 때까지 기다리고 아니면 실패한다.
+# - PIO 배선이면 `step "pioScenario"`의 scenario 안에서 out/in/delay를 섞는다
+#   (recipe 중간이면 `disconnect = false`로 연결을 이어써야 한다).
+#
+# 역할 구분:
+# - pioScenario: ACS가 즉석에서 전달하는 임시 PIO 전용 시험
+# - facility action: 코드가 소유하는 에어샤워/엘리베이터 상태 머신
+# - recipe: 현장이 소유하는 facility·주행 action 조합
+
+recipe "airShowerPassage" {
+  label               = "Air shower — complete passage"
+  timeout_sec         = 300
+  cleanup_timeout_sec = 10
+  motion              = true
+
+  step "airShowerEnter" {
+    parameters = { doorPin = var.entryDoorPin }
+  }
+  step "manualMove" {
+    parameters  = {
+      distance = var.enterDistanceMm
+      speed    = var.moveSpeed
+    }
+    timeout_sec = 60
+  }
+  step "airShowerInside" {
+    parameters = { doorPin = var.exitDoorPin }
+  }
+  step "manualMove" {
+    parameters  = {
+      distance = var.exitDistanceMm
+      speed    = var.moveSpeed
+    }
+    timeout_sec = 60
+  }
+  step "airShowerPassed" {
+    parameters = { doorPin = var.exitDoorPin }
+  }
+
+  cleanup "manualStop" { timeout_sec = 5 }
+  cleanup "pioDisconnect" { timeout_sec = 5 }
+}
+
+recipe "elevatorTrip" {
+  label               = "Elevator — floor transfer"
+  timeout_sec         = 600
+  cleanup_timeout_sec = 10
+  motion              = true
+
+  step "elevatorEnter" {
+    parameters = {
+      floorPin     = var.sourceFloorPin
+      pioStationId = var.sourcePioStationId
+    }
+  }
+  step "manualMove" {
+    parameters  = {
+      distance = var.enterDistanceMm
+      speed    = var.moveSpeed
+    }
+    timeout_sec = 60
+  }
+  step "elevatorInside" {
+    parameters = {
+      floorPin     = var.targetFloorPin
+      pioStationId = var.targetPioStationId
+    }
+  }
+  step "switchMap" {
+    parameters  = { mapId = var.targetMapId }
+    timeout_sec = 45
+  }
+  step "manualMove" {
+    parameters  = {
+      distance = var.exitDistanceMm
+      speed    = var.moveSpeed
+    }
+    timeout_sec = 60
+  }
+  step "elevatorPassed" {
+    parameters = {
+      floorPin     = var.targetFloorPin
+      pioStationId = var.targetPioStationId
+    }
+  }
+
+  cleanup "manualStop" { timeout_sec = 5 }
+  cleanup "pioDisconnect" { timeout_sec = 5 }
+}

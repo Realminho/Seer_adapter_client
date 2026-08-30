@@ -1,0 +1,349 @@
+# motion_rules: 노드 도착(또는 구간)별 주행 모드 오버라이드. 한 줄 = 한 선언.
+#   모든 AMR이 공유하는 맵/라우팅 규칙이므로 vendor 오버레이(jibot-config.toml)가
+#   아니라 이 공용 config.toml에 둔다. (TOML 루트 키라 파일 최상단에 위치해야 함.)
+#   match: to(도착 노드, 필수) + from(선택; 있으면 그 from->to 구간(방향)에서만 매칭)
+#   mode="dock": from->to 구간(접근노드 -> 충전기) 도착 시 UmDock으로 진입.
+#                from에 이미 도착해 있으므로 별도 approach goto 없음(제자리 dock).
+#                fail_timeout_sec 안에 충전 안 뜨면 reject (DOCKING 고착 방지).
+#                방향성: 반대(충전기->접근노드, 충전 후 출발)는 dock 안 함 -> 일반 goto.
+#                  필요하면 그 구간에 별도 mode="move" 룰을 선언.
+#   mode="move": 일반 goto 대신 from->to 구간을 relative move로 주행.
+#                distance(mm, signed) + speed(생략 시 manual_control.default_move_speed).
+#                필요 시 route-step avoid도 구간별 override 가능:
+#                obs_avoid_dist/front-back, side_avoid_dist/side, flag/io/use_io/note.
+#                완료 판정은 goto와 동일하게 to 노드 도착(pose).
+#   그 외(룰 없는 구간): 기본 UmGoto.
+motion_rules = [
+  # HANA 1층 충전기. hana.json에서 1_01CH는 Goal이 아니라 Dock 객체이므로
+  # UmGoto가 아니라 JIBOT의 reflector docking 동작인 UmDock을 사용한다.
+  # from을 생략해 어느 접근 경로에서 오더라도 이 목적지의 의미를 dock으로 고정한다.
+  { to = "1_01CH", mode = "dock" },
+  { from = "F2_90_S2CH_BEFORE", to = "F2_90_S2CH", mode = "dock" },
+  # 충전 후 출발(충전기 -> 접근노드)을 후진 move로 하려면 아래처럼 선언(distance/speed는 현장값):
+  # { from = "F2_90_S2CH", to = "F2_90_S2CH_BEFORE", mode = "move", distance = -1200, speed = 150 },
+]
+
+[mqtt_broker]
+host = "127.0.0.1"
+port = 1883
+vda_interface = "amr"               # VDA interface to use
+
+[adapter]
+# 기본 벤더: "jibot" | "hexplorer". JIBOT identity/connectivity는
+# config/robots.toml 이 단일 출처다.
+vendor = "jibot"
+# 한 호스트에 어댑터가 여러 개일 때만 사용. 각 항목이 amr-adaptor@<name>.service.
+# [[adapter.instances]]
+# name   = "line1"
+# vendor = "hexplorer"
+# config = "config/line1.toml"
+
+[vehicle]
+manufacturer = "seer"
+vda_version = "v3"                   # VDA standard version
+vda_full_version = "3.0.0"           # Full VDA version ( Not use )
+serial_number = "SEER-IP-192-168-2-105"
+vehicle_ip = "192.168.2.105"
+vehicle_port = 19204
+
+[settings]
+map_id = "lab2m"                     # Map identifier
+speed = 0.05                         # Robot speed in meters per second
+simulator_node_travel_sec = 2.0       # Simulator-only: seconds per node move; <=0 uses speed
+
+# Active-order node arrival settings.
+# active order에서 node/edge/order 완료를 판단할 때 사용하는 도착 판정 설정.
+# station 값은 현재 위치/도착 판정에 사용하지 않고, 현재 pose와 목표 node 좌표만 사용한다.
+reach_zone_shape = "square"          # Arrival zone shape: "square" checks x/y independently, "circle" checks radial distance / 도착 영역 모양
+reach_zone_scale = 20.0              # Multiplies allowedDeviationXY into JIBOT raw map units / allowedDeviationXY를 JIBOT map unit으로 환산
+default_node_deviation_xy = 10.0     # Fallback allowedDeviationXY when an order node omits it; active-order only / order node에 deviation이 없을 때만 사용
+
+# Pose-based lastNodeId recovery/capture.
+# proximity 모드는 order 진행 및 거리와 무관하게 최근접 노드를 lastNodeId로 갱신한다.
+# settled 모드는 order가 active가 아닐 때만 stopped/manual gate를 통과해 갱신한다.
+idle_last_node_reach_xy = 100.0      # Raw map-unit threshold for idle lastNodeId recovery; active-order completion does not use this / idle lastNodeId 판단 임계치
+last_node_capture_mode = "settled"    # lastNodeId policy: "proximity" (always nearest) | "settled" (idle/stopped/within reach) | "disabled" / lastNodeId 갱신 정책
+use_nearest_node_as_last_node_when_missing = true # lastNodeId가 비어 있으면 현재 nearestNodeId로 1회 초기화 (이미 값이 있으면 덮지 않음)
+# 위 1회 초기화에만 적용되는 거리 제한(raw map unit). 0이면 제한 없음 = 아무리 먼
+# 노드라도 잡는다. 맵 밖/다른 층에서 부팅하면 근거 없는 lastNodeId가 FMS에 로봇
+# 위치로 보고되므로, 현장 노드 간격에 맞춰 켜 두는 편이 안전하다.
+# 주의: 위 idle_last_node_reach_xy는 <=0일 때 deviation 폴백이라 규약이 다르다.
+# 거부되면 [LAST NODE FALLBACK SKIP] 로그가 gap/reach와 함께 찍힌다.
+missing_last_node_reach_xy = 0.0
+# settled 모드에서 캡처한 lastNodeId를 되돌려 주는 거리(raw map unit).
+# settled는 노드 근처에 멈출 때 캡처만 하고 해제하지 않아, 수동 주행으로 노드를
+# 벗어나도 떠난 노드를 계속 publish 했다. 이 거리를 넘어가면 lastNodeId를 비우고
+# (FMS에는 LAST_NODE_ID_MISSING) 다시 노드에 정착할 때 회복한다.
+# idle_last_node_reach_xy(캡처)와의 간격이 히스테리시스 구간이므로 충분히 크게 둘 것.
+# 0이면 해제하지 않는다(기존 동작). 해제되면 [LAST NODE RELEASE] 로그가 찍힌다.
+last_node_release_xy = 500.0
+
+state_publish_delay = 1.0
+jibot_reconnect_delay = 5.0          # Seconds between JIBOT reconnection attempts after a dropped/failed connection
+jibot_rx_timeout = 10.0              # Reconnect if no JIBOT status frame is received within this many seconds (watchdog)
+debug_log = false                    # Verbose per-cycle [POSITION]/[LAST NODE] console logging
+
+# Task diagnostic polling.
+# map은 시작 시 1회만 로드하고, CurTask/TaskInfo/Path는 상태 진단 및 warning reference용으로만 주기 polling한다.
+task_info_poll_sec = 5.0             # Seconds between UmGetCurTask/UmGetTaskInfo/UmGetPath polls; <=0 polls every cycle / 진단 polling 주기
+
+# Polling and timeout knobs (Task 5.1).
+acs_cmd_subscribe_interval_sec  = 1.0  # subscribe_acs_cmd loop sleep interval (seconds)
+node_position_poll_interval_sec = 0.2  # _wait_until_node_position_reached poll interval (seconds)
+standstill_poll_interval_sec    = 0.1  # _wait_until_vehicle_standstill poll interval (seconds)
+standstill_timeout_sec          = 10.0  # _wait_until_vehicle_standstill give-up timeout (seconds); <=0 waits forever
+adapter_loop_sleep_sec          = 1.0  # Main adapter loop sleep in the exception handler (seconds)
+jibot_command_default_timeout_sec = 3.0  # Default timeout passed to _dispatch_jibot_command (seconds)
+jibot_ack_timeout_min_sec       = 0.1  # WARNING: affects command deadline floor — minimum clamp for jibot ack timeout (seconds)
+node_unreached_delay_sec        = 1.0  # WARNING: affects arrival/error timing — seconds robot must be stopped before UNREACHED is reported
+move_start_timeout_sec          = 10.0  # move never started, or no pose before dispatch
+move_started_min_travel_mm      = 50.0  # displacement confirming the move started
+move_complete_travel_ratio      = 0.9   # fraction of distance counting as full travel
+move_stall_timeout_sec          = 5.0   # WARNING: affects fallback timing — stop duration confirming an early stop
+goto_nearest_timeout_sec        = 60.0  # gotoNearestNode arrival-polling timeout (seconds); <=0 falls back to 60s
+nearest_node_mode               = "pathPoint"  # FMS driving-node default; JIBOT PathPoint.vertex/costs own the route graph. Legacy alternative: "headingGoal"
+order_motor_auto_enable         = true  # order 주행 명령 전에 구동 모터가 꺼져 있으면 켜고 시작 (false면 예전처럼 그냥 송신)
+order_motor_enable_timeout_sec  = 5.0   # UmSetMotor는 응답이 없으므로 모터 ON을 이 시간까지 폴링 확인, 초과 시 노드 실패
+switch_map_timeout_seconds      = 30.0  # SetMap 후 UmGetMapName 일치 확인 timeout (초)
+
+[jibot_status]
+charging = "charging"
+driving = "Driving"
+motion = ["nrunto", "slowdown", "watch", "Driving"]
+stop = "Stopped"
+manual_modes = ["ModeDrive"]        # modes meaning a human is driving; adapter keeps its hands off
+
+[sound_settings]                      # OS-level sound playback on the adapter host
+enabled        = true                 # feature on/off (set false on speaker-less robots)
+sink           = "alsa_output.platform-rt5651-sound.stereo-fallback"  # output sink; find with scripts/test-sound-devices.sh
+sound_dir      = "sounds"             # sound folder (relative -> resolved against the adaptor dir)
+player         = "mplayer"            # playback binary
+startup_volume = 70                   # OS sink volume % applied once at startup
+# Error-code wav files named ERROR0200.wav, ERROR0504.wav, ... win first when
+# /jrobot_status system_error_code is fresh and non-zero. Otherwise sound files
+# are matched by CONVENTION from the robot working state: drop an mp3 named
+# after the workingStateDetail (loading.mp3 / unloading.mp3 /
+# docking.mp3) or the workingState (driving.mp3 / acting.mp3 / charging.mp3 /
+# ...), lowercased, into sound_dir. An executing action can use its exact type
+# as action-<actionType>.mp3; a recipe step wins over its parent action, then
+# detail wins over state. No matching file => silence. See sounds/README.md.
+# (Legacy travel_music/work_music keys are
+# deprecated and ignored, but still tolerated if present.)
+sound_test_duration_sec = 10.0        # Default testSound duration (s) when action omits "seconds"
+player_wait_timeout_sec = 1.0         # Timeout (s) for proc.wait() after proc.terminate() in SoundPlayer.stop()
+pactl_timeout_sec = 2.0               # Timeout (s) for subprocess.run() in SoundPlayer._pactl()
+state_replay_gap_sec = 0.0            # Gap (s) after a state sound finishes before replaying; 0 = continuous loop
+# How many times a track plays before going quiet. 0 = repeat for as long as the
+# state or action that chose it lasts (the historical behaviour). Set 1 to make
+# every sound a single announcement. Per-track overrides are below.
+state_repeat_count = 0
+
+# Per-state replay gaps, overriding state_replay_gap_sec. Keys are lowercased
+# stopReason / workingStateDetail / workingState tokens, most specific first.
+[sound_settings.state_replay_gap_overrides]
+fault = 3.0                           # A bumper stop ran 7m40s in the field; a continuous loop for that long is unusable
+
+# Per-track play counts, overriding state_repeat_count. The key is the file name
+# without its extension, so action sounds are addressable too — unlike the gap
+# overrides above, which only ever match a state token. Spell action keys exactly
+# as the actionType is declared (camelCase); state keys stay lowercase.
+#   action-clamp = 1                   -> action-clamp.mp3 plays once per clamp
+#   driving = 0                        -> driving.mp3 loops for the whole trip
+[sound_settings.repeat_count_overrides]
+
+[dock]
+stop_charging_on_arrival = true
+# Default seconds to wait after UmDock for JIBOT status/powerSupply charging
+# before raising JIBOT_DOCK_FAILED. Per motion_rules fail_timeout_sec overrides
+# this for one charger. Increase if the charger physically starts after timeout.
+fail_timeout_sec = 200.0
+# 충전기 접근 중 장애물 대기(#brake)는 위 fail_timeout_sec을 소모하지 않는다.
+# (장애물을 기다리는 건 정상 진행이라 충전기 고장으로 보고하면 안 됨.)
+# 대신 '연속' 장애물 대기가 이 값을 넘으면 dock을 실패시켜 DOCKING 고착을 막는다.
+# fail_timeout_sec보다 크게 두어 seat 타임아웃이 주 신호로 남게 한다. 0 이하면 무제한.
+obstacle_timeout_sec = 300.0
+# JIBOT ignores a single UmStop when stopping charging, so repeat it.
+stop_charging_repeat_count = 2
+stop_charging_repeat_gap_sec = 3.0
+# UmStop과 UmSchedulerThis는 둘 다 JIBOT 스케줄러 task를 교체한다. 충전 정지 직후
+# 같은 순간에 move를 보내면 stop이 move를 덮어써 로봇이 그대로 서 있고 구간은
+# travelled=0.0mm로 실패한다. 충전 정지 뒤 이만큼 기다렸다가 주행을 보낸다. 0이면 끔.
+stop_charging_motion_settle_sec = 1.0
+# After UmStop, poll telemetry up to this long for charging to clear before
+# a stopCharging instant action reports FINISHED; still charging => FAILED.
+stop_charging_verify_timeout_sec = 10.0
+# After UmDock, poll telemetry up to this long for charging to start before
+# a startCharging instant action reports FINISHED; no charging => FAILED.
+# Generous to cover the dock approach.
+start_charging_verify_timeout_sec = 60.0
+# Polling cadence for dock-wait and charging-state loops (seconds).
+dock_wait_poll_interval_sec          = 0.2  # _wait_until_docking_complete loop
+dock_approach_poll_interval_sec      = 0.2  # _wait_until_pose_reached loop (dock approach)
+charging_start_poll_interval_sec     = 0.2  # _wait_until_charging loop
+charging_stop_poll_interval_sec      = 0.2  # _wait_until_not_charging loop
+# How long (s) the robot must be stopped-and-out-of-zone before the dock-approach
+# wait reports unreached; affects dock-approach arrival/error timing.
+# WARNING: lowering this may cause spurious unreached errors on slow approach moves.
+dock_approach_unreached_delay_sec    = 1.0
+
+# Optional UmDock approach params (JIBOT firmware JModeCharge::Start).
+# Unset => bare UmDock (default approach). JIBOT hardware-characteristic values
+# are better placed in jibot-config.toml [dock.approach_params].
+# [dock.approach_params]
+# detect_charging_signal = true
+# dock_move_additional_dist = 0.0
+# dock_rotate_additional_angle = 0.0
+# clearance_back_min = 0.0
+# clearance_front_min = 0.0
+
+[charge_circuit]
+# JIBOT charges two ways: drive-and-dock onto charger contacts (startCharging ->
+# UmDock/JModeCharge) when away from the charger, AND closing the /jcmd charge
+# relay in place (chargeInPlace) to resume charging after discharging while
+# already docked. The in-place path requires this enabled.
+enabled = true
+jcmd_topic = "/jcmd"
+publish_rate_hz = 2.0
+ros_setup = "/usr/local/urobot/jarvis/setup.bash"
+ros_master_uri = "http://localhost:11311"
+verify_timeout_sec = 5.0
+terminate_timeout_sec = 3.0  # Seconds to wait for the hold-subprocess to exit after terminate()
+off_timeout_sec       = 5.0  # Seconds to wait for the relay-OFF one-shot command subprocess
+
+[hexplorer]
+robot_command_topic = "/robot_cmd"
+robot_state_topic = "/robot_state"
+velocity_command_topic = "/vel_cmd"
+camera_info_topic = "/realsense_camera_node/sn408122070053/camera_info"
+position_field = "pos_body"
+orientation_field = "ori_body"
+mode_field = "temp"
+mode_index = 10
+command_target_state_field = "target_state"
+# Orientation quaternion component order: "wxyz" or ROS-standard "xyzw". Confirm onboard.
+orientation_quaternion_order = "wxyz"
+# Interim battery state of charge (%) reported to ACS until the real battery
+# field is captured from RobotState. Avoids reporting a dead 0% robot.
+default_battery_soc = 100.0
+stand_down_state = 1
+stand_up_state = 2
+walk_mode_state = 4
+map_source_dir = "/home/robot/Documents"
+map_target_dir = "./hexplorer/maps"
+map_backup_dir = "./backups/hexplorer-maps"
+
+[video]
+# Camera/video to FMS. Video pixels are NOT relayed through MQTT: live streams
+# are served by web_video_server on the onboard PC and only their URLs are
+# advertised over VDA5050; event snapshots are small JPEGs pulled on demand.
+# See jibot-client/docs/jibot-video-to-fms-design.md.
+enabled = true
+# Local web_video_server base the adapter uses to PULL snapshots (same host).
+web_video_server_url = "http://127.0.0.1:9001"
+# Base the FMS/Web UI uses to OPEN live streams. Leave empty when the robot IP
+# can change; Web UI camera links derive http://<web-ui-host>:9001 from the
+# browser request Host header. Set explicitly only when FMS needs a fixed URL.
+web_video_server_public_url = ""
+# Stream transport for live view: "mjpeg", "ros_compressed", "vp8", or "h264".
+stream_type = "mjpeg"
+# Camera topics advertised to the FMS on a requestVideo instant action.
+stream_topics = [
+    "/camera/cam2/image_raw",
+    "/camera/cam3/image_raw",
+    "/depth_detector_node/berxel_cam_nodelet/depth/depth_raw",
+]
+# Event-triggered snapshots ------------------------------------------------
+# JIBOT mode/status substrings that trigger a snapshot (matched case-insensitively
+# against "<mode> <status>"). Edge-triggered: fires once when the event appears.
+snapshot_events = ["brake", "slowdown", "watch", "waiting"]
+# ROS image topic captured for the snapshot. Use a topic that is ALWAYS
+# publishing so brake/slowdown snapshots never time out. cam2/cam3 (mono8) and
+# the berxel depth are always on; /bundle_detection_image is richer but only
+# publishes during detection. The front berxel RGB sensor exists but is disabled
+# (color_enable=false) — enable it on the robot stack to use
+# /depth_detector_node/berxel_cam_nodelet/rgb/rgb_raw as a forward color view.
+snapshot_topic = "/camera/cam2/image_raw"
+# JPEG quality (1-100) requested from web_video_server /snapshot.
+snapshot_quality = 40
+# Side MQTT topic (published under amr/v3/<serial>/). The event name is appended
+# as a subtopic, e.g. amr/v3/<serial>/event_snapshot/brake. Payload is binary JPEG.
+snapshot_mqtt_topic = "event_snapshot"
+# Minimum seconds between snapshots for the same event (debounce against flapping).
+snapshot_debounce_sec = 5.0
+# HTTP timeout when fetching a snapshot from web_video_server.
+snapshot_http_timeout_sec = 3.0
+
+# Web UI (browser dashboard + control). Disabled unless enabled=true.
+[web_ui]
+enabled = true
+host = "127.0.0.1"
+port = 19010
+credentials_path = "config/web-credentials.toml"   # TOML: username + password (12+ chars); do NOT commit
+# HTTP client timeout for proxied requests (e.g. snapshot fetches).
+http_request_timeout_sec = 10.0
+# Graceful shutdown timeout before force-close.
+shutdown_timeout_sec = 2.0
+# Timeout when tailing log files for the log-stream endpoint.
+log_read_timeout_sec = 5.0
+# Age threshold in seconds before the robot state is considered stale.
+state_stale_threshold_sec = 15.0
+# Maximum POST body size accepted by the web UI endpoints.
+max_post_body_bytes = 65536
+# Default page auto-refresh interval (seconds) for status pages.
+page_default_refresh_sec = 1
+# Polling interval (seconds) for the test output stream endpoint.
+test_output_poll_sec = 2
+# Minimum password length enforced at credential-change time.
+password_min_length = 12
+# Tokns that are rejected as passwords (case-insensitive substring match).
+password_forbidden_tokens = ["set-me", "changeme", "password", "admin"]
+# Default port for the on-robot camera server (web_video_server).
+camera_default_port = 9001
+
+[bms_ros]
+enabled = true
+topic = "/jrobot_status"
+ros_setup = "/usr/local/urobot/jarvis/setup.bash"
+ros_master_uri = "http://localhost:11311"
+stale_after_sec = 30.0
+restart_backoff_sec = 3.0
+
+[jibot_client]
+# WARNING: user and password are stored in plaintext.
+# Do NOT commit real credentials — override in a gitignored file
+# (e.g. jibot-config.toml) the same way web-credentials.toml handles WebUi login.
+user                    = "test"     # JIBOT login username
+password                = "test"     # JIBOT login password (plaintext — keep gitignored)
+device_type             = "pc"       # UmConnect device_type field
+command_timeout_sec     = 3.0        # Seconds to wait for a command-level response before giving up
+recv_buffer_bytes       = 32768      # TCP recv buffer size in bytes
+status_log_interval_sec = 5.0        # Seconds between status log lines
+battery_log_interval_sec = 30.0      # Seconds between battery log lines
+startup_battery_soc = 100.0          # Interim SOC while JIBOT has not sent its first battery field
+require_battery_before_ready = true  # Keep operatingMode=STARTUP until the first battery field is received
+
+# [manual_control] is JIBOT-only (manualDrive -> UmDrive). It now lives in the
+# JIBOT overlay config/jibot-config.toml, which is deep-merged over this file at
+# load time (config.py). Define it there, not here.
+
+[factsheet]
+# VDA5050 factsheet typeSpecification fields.
+series_name = "SEER"
+agv_kinematic = "DIFF"         # Kinematic model: DIFF | OMNI | THREEWHEEL
+agv_class = "CARRIER"          # AGV class: CARRIER | TOWING | CONVEYOR | ...
+localization_types = ["NATURAL"]   # Localization method(s): NATURAL | REFLECTOR | ...
+navigation_types = ["AUTONOMOUS"]  # Navigation mode(s): AUTONOMOUS | SEMI_AUTONOMOUS | ...
+# Coordinate units reported in the factsheet. Must match what the adapter sends in state.
+coordinate_unit_position = "mm"    # Position unit: mm | m | cm
+coordinate_unit_orientation = "deg" # Orientation unit: deg | rad
+# Physical speed limits (m/s). speedMax comes from settings.speed.
+speed_min = 0.0                # Minimum speed (m/s); typically 0
+# Protocol timing limits (seconds).
+min_order_interval_sec = 1.0   # Minimum interval between orders from ACS
+
+[internal_actions]
+# WARNING: FMS contract — do NOT change on existing deployments. The FMS learns
+# these synthetic action id/type for docking status; changing them breaks
+# integration. Only override here if the FMS side is also updated consistently.
+docking_status_action_id   = "__jibot_docking__"
+docking_status_action_type = "dock"

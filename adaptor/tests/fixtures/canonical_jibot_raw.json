@@ -1,0 +1,50 @@
+{
+  "mapId": "contract-map",
+  "raw": {
+    "Header": "umcl-map",
+    "MapRes": 20,
+    "MinPose": "0 0",
+    "MaxPose": "10000 8000",
+    "Objs": {
+      "Goal": [
+        {
+          "name": "G1",
+          "pose": "3000 2000 0.00",
+          "allowPassingThrough": false
+        },
+        {
+          "name": "G2",
+          "pose": "7000 2000 90.0",
+          "allowPassingThrough": true
+        }
+      ],
+      "Dock": [
+        {
+          "name": "D1",
+          "pose": "5000 6000 180.0",
+          "allowPassingThrough": false
+        }
+      ],
+      "PathPoint": [
+        {
+          "name": "PP1",
+          "pose": "3000 4000 0.00",
+          "vertex": "PP2",
+          "costs": [1]
+        },
+        {
+          "name": "PP2",
+          "pose": "7000 4000 0.00",
+          "vertex": ""
+        }
+      ],
+      "AvoidArea": [
+        {
+          "name": "AVOID1",
+          "points": "1000 1000 2000 1000 2000 2000 1000 2000",
+          "pose": "1000 1000 0.00"
+        }
+      ]
+    }
+  }
+}

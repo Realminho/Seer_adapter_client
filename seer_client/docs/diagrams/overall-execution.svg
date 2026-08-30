@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+  <title id="title">SEER Client 전체 실행 방식</title>
+  <desc id="desc">사용자가 Adapter 전체 테스트 또는 직접 명령 테스트를 선택한 뒤 시뮬레이터나 실제 SEER 장비로 연결되는 구조</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker>
+    <style>
+      .box{fill:#eaf2ff;stroke:#2563eb;stroke-width:2}.choice{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.target{fill:#ecfdf5;stroke:#16a34a;stroke-width:2}.line{fill:none;stroke:#64748b;stroke-width:2.5;marker-end:url(#arrow)}.txt{font:500 18px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#172033;text-anchor:middle;dominant-baseline:middle}.sub{font:400 15px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#475569;text-anchor:middle}.label{font:500 15px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#475569;text-anchor:middle}
+      @media(prefers-color-scheme:dark){.box{fill:#172554;stroke:#60a5fa}.choice{fill:#431407;stroke:#fb923c}.target{fill:#052e16;stroke:#4ade80}.txt{fill:#f8fafc}.sub,.label{fill:#cbd5e1}.line{stroke:#94a3b8}}
+    </style>
+  </defs>
+  <rect class="box" x="450" y="20" width="300" height="58" rx="10"/><text class="txt" x="600" y="49">사용자 또는 FMS</text>
+  <path class="line" d="M600 78 V112"/>
+  <rect class="choice" x="430" y="115" width="340" height="62" rx="10"/><text class="txt" x="600" y="146">테스트 방식 선택</text>
+  <path class="line" d="M500 177 C500 195 270 190 270 215"/><text class="label" x="335" y="201">Adapter 전체</text>
+  <path class="line" d="M700 177 C700 195 930 190 930 215"/><text class="label" x="865" y="201">직접 명령</text>
+  <rect class="box" x="100" y="220" width="340" height="58" rx="10"/><text class="txt" x="270" y="249">seer_client/run_adapter.py</text>
+  <rect class="box" x="760" y="220" width="340" height="58" rx="10"/><text class="txt" x="930" y="249">seer_client/manual_test.py</text>
+  <path class="line" d="M270 278 V312"/>
+  <rect class="box" x="100" y="315" width="340" height="58" rx="10"/><text class="txt" x="270" y="344">원본 adaptor/main.py</text>
+  <path class="line" d="M270 373 V407"/>
+  <rect class="box" x="80" y="410" width="380" height="72" rx="10"/><text class="txt" x="270" y="438"><tspan x="270" dy="0">bridge.py</tspan><tspan class="sub" x="270" dy="24">JIBOT 생성 지점만 런타임 연결</tspan></text>
+  <path class="line" d="M270 482 C270 520 500 500 500 532"/>
+  <path class="line" d="M930 278 C930 390 700 420 700 532"/>
+  <rect class="choice" x="430" y="535" width="340" height="58" rx="10"/><text class="txt" x="600" y="564">연결 대상 선택</text>
+  <path class="line" d="M500 593 C500 615 280 610 280 637"/><text class="label" x="375" y="617">--simulator</text>
+  <path class="line" d="M700 593 C700 615 920 610 920 637"/><text class="label" x="825" y="617">실제 장비 IP</text>
+  <rect class="target" x="90" y="640" width="380" height="42" rx="10"/><text class="txt" x="280" y="661">로컬 SeerSimulatorServer</text>
+  <rect class="target" x="730" y="640" width="380" height="42" rx="10"/><text class="txt" x="920" y="661">실제 SEER AMR</text>
+</svg>

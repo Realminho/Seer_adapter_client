@@ -1,0 +1,31 @@
+[Unit]
+# AMR VDA5050 adapter (default single instance). Installed by
+# scripts/setup-adaptor-service.sh, which substitutes __USER__ / __WORKDIR__ for
+# this host. The vendor (jibot/hexplorer) comes from config [adapter].vendor;
+# run-adapter.sh dispatches to the right launcher. Manage with the WebUI,
+# scripts/adaptor-services.sh, or plain systemctl.
+Description=AMR VDA5050 adapter
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__WORKDIR__
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+# run-adapter.sh reads the vendor from config and execs run-main.sh /
+# run-hexplorer.sh (which activate the venv and exec python).
+ExecStart=__WORKDIR__/run-adapter.sh
+Restart=on-failure
+RestartSec=3
+# Graceful VDA5050 OFFLINE publish happens on SIGINT/SIGTERM in main.py.
+KillSignal=SIGINT
+TimeoutStopSec=15
+# Enable CPU accounting so `systemctl show` reports CPUUsageNSec; the web UI
+# derives the adapter's CPU% from it (core/systemd.py).
+CPUAccounting=yes
+
+[Install]
+WantedBy=multi-user.target

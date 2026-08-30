@@ -1,0 +1,12 @@
+paho-mqtt==2.1.0
+tomli==2.4.1
+python-hcl2>=8,<9
+pyserial==3.5
+# 설정 파일 수술 편집용. 읽기는 위 python-hcl2/tomli 가 계속 담당한다.
+#   tomlkit      : TOML 무손실 편집(주석·정렬 보존). 순수 Python
+#   tree-sitter  : HCL 무손실 편집. 값 노드의 바이트 범위만 교체하므로
+#                  편집하지 않은 부분은 구조적으로 그대로 남는다.
+#                  C 확장이지만 아키텍처 제약은 이미 python-hcl2 의 regex 로 존재한다.
+tomlkit>=0.13,<1
+tree-sitter>=0.25,<1
+tree-sitter-hcl>=1.2,<2

@@ -1,0 +1,37 @@
+{
+  "profile": "8bitdo-micro-switch-bluetooth",
+  "input_api": "evdev",
+  "device": {
+    "name": "Pro Controller",
+    "connection": "bluetooth",
+    "vendor_id": "057e",
+    "product_id": "2009"
+  },
+  "drive": {
+    "dpad_x_code": 0,
+    "dpad_y_code": 1,
+    "negative_value": -32767,
+    "positive_value": 32767,
+    "neutral_threshold": 1000,
+    "up": "forward",
+    "right": "turn_right",
+    "down": "reverse",
+    "left": "turn_left",
+    "neutral": "manual_stop",
+    "disconnect": "manual_stop"
+  },
+  "buttons": {
+    "L": {"code": 310, "action": null},
+    "L2": {"code": 312, "action": null},
+    "R2": {"code": 313, "action": null},
+    "R": {"code": 311, "action": "manual_stop"},
+    "minus": {"code": 314, "action": "sound_volume_down"},
+    "plus": {"code": 315, "action": "sound_volume_up"},
+    "star": {"code": 309, "action": null},
+    "heart": {"code": 316, "action": null},
+    "X": {"code": 307, "action": null},
+    "Y": {"code": 308, "action": null},
+    "A": {"code": 305, "action": null},
+    "B": {"code": 304, "action": null}
+  }
+}

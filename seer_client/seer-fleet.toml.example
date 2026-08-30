@@ -1,0 +1,30 @@
+# 하나의 WebUI에서 관리할 SEER AMR 목록입니다.
+# 이 파일을 seer-fleet.toml로 복사한 뒤 값만 수정하세요.
+
+[[robot]]
+id = "SEER-SIM-001"
+simulator = true
+x = 1000.0
+y = 2000.0
+theta = 90.0
+battery = 70.0
+
+[[robot]]
+id = "SEER-SIM-002"
+simulator = true
+x = -500.0
+y = 750.0
+theta = 0.0
+battery = 55.0
+
+# 실제 장비는 simulator=false와 vehicle_ip를 사용합니다.
+# [[robot]]
+# id = "SEER-REAL-001"
+# simulator = false
+# vehicle_ip = "192.168.192.5"
+# state_port = 19204
+# control_port = 19205
+# task_port = 19206
+# config_port = 19207
+# other_port = 19210
+# motor_names = ["motor_1", "motor_2"]

@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+.DS_Store
+.worktrees/
+
+# Runtime session logs
+adaptor/logs/
+
+# Runtime snapshots (saved map / last position) written at runtime
+adaptor/runtime/
+
+# Vendor manuals / large binaries (kept locally, not in history)
+hexplorer-client/*.pdf
+
+# 로봇에서 받아 온 벤더 map/route 원본. map 만 154M 이고 로봇마다 다르다.
+# scripts/fetch-jibot-params-over-ssh.sh 로 언제든 다시 받으므로 추적하지 않는다.
+jibot/params/
+jibot/backups/

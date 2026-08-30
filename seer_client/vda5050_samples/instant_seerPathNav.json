@@ -1,0 +1,20 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-01-01T00:00:00.000000Z",
+  "version": "3.0.0",
+  "manufacturer": "seer",
+  "serialNumber": "SEER-SIM-001",
+  "actions": [{
+    "actionId": "sample-seer-path-nav",
+    "actionType": "seerPathNav",
+    "blockingType": "NONE",
+    "actionParameters": [
+      {"key": "id", "value": "LM4"},
+      {"key": "source_id", "value": "LM1"},
+      {"key": "navigation_mode", "value": "path"},
+      {"key": "route_points", "value": ["LM1", "LM5", "LM4"]},
+      {"key": "waypoint_delay_sec", "value": 0}
+    ]
+  }]
+}
+

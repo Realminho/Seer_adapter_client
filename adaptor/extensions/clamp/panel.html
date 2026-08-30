@@ -1,0 +1,82 @@
+<!-- 클램프 extension의 WebUI 수동 조작 패널. 각 form은 공용 action endpoint로 전송된다.
+     파라미터 칸은 $$field_<actionType>_<name>으로 액션 스키마에서 끌어온다. 액션을
+     추가하면 이 파일에도 카드를 추가한다(빠뜨리면 "Clamp — 그 외" 그룹에 생성 폼으로
+     나온다). -->
+<section class="command-group">
+  <div class="command-head"><h2>Clamp</h2></div>
+  <div class="command-body"><div class="cmd-wrap">
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampOn">
+      <span class="ac-info"><strong>Servo ON (clampOn)</strong><span>클램프 서보 ON</span></span>
+      <button class="btn">Servo ON</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampOff">
+      <span class="ac-info"><strong>Servo OFF (clampOff)</strong><span>클램프 서보 OFF</span></span>
+      <button class="btn danger">Servo OFF</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clamp">
+      <span class="ac-info"><strong>Clamp / close (clamp)</strong><span>클램프 닫기 (config clamp_position / 기본 +offset)</span></span>
+      <button class="btn warning">Clamp</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="unclamp">
+      <span class="ac-info"><strong>Unclamp / open (unclamp)</strong><span>클램프 열기 (config unclamp_position / 기본 -offset)</span></span>
+      <button class="btn warning">Unclamp</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampStop">
+      <span class="ac-info"><strong>Clamp stop (clampStop)</strong><span>클램프 모터 정지</span></span>
+      <button class="btn danger">Stop</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampMin">
+      <span class="ac-info"><strong>Clamp min (clampMin)</strong><span>최소 위치 (config min_position / 없으면 -리미트 센서)</span></span>
+      <button class="btn">Min</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampMax">
+      <span class="ac-info"><strong>Clamp max (clampMax)</strong><span>최대 위치 (config max_position / 없으면 +리미트 센서)</span></span>
+      <button class="btn">Max</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampHome">
+      <span class="ac-info"><strong>Clamp home (clampHome)</strong><span>원점 (config home_position / 없으면 origin)</span></span>
+      <button class="btn">Home</button>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampMoveTo">
+      <span class="ac-info"><strong>클램프 위치 이동 (clampMoveTo)</strong><span>엔코더 절대 위치를 직접 입력해 이동 — 로봇이 실제로 움직임</span></span>
+      <span class="command-fields">$field_clampMoveTo_position</span>
+      <div class="ac-actions"><label class="confirm"><input type="checkbox" name="confirm" required> confirm</label>
+      <button class="btn primary">Move</button></div>
+    </form>
+    <form class="action-card" method="post" action="/adapter/$adapter_key/action">
+      <input type="hidden" name="csrf_token" value="$csrf_token">
+      <input type="hidden" name="return_to" value="$return_to">
+      <input type="hidden" name="action_type" value="clampTeach">
+      <span class="ac-info"><strong>Clamp teach (clampTeach)</strong><span>현재 위치를 원점으로 학습 — 로봇이 실제로 움직임</span></span>
+      <div class="ac-actions"><label class="confirm"><input type="checkbox" name="confirm" required> confirm</label>
+      <button class="btn warning">Teach</button></div>
+    </form>
+  </div></div>
+</section>

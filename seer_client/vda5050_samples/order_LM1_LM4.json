@@ -1,0 +1,21 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-01-01T00:00:00.000000Z",
+  "version": "3.0.0",
+  "manufacturer": "seer",
+  "serialNumber": "SEER-SIM-001",
+  "orderId": "sample-LM1-LM4",
+  "orderUpdateId": 0,
+  "nodes": [
+    {"nodeId": "LM1", "sequenceId": 0, "released": true, "actions": []},
+    {"nodeId": "LM5", "sequenceId": 2, "released": true, "actions": []},
+    {"nodeId": "LM4", "sequenceId": 4, "released": true, "actions": []}
+  ],
+  "edges": [
+    {"edgeId": "LM1-LM5", "sequenceId": 1, "released": true,
+     "startNodeId": "LM1", "endNodeId": "LM5", "actions": []},
+    {"edgeId": "LM5-LM4", "sequenceId": 3, "released": true,
+     "startNodeId": "LM5", "endNodeId": "LM4", "actions": []}
+  ]
+}
+

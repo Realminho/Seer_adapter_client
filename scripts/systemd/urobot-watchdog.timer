@@ -1,0 +1,13 @@
+[Unit]
+Description=Run urobot 7273 watchdog periodically
+
+[Timer]
+# urobot.service에는 30초 ExecStartPre sleep이 있고, 정상 부팅에서도 bringup에
+# 약 60초가 더 걸린다(.61: 11:28:46 부팅, 11:30:14에 7273 응답). 그래서 첫 검사는
+# 스크립트의 MIN_UPTIME 유예창과 같은 구간을 지나 보낸 뒤에 한다.
+OnBootSec=120
+OnUnitActiveSec=60
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

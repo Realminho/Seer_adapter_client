@@ -1,0 +1,42 @@
+{
+  "deadzone": 0.15,
+  "safety": {
+    "drive_modifier_inputs": [],
+    "forward_axis": 5,
+    "reverse_axis": 2,
+    "trigger_threshold": 0.1,
+    "steering_axis": 0,
+    "manual_stop_button": 5,
+    "drive_release_action": "manual_stop",
+    "reject_simultaneous_forward_reverse": true,
+    "volume_step": 5
+  },
+  "axes": {
+    "0": {"action": "steering", "invert": false},
+    "2": {"action": "reverse", "trigger": true, "deadzone": 0.1},
+    "5": {"action": "forward", "trigger": true, "deadzone": 0.1}
+  },
+  "buttons": {
+    "5": "manual_stop",
+    "6": "sound_volume_down",
+    "7": "sound_volume_up"
+  },
+  "chords": {
+    "dpad_up+a": "enableMotor",
+    "dpad_up+b": "disableMotor",
+    "dpad_up+x": "startCharging",
+    "dpad_up+y": "stopCharging",
+    "dpad_right+a": "clamp",
+    "dpad_right+b": "unclamp",
+    "dpad_right+x": "clampOn",
+    "dpad_right+y": "clampOff",
+    "dpad_down+a": "loading",
+    "dpad_down+b": "stopLoading",
+    "dpad_down+x": "unloading",
+    "dpad_down+y": "stopUnloading",
+    "dpad_left+a": "clampHome",
+    "dpad_left+b": "clampStop",
+    "dpad_left+x": "pioElevatorOpen",
+    "dpad_left+y": "pioElevatorClose"
+  }
+}

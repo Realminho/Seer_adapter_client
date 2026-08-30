@@ -1,0 +1,20 @@
+{
+  "include": [
+    "src",
+    "tests",
+    "*.py"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "runtime"
+  ],
+  "extraPaths": [
+    "src",
+    "..",
+    "../amr-client-contract/src",
+    "../jibot-client/src",
+    "../adaptor"
+  ],
+  "pythonVersion": "3.9",
+  "reportMissingTypeStubs": false
+}

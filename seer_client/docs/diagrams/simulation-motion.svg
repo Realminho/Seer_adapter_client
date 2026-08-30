@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 230" role="img" aria-labelledby="title desc">
+  <title id="title">시뮬레이션 가상 이동 흐름</title>
+  <desc id="desc">좌표 이동 명령이 TASK 포트를 거쳐 시뮬레이터의 가상 좌표를 변경하고 상태 폴링으로 반영되는 흐름</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker><style>.box{fill:#eaf2ff;stroke:#2563eb;stroke-width:2}.sim{fill:#ecfdf5;stroke:#16a34a;stroke-width:2}.cmd{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.line{stroke:#64748b;stroke-width:2.3;marker-end:url(#arrow)}.txt{font:500 15px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#172033;text-anchor:middle;dominant-baseline:middle}.sub{font:400 13px 'Noto Sans KR','Malgun Gothic',sans-serif;fill:#475569;text-anchor:middle}@media(prefers-color-scheme:dark){.box{fill:#172554;stroke:#60a5fa}.sim{fill:#052e16;stroke:#4ade80}.cmd{fill:#431407;stroke:#fb923c}.txt{fill:#f8fafc}.sub{fill:#cbd5e1}.line{stroke:#94a3b8}}</style></defs>
+  <rect class="cmd" x="15" y="75" width="245" height="70" rx="10"/><text class="txt" x="137" y="100"><tspan x="137">goto_xyz</tspan><tspan class="sub" x="137" dy="23">2000 1000 90</tspan></text>
+  <line class="line" x1="260" y1="110" x2="300" y2="110"/>
+  <rect class="box" x="305" y="75" width="205" height="70" rx="10"/><text class="txt" x="407" y="110">navigation.py</text>
+  <line class="line" x1="510" y1="110" x2="550" y2="110"/>
+  <rect class="box" x="555" y="75" width="185" height="70" rx="10"/><text class="txt" x="647" y="100"><tspan x="647">TASK</tspan><tspan class="sub" x="647" dy="23">TCP 포트</tspan></text>
+  <line class="line" x1="740" y1="110" x2="780" y2="110"/>
+  <rect class="sim" x="785" y="75" width="225" height="70" rx="10"/><text class="txt" x="897" y="100"><tspan x="897">SeerSimulatorServer</tspan><tspan class="sub" x="897" dy="23">가상 이동 계산</tspan></text>
+  <line class="line" x1="1010" y1="110" x2="1050" y2="110"/>
+  <rect class="sim" x="1055" y="75" width="180" height="70" rx="10"/><text class="txt" x="1145" y="100"><tspan x="1145">상태 폴링</tspan><tspan class="sub" x="1145" dy="23">좌표 갱신</tspan></text>
+  <line class="line" x1="1235" y1="110" x2="1275" y2="110"/>
+  <rect class="box" x="1280" y="60" width="105" height="100" rx="10"/><text class="sub" x="1332" y="88"><tspan x="1332">x=2000</tspan><tspan x="1332" dy="22">y=1000</tspan><tspan x="1332" dy="22">θ=90</tspan></text>
+</svg>

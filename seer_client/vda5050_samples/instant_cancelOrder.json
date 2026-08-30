@@ -1,0 +1,14 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-01-01T00:00:00.000000Z",
+  "version": "3.0.0",
+  "manufacturer": "seer",
+  "serialNumber": "SEER-SIM-001",
+  "actions": [{
+    "actionId": "sample-cancel-order",
+    "actionType": "cancelOrder",
+    "blockingType": "NONE",
+    "actionParameters": []
+  }]
+}
+

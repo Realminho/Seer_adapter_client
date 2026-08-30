@@ -1,0 +1,93 @@
+[mqtt_broker]
+host = "192.168.3.112"              # MQTT broker address
+port = 1883                         # MQTT broker port
+vda_interface = "amr"               # VDA interface to use
+
+[vehicle]
+serial_number = "HM-CAR-TR-01"       # {site}-{car type}-{carrier type}-{01~99}
+manufacturer = "jibot"               # Manufacturer name ( Not use )
+vda_version = "v3"                   # VDA standard version
+vda_full_version = "3.0.0"           # Full VDA version ( Not use )
+vehicle_ip = "192.168.3.223"         # AMR ip
+vehicle_port = 7273                  # AMR port
+
+[ezi]
+ezi_io = "10.8.8.87"                 # Ezi IO module
+tray_slot_pin = [8, 9, 10, 11, 12, 13] # Tray slot Input Pin
+select = 15                          # PIO control SELECT Digital Output number
+ezi_motor = "10.8.8.2"               # Ezi Driver module
+do_motor_test = 0                    # testing purpose, Open/Close motor, NO test ( default = 0 ), if ON/OFF, then 1~5
+motor_speed = 20000                  # recommandation 10000~20000 pps
+open_encoder_value = -25000
+close_encoder_value = 25000
+close_motor_before_motion = true    # before every motion, check tray motor to close
+
+[settings]
+map_id = "lab2m"                     # Map identifier
+state_frequency = 1                  # Frequency for state updates (in Hz)
+visualization_frequency = 1          # Frequency for visualization updates (in Hz)
+action_time = 1.0                    # Action execution time (in seconds)
+robot_count = 3                      # Number of robots to simulate ( Depricated )
+speed = 0.05                         # Robot speed in meters per second
+simulator_node_travel_sec = 2.0       # Simulator-only: seconds per node move; <=0 uses speed
+reach_zone_shape = "square"          # Node reach zone: "square" or "circle"
+reach_zone_scale = 20.0              # Multiplier for allowedDeviationXY to map units (RES 20 By Jibot)
+state_publish_delay = 1            # State publish delay in second ( 0.01 ~ 1 )
+
+[jibot_status]
+charging = "charging"
+driving = "Driving"
+motion = ["nrunto", "slowdown", "watch", "Driving"]
+stop = "Stopped"
+
+[sound_settings]                      # To manage various sound for targeted purppose
+emergency = ["disable", "lost", "error"]
+avoidance = ["slowdown", "watch", "break"]
+travel = ["nrunto"]
+emergency_music = "emergency.mp3"
+avoidance_music = "avoidance.mp3"
+travel_music = "travel.mp3"
+working_music = "working.mp3"
+
+[charge]
+nodes = ["F1_M01_041_S1CH", "F2_M01_091_S2CH"]
+routes = ["HANA_CHARGE_S1CH", "HANA_CHARGE_S2CH"]
+
+[dock]
+nodes = []
+stop_charging_on_arrival = true
+# JIBOT ignores a single UmStop when stopping charging, so repeat it.
+stop_charging_repeat_count = 2
+stop_charging_repeat_gap_sec = 3.0
+
+[port]
+nodes = [ "A","B" ]
+actions = [ "docking", "open_motor"]
+
+[air_shower_pio.wait_for_trigger]
+nodes = ["A", "AS", "B"]
+
+[air_shower_pio.wait_for_trigger.defaults]
+failure = 7
+occupied = 2
+fun_working = 3
+
+[[air_shower_pio.wait_for_trigger.rules]]
+to_node = "A"
+from_node = "AS"
+request = 0
+
+[[air_shower_pio.wait_for_trigger.rules]]
+to_node = "AS"
+from_node = "A"
+request = 0
+
+[[air_shower_pio.wait_for_trigger.rules]]
+to_node = "B"
+from_node = "AS"
+request = 1
+
+[[air_shower_pio.wait_for_trigger.rules]]
+to_node = "AS"
+from_node = "B"
+request = 1

@@ -1,0 +1,17 @@
+{
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "**/__pycache__"
+  ],
+  "extraPaths": [
+    "..",
+    "../seer_client/src",
+    "../amr-client-contract/src",
+    "../jibot-client/src",
+    "../adaptor"
+  ],
+  "pythonVersion": "3.9",
+  "reportMissingTypeStubs": false
+}

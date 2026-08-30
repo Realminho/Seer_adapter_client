@@ -1,0 +1,23 @@
+[Unit]
+# ROS1 reference unit. setup-web-video-server-on-onboard.sh auto-generates the
+# ROS1 (rosrun) or ROS2 (ros2 run) variant based on the detected distro.
+# Serves every ROS image topic as on-demand HTTP MJPEG/snapshot endpoints.
+# Encodes only while a client is connected, so it is idle-free.
+# See jibot-client/docs/jibot-video-to-fms-design.md.
+Description=AMR camera (ROS image topics over HTTP)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ucore
+# Source ROS1 and connect to the onboard roscore, then run the server bound on
+# all interfaces so the FMS network can reach it. Port matches the adapter's
+# [video] web_video_server_url / web_video_server_public_url.
+Environment=ROS_MASTER_URI=http://localhost:11311
+ExecStart=/bin/bash -lc 'source /opt/ros/noetic/setup.bash && exec rosrun web_video_server web_video_server _port:=9001 _address:=0.0.0.0'
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

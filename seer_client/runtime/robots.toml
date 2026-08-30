@@ -1,0 +1,52 @@
+# Managed by seer_client/run_webui.py; original robots.toml is untouched.
+
+[[robot]]
+id = "SEER-IP-192-168-43-103"
+simulator = false
+vehicle_ip = "192.168.43.103"
+x = 0.0
+y = 0.0
+theta = 0.0
+battery = 70.0
+charging = false
+state_port = 19204
+control_port = 19205
+task_port = 19206
+config_port = 19207
+other_port = 19210
+motor_names = ""
+auto_start = true
+
+[[robot]]
+id = "SEER-IP-192-168-2-103"
+simulator = false
+vehicle_ip = "192.168.2.103"
+x = 0.0
+y = 0.0
+theta = 0.0
+battery = 70.0
+charging = false
+state_port = 19204
+control_port = 19205
+task_port = 19206
+config_port = 19207
+other_port = 19210
+motor_names = ""
+auto_start = true
+
+[[robot]]
+id = "SEER-IP-192-168-192-5"
+simulator = false
+vehicle_ip = "192.168.192.5"
+x = 0.0
+y = 0.0
+theta = 0.0
+battery = 70.0
+charging = false
+state_port = 19204
+control_port = 19205
+task_port = 19206
+config_port = 19207
+other_port = 19210
+motor_names = ""
+auto_start = true

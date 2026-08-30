@@ -1,0 +1,28 @@
+
+[2026-08-28 10:23:21] launch: C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\python.exe C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\run_adapter.py --config C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\SEER-IP-192-168-192-5\config.toml --seer-extensions-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\extensions.hcl --seer-recipes-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\SEER-IP-192-168-192-5\recipes.hcl --id SEER-IP-192-168-192-5 --vehicle-ip 192.168.192.5 --mqtt-host 127.0.0.1 --mqtt-port 1883 --seer-state-port 19204 --seer-control-port 19205 --seer-task-port 19206 --seer-config-port 19207 --seer-other-port 19210
+[2026-08-28 10:23:44.501] pactl ('set-sink-volume', '70%') failed: [WinError 2] 지정된 파일을 찾을 수 없습니다
+[2026-08-28 10:23:23.394] [JIBOT CONFIG] id=SEER-IP-192-168-192-5 ip=192.168.192.5 port=19204 source=cli simulator=False
+[2026-08-28 10:23:23.395] [SEER CONFIG WARNING] SEER_MOTOR_NAMES is empty; enableMotor/disableMotor cannot control named motors
+[2026-08-28 10:23:44.443] [JIBOT CONNECT FAILED] [WinError 121] 세마포 제한 시간이 만료되었습니다; adapter will keep retrying.
+[2026-08-28 10:23:44.474] [MQTT CONNECTING] robot=SEER-IP-192-168-192-5 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-192-5-12612 topic_prefix=amr/v3/SEER-IP-192-168-192-5 keepalive=60 mode=async reconnect=automatic
+[2026-08-28 10:23:44.475] [EZI IO] no address configured (ezi.ezi_io); skipping
+[2026-08-28 10:23:44.475] [EZI MOTOR] no address configured (ezi.ezi_motor); skipping
+[2026-08-28 10:23:44.475] [VDA5050 CONNECTION PUBLISHED] topic=connection state=OFFLINE qos=1 retain=True
+[2026-08-28 10:23:44.475] [SEER VEHICLE CONNECTION] state=OFFLINE reason=startup
+[2026-08-28 10:23:44.484] [VDA5050 FACTSHEET PUBLISHED] topic=factsheet qos=1 retain=True
+[2026-08-28 10:23:44.488] [MQTT CONNECTED] robot=SEER-IP-192-168-192-5 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-192-5-12612 rc=0
+[2026-08-28 10:23:44.489] [HARDWARE SENSOR SERVICE SKIP] photoSensorRead action is disabled
+[2026-08-28 10:23:44.489] publish_state is ready!
+[2026-08-28 10:23:44.494] subscribe ACS Command is ready!
+[2026-08-28 10:23:44.494] MQTT subscribing to topic 'amr/v3/SEER-IP-192-168-192-5/order'
+[2026-08-28 10:23:44.494] MQTT subscribing to topic 'amr/v3/SEER-IP-192-168-192-5/instantActions'
+[2026-08-28 10:23:44.494] [JIBOT RECONNECT] monitor ready; retry interval=5.0s rx_timeout=10s
+[2026-08-28 10:23:44.495] [VDA5050 CONNECTION PUBLISHED] topic=connection state=OFFLINE qos=1 retain=True
+[2026-08-28 10:23:44.495] [SEER VEHICLE CONNECTION] state=OFFLINE reason=mqtt reconnect
+[2026-08-28 10:23:44.495] [SEER CONTROL TCP] listening on 127.0.0.1:11111
+[2026-08-28 10:23:49.509] [JIBOT RECONNECT] connection down; attempting to reconnect...
+
+[2026-08-28 10:23:53.886] Stopping the system...
+[2026-08-28 10:23:53.886] [VDA5050 CONNECTION PUBLISHED] topic=connection state=OFFLINE qos=1 retain=True
+[2026-08-28 10:23:53.886] [MQTT DISCONNECTED] robot=SEER-IP-192-168-192-5 broker=127.0.0.1:1883 client_id=adaptor-SEER-IP-192-168-192-5-12612 rc=0 reconnect=no
+[2026-08-28 10:23:53.890] System stopped

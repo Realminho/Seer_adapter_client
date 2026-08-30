@@ -1,0 +1,27 @@
+[Unit]
+# Per-instance AMR VDA5050 adapter (systemd template unit). %i is the instance
+# name — a robots.hcl robot id (JIBOT fleet) or an [[adapter.instances]] name
+# from config.toml, e.g.
+#   systemctl start amr-adaptor@HN-SH6-TR-001.service
+# Installed by scripts/setup-adaptor-service.sh, which substitutes __USER__ /
+# __WORKDIR__. run-adapter.sh --instance %i resolves the vendor + args.
+Description=AMR VDA5050 adapter (instance %i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__WORKDIR__
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+ExecStart=__WORKDIR__/run-adapter.sh --instance %i
+Restart=on-failure
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+CPUAccounting=yes
+
+[Install]
+WantedBy=multi-user.target

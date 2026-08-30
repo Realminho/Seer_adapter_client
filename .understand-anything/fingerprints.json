@@ -1,0 +1,4782 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "0c1474ad86fc349ff1372e4b2d477ba88dc51b79",
+  "generatedAt": "2026-06-01T12:53:10.879Z",
+  "files": {
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "4a562e79dc563e2477ba80bcd6d6a274e2b74db01c8883bbe050ecb10bab5242",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/tmp/ua-import-map-input.json": {
+      "filePath": ".understand-anything/tmp/ua-import-map-input.json",
+      "contentHash": "a0b8252314136f098a8de287cbeaa1fde619fd25dbaaa81c7bd789a88a74a12c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 470,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/tmp/ua-import-map-output.json": {
+      "filePath": ".understand-anything/tmp/ua-import-map-output.json",
+      "contentHash": "dc2c0924ab60faeba865d0f15765d7619ad175f521ebead064d6181bc57f6f80",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 201,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/tmp/ua-scan-files.json": {
+      "filePath": ".understand-anything/tmp/ua-scan-files.json",
+      "contentHash": "26a9b3a94fcd00e58bbfeed129d4519c6c175643caf16ed39b50d9750a95715f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 581,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/ACS_5050_simulator/readme.md": {
+      "filePath": "jibot/ACS_5050_simulator/readme.md",
+      "contentHash": "93288154b1d543712aa7eba8780fef82b8d26cd53e5643f0761a042bddbd90db",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/ACS_5050_simulator/show.py": {
+      "filePath": "jibot/ACS_5050_simulator/show.py",
+      "contentHash": "ca61a7242944bc4001843f1eab1ef396a7bd172d0e6f15ed4fec5a256802f3d9",
+      "functions": [
+        {
+          "name": "clear",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "print_actions",
+          "params": [
+            "actions"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "print_errors",
+          "params": [
+            "errors"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "print_information",
+          "params": [
+            "information"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "print_battery",
+          "params": [
+            "payload"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "print_position",
+          "params": [
+            "payload"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "on_connect",
+          "params": [
+            "client",
+            "userdata",
+            "flags",
+            "rc"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "on_message",
+          "params": [
+            "client",
+            "userdata",
+            "msg"
+          ],
+          "exported": true,
+          "lineCount": 42
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "paho.mqtt",
+          "specifiers": [
+            "mqtt"
+          ]
+        }
+      ],
+      "exports": [
+        "clear",
+        "print_actions",
+        "print_errors",
+        "print_information",
+        "print_battery",
+        "print_position",
+        "on_connect",
+        "on_message"
+      ],
+      "totalLines": 166,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/ACS_5050_simulator/showaction.py": {
+      "filePath": "jibot/ACS_5050_simulator/showaction.py",
+      "contentHash": "d22262ed74759e12989432a08bb9d718e05dc117a8bcaa7c0e746bc6aa01023a",
+      "functions": [
+        {
+          "name": "print_action_states",
+          "params": [
+            "action_states"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "on_connect",
+          "params": [
+            "client",
+            "userdata",
+            "flags",
+            "rc"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "on_message",
+          "params": [
+            "client",
+            "userdata",
+            "msg"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "paho.mqtt",
+          "specifiers": [
+            "mqtt"
+          ]
+        }
+      ],
+      "exports": [
+        "print_action_states",
+        "on_connect",
+        "on_message"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/adapter_jibot.py": {
+      "filePath": "jibot/adapter/adapter_jibot.py",
+      "contentHash": "28d224a49f38907ad689b24aa221fab309e9238f0661695cb52f02f466e5320b",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Adapter",
+          "methods": [
+            "__init__",
+            "connect_mqtt",
+            "disconnect_mqtt",
+            "set_vehicle",
+            "set_ezi_io",
+            "set_ezi_motor",
+            "run_adapter",
+            "manage_tray_slot",
+            "_schedule_execute_path",
+            "publish_state",
+            "publish_connection",
+            "configure_connection_last_will",
+            "subscribe_acs_cmd",
+            "handle_incoming_acs_cmd",
+            "instant_actions_accept_procedure",
+            "manage_instant_actions",
+            "_all_node_actions_waiting_or_failed",
+            "_all_node_actions_finished_or_failed",
+            "order_accept_procedure",
+            "cancel_order",
+            "order_accept",
+            "_angle_error",
+            "_update_node_action_states",
+            "_update_related_edge_action_states",
+            "_is_active_action_status",
+            "_is_terminal_action_status",
+            "_all_action_states_terminal",
+            "_get_active_node_ids_from_action_states",
+            "_find_node_start_index",
+            "_is_path_released",
+            "get_sequence_by_node",
+            "update_node_by_sequence",
+            "update_edge_by_sequence",
+            "update_or_append",
+            "_execute_path",
+            "_wait_until_reached",
+            "order_update_accept",
+            "build_action_states",
+            "order_reject",
+            "add_state_info"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 1191
+        }
+      ],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Dict",
+            "Optional",
+            "List",
+            "Set"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "AgvPosition"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_connection",
+          "specifiers": [
+            "Connection",
+            "ConnectionState"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_state",
+          "specifiers": [
+            "State",
+            "Load",
+            "NodeState",
+            "EdgeState",
+            "ActionState",
+            "BatteryState",
+            "SafetyState",
+            "OperatingMode",
+            "ActionStatus",
+            "EStop",
+            "Error",
+            "ErrorLevel",
+            "ErrorType",
+            "ErrorReference",
+            "Information",
+            "InfoLevel",
+            "InfoType",
+            "InfoReference"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_action",
+          "specifiers": [
+            "Action",
+            "ActionParameter",
+            "ActionParameterValue",
+            "BlockingType"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_order",
+          "specifiers": [
+            "Order"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_instant_actions",
+          "specifiers": [
+            "InstantActions"
+          ]
+        },
+        {
+          "source": "utils.cls_mqtt",
+          "specifiers": [
+            "MQTTClient"
+          ]
+        },
+        {
+          "source": "utils.cls_jibot_robot",
+          "specifiers": [
+            "JIBOT"
+          ]
+        },
+        {
+          "source": "utils.cls_ezi_io",
+          "specifiers": [
+            "EZIIOClient"
+          ]
+        },
+        {
+          "source": "utils.cls_ezi_motor",
+          "specifiers": [
+            "EZIMOTORClient"
+          ]
+        },
+        {
+          "source": "utils.utils",
+          "specifiers": [
+            "utils"
+          ]
+        },
+        {
+          "source": "config.config",
+          "specifiers": [
+            "get_config"
+          ]
+        }
+      ],
+      "exports": [
+        "Adapter"
+      ],
+      "totalLines": 1226,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/config/config.py": {
+      "filePath": "jibot/adapter/config/config.py",
+      "contentHash": "9d7cb42634f29eb5e7111bc69fb7eb106740007066c8b8161dccd1ff3db76105",
+      "functions": [
+        {
+          "name": "get_config",
+          "params": [],
+          "returnType": "Config",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [
+        {
+          "name": "MqttBrokerConfig",
+          "methods": [],
+          "properties": [
+            "host",
+            "port",
+            "vda_interface"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "VehicleConfig",
+          "methods": [],
+          "properties": [
+            "manufacturer",
+            "serial_number",
+            "vda_version",
+            "vda_full_version",
+            "vehicle_ip",
+            "vehicle_port"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "EziConfig",
+          "methods": [],
+          "properties": [
+            "ezi_io",
+            "tray_slot_pin",
+            "select",
+            "ezi_motor",
+            "do_motor_test",
+            "motor_speed",
+            "open_encoder_value",
+            "close_encoder_value",
+            "close_motor_before_motion"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Settings",
+          "methods": [],
+          "properties": [
+            "action_time",
+            "speed",
+            "robot_count",
+            "state_frequency",
+            "visualization_frequency",
+            "map_id",
+            "state_publish_delay",
+            "reach_zone_shape",
+            "reach_zone_scale"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "JibotStatus",
+          "methods": [],
+          "properties": [
+            "charging",
+            "driving",
+            "stop",
+            "motion"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "SoundSettings",
+          "methods": [],
+          "properties": [
+            "emergency",
+            "avoidance",
+            "travel",
+            "emergency_music",
+            "avoidance_music",
+            "travel_music",
+            "working_music"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "ChargeConfig",
+          "methods": [],
+          "properties": [
+            "nodes",
+            "routes"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "PickPlaceConfig",
+          "methods": [],
+          "properties": [
+            "nodes",
+            "actions"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "AirShowerPioDefaults",
+          "methods": [],
+          "properties": [
+            "failure",
+            "occupied",
+            "fun_working"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "AirShowerPioRule",
+          "methods": [],
+          "properties": [
+            "to_node",
+            "from_node",
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "AirShowerPioWaitForTrigger",
+          "methods": [],
+          "properties": [
+            "nodes",
+            "defaults",
+            "rules"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "AirShowerPioConfig",
+          "methods": [],
+          "properties": [
+            "wait_for_trigger"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "Config",
+          "methods": [],
+          "properties": [
+            "mqtt_broker",
+            "vehicle",
+            "settings",
+            "jibot_status",
+            "ezi_config",
+            "sound_settings",
+            "charge",
+            "port",
+            "air_shower_pio"
+          ],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "tomli",
+          "specifiers": [
+            "tomli"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List"
+          ]
+        }
+      ],
+      "exports": [
+        "MqttBrokerConfig",
+        "VehicleConfig",
+        "EziConfig",
+        "Settings",
+        "JibotStatus",
+        "SoundSettings",
+        "ChargeConfig",
+        "PickPlaceConfig",
+        "AirShowerPioDefaults",
+        "AirShowerPioRule",
+        "AirShowerPioWaitForTrigger",
+        "AirShowerPioConfig",
+        "Config",
+        "get_config"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/config/config.toml": {
+      "filePath": "jibot/adapter/config/config.toml",
+      "contentHash": "1eea804ce74c5a2f26da825fee4cb255cb44093b2d4a106e3bc4cbe296219c84",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/main.py": {
+      "filePath": "jibot/adapter/main.py",
+      "contentHash": "d87662734e186f2d16a9242bd4046800713958a79e62489e56a36a310bad5aa5",
+      "functions": [
+        {
+          "name": "robot_info_loop",
+          "params": [
+            "vehicle",
+            "interval_sec"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 105
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "random",
+          "specifiers": [
+            "random"
+          ]
+        },
+        {
+          "source": "paho.mqtt.client",
+          "specifiers": [
+            "mqtt"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict",
+            "List",
+            "Optional",
+            "Any",
+            "Tuple"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_connection",
+          "specifiers": [
+            "Connection",
+            "ConnectionState"
+          ]
+        },
+        {
+          "source": "config.config",
+          "specifiers": [
+            "get_config"
+          ]
+        },
+        {
+          "source": "utils.cls_jibot_robot",
+          "specifiers": [
+            "JIBOT"
+          ]
+        },
+        {
+          "source": "utils.cls_ezi_io",
+          "specifiers": [
+            "EZIIOClient"
+          ]
+        },
+        {
+          "source": "utils.cls_ezi_motor",
+          "specifiers": [
+            "EZIMOTORClient"
+          ]
+        },
+        {
+          "source": "adapter_jibot",
+          "specifiers": [
+            "Adapter"
+          ]
+        }
+      ],
+      "exports": [
+        "robot_info_loop",
+        "main"
+      ],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_action.py",
+      "contentHash": "6e519f447326b9e1cb4352500ebcd87271488194c0b4b6bea14886cca6b856f0",
+      "functions": [],
+      "classes": [
+        {
+          "name": "BlockingType",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "ActionParameterValue",
+          "methods": [
+            "__init__",
+            "to_dict"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "ActionParameter",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "key",
+            "value"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Action",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "action_type",
+            "action_id",
+            "blocking_type",
+            "action_parameters",
+            "action_description"
+          ],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Optional",
+            "Union"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "Enum",
+            "auto"
+          ]
+        }
+      ],
+      "exports": [
+        "BlockingType",
+        "ActionParameterValue",
+        "ActionParameter",
+        "Action"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_connection.py",
+      "contentHash": "cac2540d0699d34b40b918b3eaa8cf8e5fda21813b469cf3e8dc73a08581293b",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ConnectionState",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Connection",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "header_id",
+            "timestamp",
+            "version",
+            "manufacturer",
+            "serial_number",
+            "connection_state"
+          ],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "Enum"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "HeaderId"
+          ]
+        }
+      ],
+      "exports": [
+        "ConnectionState",
+        "Connection"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_instant_actions.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_instant_actions.py",
+      "contentHash": "de00f260633dd67c39e963a4f8d8da3003904bae7eb57d7d1d73a723bf0f8bda",
+      "functions": [],
+      "classes": [
+        {
+          "name": "InstantActions",
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "header_id",
+            "timestamp",
+            "version",
+            "manufacturer",
+            "serial_number",
+            "instant_actions"
+          ],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "HeaderId"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_action",
+          "specifiers": [
+            "Action"
+          ]
+        }
+      ],
+      "exports": [
+        "InstantActions"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_order.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_order.py",
+      "contentHash": "c6c9f2752906aa1bc67530794c4c4222b78ccb9580b0dc2b7865fd6dc2e2aa05",
+      "functions": [],
+      "classes": [
+        {
+          "name": "OrientationType",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Node",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "node_id",
+            "sequence_id",
+            "released",
+            "actions",
+            "node_description",
+            "node_position"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "Edge",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "edge_id",
+            "sequence_id",
+            "released",
+            "start_node_id",
+            "end_node_id",
+            "actions",
+            "edge_description",
+            "max_speed",
+            "max_height",
+            "min_height",
+            "orientation",
+            "orientation_type",
+            "direction",
+            "rotation_allowed",
+            "max_rotation_speed",
+            "length",
+            "trajectory"
+          ],
+          "exported": true,
+          "lineCount": 52
+        },
+        {
+          "name": "Order",
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "properties": [
+            "header_id",
+            "timestamp",
+            "version",
+            "manufacturer",
+            "serial_number",
+            "order_id",
+            "order_update_id",
+            "nodes",
+            "edges",
+            "zone_set_id"
+          ],
+          "exported": true,
+          "lineCount": 129
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "Enum"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "HeaderId",
+            "NodePosition",
+            "Trajectory"
+          ]
+        },
+        {
+          "source": "protocol.vda_2_0_0.vda5050_2_0_0_action",
+          "specifiers": [
+            "Action"
+          ]
+        }
+      ],
+      "exports": [
+        "OrientationType",
+        "Node",
+        "Edge",
+        "Order"
+      ],
+      "totalLines": 217,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_state.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_state.py",
+      "contentHash": "a61775977e3ac9555509513fc949ba58f61ffe2cc80f3e67854e2b070ddd8d96",
+      "functions": [],
+      "classes": [
+        {
+          "name": "OperatingMode",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "ActionStatus",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "EStop",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "ErrorLevel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "ErrorType",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "InfoType",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "InfoLevel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "NodeState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "node_id",
+            "sequence_id",
+            "released",
+            "node_description",
+            "node_position"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "EdgeState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "edge_id",
+            "sequence_id",
+            "released",
+            "start_node_id",
+            "end_node_id",
+            "edge_description",
+            "trajectory"
+          ],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "ActionState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "action_id",
+            "action_status",
+            "action_type",
+            "action_description",
+            "result_description"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "InstantActionState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "action_id",
+            "action_status",
+            "action_type",
+            "action_description",
+            "result_description"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "Load",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "load_id",
+            "load_type",
+            "load_position",
+            "bounding_box_reference",
+            "load_dimensions",
+            "weight"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "BatteryState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "battery_charge",
+            "charging",
+            "battery_voltage",
+            "battery_health",
+            "reach"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "ErrorReference",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "reference_key",
+            "reference_value"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Error",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "error_type",
+            "error_level",
+            "error_references",
+            "error_description"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "InfoReference",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "reference_key",
+            "reference_value"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Information",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "info_type",
+            "info_level",
+            "info_references",
+            "info_description"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "SafetyState",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "e_stop",
+            "field_violation"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "State",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "header_id",
+            "timestamp",
+            "version",
+            "manufacturer",
+            "serial_number",
+            "order_id",
+            "order_update_id",
+            "last_node_id",
+            "last_node_sequence_id",
+            "driving",
+            "operating_mode",
+            "node_states",
+            "edge_states",
+            "action_states",
+            "battery_state",
+            "errors",
+            "information",
+            "loads",
+            "safety_state",
+            "agv_position",
+            "velocity",
+            "zone_set_id",
+            "paused",
+            "new_base_request",
+            "distance_since_last_node"
+          ],
+          "exported": true,
+          "lineCount": 65
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict",
+            "Optional"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "Enum"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "AgvPosition",
+            "BoundingBoxReference",
+            "HeaderId",
+            "LoadDimensions",
+            "NodePosition",
+            "Trajectory",
+            "Velocity"
+          ]
+        }
+      ],
+      "exports": [
+        "OperatingMode",
+        "ActionStatus",
+        "EStop",
+        "ErrorLevel",
+        "ErrorType",
+        "InfoType",
+        "InfoLevel",
+        "NodeState",
+        "EdgeState",
+        "ActionState",
+        "InstantActionState",
+        "Load",
+        "BatteryState",
+        "ErrorReference",
+        "Error",
+        "InfoReference",
+        "Information",
+        "SafetyState",
+        "State"
+      ],
+      "totalLines": 343,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_visualization_.py": {
+      "filePath": "jibot/adapter/protocol/vda_2_0_0/vda5050_2_0_0_visualization_.py",
+      "contentHash": "a5fa3a08bf1e9b212cb2ae18fc1dac83e7c664815d40fb1f89f4ef72fc8e3c8d",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Visualization",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "header_id",
+            "timestamp",
+            "version",
+            "manufacturer",
+            "serial_number",
+            "agv_position",
+            "velocity"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Dict",
+            "Optional"
+          ]
+        },
+        {
+          "source": "protocol.vda5050_common",
+          "specifiers": [
+            "AgvPosition",
+            "HeaderId",
+            "Velocity"
+          ]
+        }
+      ],
+      "exports": [
+        "Visualization"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/protocol/vda5050_common.py": {
+      "filePath": "jibot/adapter/protocol/vda5050_common.py",
+      "contentHash": "48c379d01d0c1b4a5904a7351189c685f1855e5b05c77764b689544fe5d8fcc4",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AgvPosition",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "x",
+            "y",
+            "theta",
+            "map_id",
+            "position_initialized",
+            "map_description",
+            "localization_score",
+            "deviation_range"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "BoundingBoxReference",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "x",
+            "y",
+            "z",
+            "theta"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "ControlPoint",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "x",
+            "y",
+            "weight",
+            "orientation"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "LoadDimensions",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "length",
+            "width",
+            "height"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "NodePosition",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "x",
+            "y",
+            "map_id",
+            "theta",
+            "allowed_deviation_xy",
+            "allowed_deviation_theta",
+            "map_description"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "Trajectory",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "degree",
+            "knot_vector",
+            "control_points"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "Velocity",
+          "methods": [
+            "to_dict"
+          ],
+          "properties": [
+            "vx",
+            "vy",
+            "omega"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Optional",
+            "Union"
+          ]
+        }
+      ],
+      "exports": [
+        "AgvPosition",
+        "BoundingBoxReference",
+        "ControlPoint",
+        "LoadDimensions",
+        "NodePosition",
+        "Trajectory",
+        "Velocity"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/readme.md": {
+      "filePath": "jibot/adapter/readme.md",
+      "contentHash": "e65aab059ebb4163ffee9f4dbf0593bf51d4c924bb27b3024b0fe9dba87aa447",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/utils/cls_ezi_io.py": {
+      "filePath": "jibot/adapter/utils/cls_ezi_io.py",
+      "contentHash": "a5410b12de96fd82ad45fa0c29450e540f2595effa66a49079fe824af45abd49",
+      "functions": [
+        {
+          "name": "show_bits",
+          "params": [
+            "label",
+            "bits"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [
+        {
+          "name": "EZIIOClient",
+          "methods": [
+            "__init__",
+            "connect",
+            "_build_frame",
+            "_send",
+            "_parse",
+            "_bits16",
+            "get_board_info",
+            "get_input",
+            "set_output",
+            "output_bit",
+            "clear_all_outputs",
+            "turn_on_output",
+            "turn_off_output",
+            "close"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 151
+        },
+        {
+          "name": "UDPClientProtocol",
+          "methods": [
+            "__init__",
+            "prepare_response",
+            "wait_response",
+            "datagram_received",
+            "error_received"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        }
+      ],
+      "exports": [
+        "EZIIOClient",
+        "UDPClientProtocol",
+        "show_bits",
+        "main"
+      ],
+      "totalLines": 234,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/utils/cls_ezi_motor.py": {
+      "filePath": "jibot/adapter/utils/cls_ezi_motor.py",
+      "contentHash": "34063860715a1739b240e6432aafe871bd81802912bd9696088fddff5caa9e96",
+      "functions": [],
+      "classes": [
+        {
+          "name": "EZIMOTORClient",
+          "methods": [
+            "__init__",
+            "_build_frame",
+            "_send",
+            "_parse",
+            "_bits16",
+            "get_board_info",
+            "get_motor_info",
+            "servo_enable",
+            "move_single_axis_abs_pos",
+            "get_input",
+            "set_output",
+            "output_bit",
+            "close"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 260
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "EZIMOTORClient"
+      ],
+      "totalLines": 359,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/utils/cls_jibot_robot.py": {
+      "filePath": "jibot/adapter/utils/cls_jibot_robot.py",
+      "contentHash": "b4358b9c4c99eb8f648d72107bad2a86625974ad678dddb01600324a3dc6173c",
+      "functions": [],
+      "classes": [
+        {
+          "name": "JIBOT",
+          "methods": [
+            "__init__",
+            "connect_socket",
+            "disconnect",
+            "json_cmd_to_jibot",
+            "connect",
+            "call_routes",
+            "get_robot_info",
+            "get_localization_info",
+            "get_battery_info",
+            "get_motor_state",
+            "stop_motion",
+            "goto_point",
+            "goto_xyz",
+            "disable_motor",
+            "enable_motor",
+            "receive_data_from_server",
+            "process_data",
+            "parse_string"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 238
+        }
+      ],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "config.config",
+          "specifiers": [
+            "get_config"
+          ]
+        }
+      ],
+      "exports": [
+        "JIBOT"
+      ],
+      "totalLines": 244,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/utils/cls_mqtt.py": {
+      "filePath": "jibot/adapter/utils/cls_mqtt.py",
+      "contentHash": "ba3196f1d854d1c68b1b813bd7e63174fbc5f9f659db7ed08ed104de44f77b39",
+      "functions": [],
+      "classes": [
+        {
+          "name": "MQTTClient",
+          "methods": [
+            "__init__",
+            "connect",
+            "set_last_will",
+            "disconnect",
+            "_on_connect",
+            "_on_message",
+            "subscribe",
+            "publish"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 88
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Callable",
+            "Dict",
+            "Optional"
+          ]
+        },
+        {
+          "source": "paho.mqtt.client",
+          "specifiers": [
+            "mqtt"
+          ]
+        },
+        {
+          "source": "config.config",
+          "specifiers": [
+            "get_config"
+          ]
+        }
+      ],
+      "exports": [
+        "MQTTClient"
+      ],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/adapter/utils/utils.py": {
+      "filePath": "jibot/adapter/utils/utils.py",
+      "contentHash": "6e5ef4c855df54482626b398c3286490774878d95ed459738a8775d759ff109b",
+      "functions": [
+        {
+          "name": "get_timestamp",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "get_topic_type",
+          "params": [
+            "path"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "check_deviation_range",
+          "params": [
+            "node_x",
+            "node_y",
+            "vehicle_x",
+            "vehicle_y",
+            "deviation_range"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "iterate_position",
+          "params": [
+            "current_x",
+            "current_y",
+            "target_x",
+            "target_y",
+            "speed"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "get_distance",
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        }
+      ],
+      "exports": [
+        "get_timestamp",
+        "get_topic_type",
+        "check_deviation_range",
+        "iterate_position",
+        "get_distance"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_startPause.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_startPause.json",
+      "contentHash": "addb47468e72f1a7c046686459f885935366ea205ece6ac4ead2c37bfc88fe21",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_stopPause.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/instant_stopPause.json",
+      "contentHash": "f36b137ff6bfbd960c463caaffe25429a89795ac4ba43f09d2a32a90773a7430",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_40_F1_CH.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_40_F1_CH.json",
+      "contentHash": "eef7e14424a1a2a4923ee6f60116ac9e9dd43b6f8f9d54d5adc7767133d67a67",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_60_F1_40.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_F1_60_F1_40.json",
+      "contentHash": "597adea20bfb85080b028ce962e95a678ad1d823bc4bd977876baf32038ecd54",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger1_2.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger1_2.json",
+      "contentHash": "5c0bebee2b8885dcbc85311161429c009d72d8c83a67dd68ab3a444253f960dd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 181,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger2_1.json": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/order_merger2_1.json",
+      "contentHash": "b39f4c65a34123fb1eb54e1715f750e7a24811259c315a0748547b4e9f2db3d8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 181,
+      "hasStructuralAnalysis": true
+    },
+    "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/readme.md": {
+      "filePath": "jibot/HanaMicron_Merger/B201_Demo/TestingOrderJson/readme.md",
+      "contentHash": "fc979480631d71a02660c0f00952413f2abc0c685423e346ea9a7c08fd6221f9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/answer_aruco_data/answer_aruco.json": {
+      "filePath": "seer/SamDisplay/answer_aruco_data/answer_aruco.json",
+      "contentHash": "e3823313c0c646ebd7a62b9c00188fd298d6403724e2b292badc0b5a502df4d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/__init__.py": {
+      "filePath": "seer/SamDisplay/custom_package/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/avoid_graph_nav.py": {
+      "filePath": "seer/SamDisplay/custom_package/avoid_graph_nav.py",
+      "contentHash": "89bc1fb48a14b3a7333530b126d8ae14edd346a2556901088ad483f0a9027ea4",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AvoidGraphNavigator",
+          "methods": [
+            "__init__",
+            "load_graph_map",
+            "get_node_cord",
+            "get_edge_info",
+            "block_edge",
+            "clear_blocked_edges",
+            "find_shortest_path",
+            "drive_path",
+            "drive_to_node",
+            "navigate_with_avoid"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 339
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "heapq",
+          "specifiers": [
+            "heapq"
+          ]
+        }
+      ],
+      "exports": [
+        "AvoidGraphNavigator"
+      ],
+      "totalLines": 351,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/dock_commu.py": {
+      "filePath": "seer/SamDisplay/custom_package/dock_commu.py",
+      "contentHash": "0ef07683384ab07dd22d7109c66186e311cf304bb841ded004a26ac1d44c28e3",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Answer_Aruco_commu",
+          "methods": [
+            "__init__",
+            "save_target_aruco",
+            "load_aruco_info"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 56
+        },
+        {
+          "name": "Detect_Aruco_commu",
+          "methods": [
+            "__init__",
+            "camera_start",
+            "camera_stop",
+            "cal_distance",
+            "cal_yaw_deg",
+            "detect_aruco",
+            "save_current_aruco_info"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 398
+        },
+        {
+          "name": "AMR_Aruco_dock_commu",
+          "methods": [
+            "__init__",
+            "normalize_angle_deg",
+            "align_to_saved_target"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 176
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "cv2",
+          "specifiers": [
+            "cv2"
+          ]
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "pyrealsense2",
+          "specifiers": [
+            "rs"
+          ]
+        }
+      ],
+      "exports": [
+        "Answer_Aruco_commu",
+        "Detect_Aruco_commu",
+        "AMR_Aruco_dock_commu"
+      ],
+      "totalLines": 655,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/mqtt_commu.py": {
+      "filePath": "seer/SamDisplay/custom_package/mqtt_commu.py",
+      "contentHash": "84442254b7b456d1093355344f054cd36baca02d9483753820824114d8116ea9",
+      "functions": [],
+      "classes": [
+        {
+          "name": "MQTT_Util",
+          "methods": [
+            "__init__",
+            "message_receive_callback",
+            "publish_string",
+            "subcribe_topic",
+            "retrun_topic_payload",
+            "return_topic_last_time",
+            "shutdown_mqtt"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 90
+        }
+      ],
+      "imports": [
+        {
+          "source": "paho.mqtt.client",
+          "specifiers": [
+            "mqtt"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "MQTT_Util"
+      ],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/seer_commu.py": {
+      "filePath": "seer/SamDisplay/custom_package/seer_commu.py",
+      "contentHash": "396690a7e4997bc27f2223cf7ad5cff45968aa054c00d4880372c4aefc48ccad",
+      "functions": [],
+      "classes": [
+        {
+          "name": "SEER_commu",
+          "methods": [
+            "__init__",
+            "gotarget",
+            "get_task_status",
+            "task_end",
+            "get_amr_blocked",
+            "gotargetblock",
+            "gopath",
+            "gopathblock",
+            "freenav",
+            "freenavblock",
+            "setDO",
+            "get_status_by_DI_id",
+            "get_status_by_DO_id",
+            "read_DI",
+            "read_DO",
+            "get_nav_info",
+            "get_map_info",
+            "map_switch",
+            "relocation",
+            "ctrl_response_recv",
+            "motion_control",
+            "get_battery_info",
+            "get_amr_cord",
+            "socket_close"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 724
+        }
+      ],
+      "imports": [
+        {
+          "source": "Robokit_TCP_API_py.netprotocol.rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        }
+      ],
+      "exports": [
+        "SEER_commu"
+      ],
+      "totalLines": 751,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/tcp_server_commu_2.py": {
+      "filePath": "seer/SamDisplay/custom_package/tcp_server_commu_2.py",
+      "contentHash": "ec6ca5429fe84111d954e3f09091756a8bebe9da47f39c265dbe1f51b91db202",
+      "functions": [],
+      "classes": [
+        {
+          "name": "TCP_server_commu",
+          "methods": [
+            "__init__",
+            "start_server",
+            "wait_client",
+            "rx_client_data",
+            "tx_client_data",
+            "decode_data",
+            "close_all"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 180
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        }
+      ],
+      "exports": [
+        "TCP_server_commu"
+      ],
+      "totalLines": 194,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/tcp_server_commu_sam.py": {
+      "filePath": "seer/SamDisplay/custom_package/tcp_server_commu_sam.py",
+      "contentHash": "86c32c86353e502677915f5ddb578d6a3bffe850c976f5e4f8493320c099ba44",
+      "functions": [],
+      "classes": [
+        {
+          "name": "TCP_server_commu_sam",
+          "methods": [
+            "__init__",
+            "start_server",
+            "wait_client",
+            "make_cmd_id",
+            "send_line",
+            "recv_data",
+            "parse_message",
+            "check_order_answer",
+            "check_work_result",
+            "build_task_request",
+            "build_task_start",
+            "build_home_request",
+            "build_healthcheck_request",
+            "build_scan_request",
+            "request_healthcheck",
+            "request_home",
+            "request_scan",
+            "request_aq",
+            "start_aq",
+            "fail_aq",
+            "request_dp",
+            "wait_healthcheck_result",
+            "wait_home_result",
+            "wait_task_order_answer",
+            "wait_task_work_result",
+            "close_all"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 488
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        }
+      ],
+      "exports": [
+        "TCP_server_commu_sam"
+      ],
+      "totalLines": 492,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/tcp_server_commu.py": {
+      "filePath": "seer/SamDisplay/custom_package/tcp_server_commu.py",
+      "contentHash": "881cc7eb3634996da4e4c6c45fadc9376af8542fc56332955772096d27706529",
+      "functions": [],
+      "classes": [
+        {
+          "name": "TCP_server_commu",
+          "methods": [
+            "__init__",
+            "start_server",
+            "wait_client",
+            "rx_client_data",
+            "tx_client_data",
+            "decode_data",
+            "close_all"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 190
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        }
+      ],
+      "exports": [
+        "TCP_server_commu"
+      ],
+      "totalLines": 204,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/custom_package/tts_commu.py": {
+      "filePath": "seer/SamDisplay/custom_package/tts_commu.py",
+      "contentHash": "7b49129894b008e4334535e4b798b41ffb9d9bb77caf2356496c447317302750",
+      "functions": [],
+      "classes": [
+        {
+          "name": "TTS_Util",
+          "methods": [
+            "__init__",
+            "speak"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 24
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "io",
+          "specifiers": [
+            "io"
+          ]
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "contextlib",
+          "specifiers": [
+            "contextmanager"
+          ]
+        },
+        {
+          "source": "edge_tts",
+          "specifiers": [
+            "edge_tts"
+          ]
+        },
+        {
+          "source": "pydub",
+          "specifiers": [
+            "AudioSegment"
+          ]
+        },
+        {
+          "source": "pydub.playback",
+          "specifiers": [
+            "play"
+          ]
+        }
+      ],
+      "exports": [
+        "TTS_Util"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/__init__.py": {
+      "filePath": "seer/SamDisplay/drive_code/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/avoid_drive.py": {
+      "filePath": "seer/SamDisplay/drive_code/avoid_drive.py",
+      "contentHash": "743397dc3b55f7a8decf48eebf0e123477683d414ffe12f473d26d647a321d5b",
+      "functions": [
+        {
+          "name": "drive_landmark_wit_check_block",
+          "params": [
+            "seer",
+            "target_landmark",
+            "drive_interval"
+          ],
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "obstacle_check_during_avoid_drive",
+          "params": [
+            "seer"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "recover_to_lm1_and_landmark_to_lm2",
+          "params": [
+            "seer"
+          ],
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "navigate_from_lm1_to_lm2_with_blocked_edge",
+          "params": [
+            "navigator",
+            "seer"
+          ],
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 49
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "custom_package.avoid_graph_nav",
+          "specifiers": [
+            "AvoidGraphNavigator"
+          ]
+        }
+      ],
+      "exports": [
+        "drive_landmark_wit_check_block",
+        "obstacle_check_during_avoid_drive",
+        "recover_to_lm1_and_landmark_to_lm2",
+        "navigate_from_lm1_to_lm2_with_blocked_edge",
+        "main"
+      ],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/graph_map/sam_grah_test.json": {
+      "filePath": "seer/SamDisplay/drive_code/graph_map/sam_grah_test.json",
+      "contentHash": "a5bf70af6938918f07e2d2d7e8f6f1010537640a952a4553f3cdceade8291410",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 136,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/sam_test_cycle.py": {
+      "filePath": "seer/SamDisplay/drive_code/sam_test_cycle.py",
+      "contentHash": "34b6a5d80f453870cad3ce922c90e39d7062a43ebc7b897f5594cc097eb9cc6f",
+      "functions": [
+        {
+          "name": "run_one_cycle",
+          "params": [
+            "seer",
+            "tcp"
+          ],
+          "exported": true,
+          "lineCount": 171
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "custom_package.tcp_server_commu_sam",
+          "specifiers": [
+            "TCP_server_commu_sam"
+          ]
+        }
+      ],
+      "exports": [
+        "run_one_cycle",
+        "main"
+      ],
+      "totalLines": 241,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/sam_test_dock.py": {
+      "filePath": "seer/SamDisplay/drive_code/sam_test_dock.py",
+      "contentHash": "7ec8d6df28df353e06e2d5620f0a28a6eb6256f4782d99ca0dee19bf72ac7bac",
+      "functions": [
+        {
+          "name": "run_one_cycle",
+          "params": [
+            "seer",
+            "tcp",
+            "docker"
+          ],
+          "exported": true,
+          "lineCount": 184
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "custom_package.tcp_server_commu_sam",
+          "specifiers": [
+            "TCP_server_commu_sam"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Answer_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Detect_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "AMR_Aruco_dock_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "run_one_cycle",
+        "main"
+      ],
+      "totalLines": 260,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/drive_code/sam_test.py": {
+      "filePath": "seer/SamDisplay/drive_code/sam_test.py",
+      "contentHash": "c84297bd7816056e4726b313b2a84679dcb7451d86d4ee4c1eaacdd5cc96f9b8",
+      "functions": [
+        {
+          "name": "run_one_cycle",
+          "params": [
+            "seer",
+            "tcp"
+          ],
+          "exported": true,
+          "lineCount": 171
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "custom_package.tcp_server_commu_sam",
+          "specifiers": [
+            "TCP_server_commu_sam"
+          ]
+        }
+      ],
+      "exports": [
+        "run_one_cycle",
+        "main"
+      ],
+      "totalLines": 231,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/__init__.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/BYD_No4_Test.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/BYD_No4_Test.py",
+      "contentHash": "3f0a9a149433a6d131a36be65a287fc3b1103463bed40ce9469864b2d07674ba",
+      "functions": [],
+      "classes": [
+        {
+          "name": "BYDApi",
+          "methods": [
+            "__init__",
+            "gotarget",
+            "reachtarget",
+            "gotargetblock"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 57
+        }
+      ],
+      "imports": [
+        {
+          "source": "netprotocol.rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        }
+      ],
+      "exports": [
+        "BYDApi"
+      ],
+      "totalLines": 89,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/castdServoMotorTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/castdServoMotorTest.py",
+      "contentHash": "77db8e93e7b37a077360736a6b360d7c14e772b52e01aef2402e3105400c4075",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/deacccurve.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/deacccurve.py",
+      "contentHash": "79027ad079751ca1d2b014baf318efe95024efa7b72d67c5b9be25be481fc04d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "matplotlib.pyplot",
+          "specifiers": [
+            "plt"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/deaccTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/deaccTest.py",
+      "contentHash": "b1c28ee8a9d5ae9a0275e17a57889bb6d9fa4e5af52a782e2f41c322d2a5aa0d",
+      "functions": [
+        {
+          "name": "sendspeed",
+          "params": [
+            "cmd"
+          ],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "sendspeed"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/F4kernelNtpClientTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/F4kernelNtpClientTest.py",
+      "contentHash": "76fdf136fd10400478a0a0ca2cd63caaa8b60c2b8c7ed30ee902b7c9729a911d",
+      "functions": [
+        {
+          "name": "checkNtpLossWarning",
+          "params": [],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "checkNtpLossWarning"
+      ],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/gotarget.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/gotarget.py",
+      "contentHash": "7a85cf5b50f0c9f90a13bb366deb6672c1a78181def813c1eb900319f09f9c48",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "netprotocol.rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "netprotocol",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/macNumTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/macNumTest.py",
+      "contentHash": "f106c592fe85eefce0474a8d8d4f58aa5058132e296022970a9d2968a4aea9b9",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/__init__.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/netprotocol/rbkNetProtoEnums.py",
+      "contentHash": "8cd8e77fd10861c7fc7c4047f2757408d2d6f1736b1e286a5a54c91ef9d818ae",
+      "functions": [
+        {
+          "name": "packMsg",
+          "params": [
+            "reqId",
+            "msgTyp",
+            "msg"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "unpackHead",
+          "params": [
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        }
+      ],
+      "exports": [
+        "packMsg",
+        "unpackHead"
+      ],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/overspeedTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/overspeedTest.py",
+      "contentHash": "fad54439a5ac1e34fae9e781fd2bba9dc3838ddce43448aa881a06f482a93423",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect_1100.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect_1100.py",
+      "contentHash": "7d1b7c7b3f5d964b18dacbb9b439336a9adf756291ac8329f764152bf04bf972",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq_multiAreaDetect.py",
+      "contentHash": "dfeca804d1a5ce88f5e6df19c7869881fae373fbeb8b6e0a994713e2cad591de",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiAreaReq.py",
+      "contentHash": "04db0effdaba531d5c6b2e2f8a783c570b6e4b601e4ff78df39fbb6e9b21becc",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiCopyFile.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiCopyFile.py",
+      "contentHash": "70529581cfc97bbac0b6206a0f62d28ae51132c62ba83899efa1558be8c9e132",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiDemo.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiDemo.py",
+      "contentHash": "d10192882c39c22b246575e95824e1f12a22c50092fda6bd75081dc0a35f9b83",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiListFile.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiListFile.py",
+      "contentHash": "cffc95e06d81cc08a05bb476944f68b0bd65d0beb1052e9828e8234ea2e935d1",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryErrorCode.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryErrorCode.py",
+      "contentHash": "9772369e09d780e7b63b77dafd662cd59fae8f0f4ad1d2740bfae63b4e44c847",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryIO.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiQueryIO.py",
+      "contentHash": "65d46a97163ae754d46fa6862a4d26b06b51300370ad0a5534610a44710aa1e1",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiSetDO.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiSetDO.py",
+      "contentHash": "f7a37598da78aa8f7d43ebe94f5a2c01ce2e83617efaf2bbf1bd6a2f682dfd8c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "netprotocol.rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkApiStatusTaskReq.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkApiStatusTaskReq.py",
+      "contentHash": "c424aa92fcdc6d602c0eff7a228b942b8326ba3bf0e6bb0522de055721fd32a4",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoReloc.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoReloc.py",
+      "contentHash": "6ebb67059c0fe6caf1f60b6b39ea54d0bdca96f17e5926da2de5839f510146f7",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoTurn.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/rbkDemoTurn.py",
+      "contentHash": "c93432321117d54e863378b96036ac0183222bf4d35d3c9dbe44038648df2c4d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/README.md": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/README.md",
+      "contentHash": "77b1c5c894dabbe2621188e5ed357ecc36aea19b7b3069c2017bdd93efe58519",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/RelayEnduranceTest.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/RelayEnduranceTest.py",
+      "contentHash": "2854a47ce679196ee638dd9cc413e3705d0231d077a1043cd21dc07b8b8c10cd",
+      "functions": [
+        {
+          "name": "setDO",
+          "params": [
+            "id",
+            "polar"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "netprotocol.rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "sleep"
+          ]
+        }
+      ],
+      "exports": [
+        "setDO"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo.py",
+      "contentHash": "e38708bc90a787c66ccc9c6e771eabf1e58bf15f72b017d280fbd23333aabfc4",
+      "functions": [
+        {
+          "name": "statematch",
+          "params": [
+            "rbkstate"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "palletctrl",
+          "params": [
+            "act"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        }
+      ],
+      "exports": [
+        "statematch",
+        "palletctrl"
+      ],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo2.py": {
+      "filePath": "seer/SamDisplay/Robokit_TCP_API_py/ZowellLiftPalletDemo2.py",
+      "contentHash": "99b6cc5fb88f479cca01d2c42219c4692d3af8918e7049324ddf2a0eeccbed92",
+      "functions": [
+        {
+          "name": "home",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "dest",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "ZowellApi",
+          "methods": [
+            "__init__",
+            "gotarget",
+            "reachtarget",
+            "gotargetblock",
+            "ctrlpallet",
+            "gopointcontrolpallet"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "imports": [
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "packMsg"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "unpackHead"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "*"
+          ]
+        },
+        {
+          "source": "rbkNetProtoEnums",
+          "specifiers": [
+            "rbkNetProtoEnums"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "struct",
+          "specifiers": [
+            "struct"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        }
+      ],
+      "exports": [
+        "ZowellApi",
+        "home",
+        "dest"
+      ],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/sam_acs_package/mock_sam_acs_commu.py": {
+      "filePath": "seer/SamDisplay/sam_acs_package/mock_sam_acs_commu.py",
+      "contentHash": "962cb7e99172639f05049636093c7cdaea187663a64284910b74e51772d4e77e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Mock_ACS_C_Command_commu",
+          "methods": [
+            "__init__",
+            "build_c_command_frame",
+            "parse_c_response"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 69
+        },
+        {
+          "name": "Mock_SAM_ACS_Server_commu",
+          "methods": [
+            "__init__",
+            "start_acs_server",
+            "wait_client",
+            "close_client",
+            "close_all",
+            "set_c_command",
+            "send_frame",
+            "recv_data",
+            "extract_one_frame",
+            "recv_one_frame",
+            "send_c_command_and_wait_response",
+            "check_keyboard_input",
+            "input_amr_id",
+            "input_target_node"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 290
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "msvcrt",
+          "specifiers": [
+            "msvcrt"
+          ]
+        },
+        {
+          "source": "sam_acs_package.sam_acs_commu",
+          "specifiers": [
+            "ACS_C_Command_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "Mock_ACS_C_Command_commu",
+        "Mock_SAM_ACS_Server_commu"
+      ],
+      "totalLines": 383,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/sam_acs_package/sam_acs_commu.py": {
+      "filePath": "seer/SamDisplay/sam_acs_package/sam_acs_commu.py",
+      "contentHash": "51085a0fe6c83fb668d50ff695942db9681260b6d55920ba5a31e48cdbe8fc94",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ACS_C_Command_commu",
+          "methods": [
+            "__init__",
+            "byte_to_hex_string",
+            "cal_crc16",
+            "cal_checksum",
+            "make_frame",
+            "split_frame",
+            "check_checksum",
+            "parse_c_command",
+            "build_c_command_response_frame"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 148
+        },
+        {
+          "name": "ACS_S_Command_commu",
+          "methods": [
+            "__init__",
+            "byte_to_hex_string",
+            "cal_crc16",
+            "cal_checksum",
+            "make_frame",
+            "build_s_command_frame"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 60
+        },
+        {
+          "name": "ACS_T_Command_commu",
+          "methods": [
+            "__init__",
+            "byte_to_hex_string",
+            "cal_crc16",
+            "cal_checksum",
+            "make_frame",
+            "build_t_command_frame"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 60
+        },
+        {
+          "name": "ACS_L_Command_commu",
+          "methods": [
+            "__init__",
+            "byte_to_hex_string",
+            "cal_crc16",
+            "cal_checksum",
+            "make_frame",
+            "build_l_command_frame"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 60
+        },
+        {
+          "name": "ACS_U_Command_commu",
+          "methods": [
+            "__init__",
+            "byte_to_hex_string",
+            "cal_crc16",
+            "cal_checksum",
+            "make_frame",
+            "build_u_command_frame"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 60
+        },
+        {
+          "name": "SAM_ACS_AMR_Client",
+          "methods": [
+            "__init__",
+            "connect_to_server",
+            "close_socket",
+            "send_frame",
+            "recv_data",
+            "extract_one_frame",
+            "recv_one_frame",
+            "wait_c_command",
+            "send_c_command_response",
+            "recv_and_reply_c_command",
+            "send_s_command",
+            "send_t_command",
+            "send_l_command",
+            "send_u_command"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 267
+        }
+      ],
+      "imports": [
+        {
+          "source": "socket",
+          "specifiers": [
+            "socket"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "ACS_C_Command_commu",
+        "ACS_S_Command_commu",
+        "ACS_T_Command_commu",
+        "ACS_L_Command_commu",
+        "ACS_U_Command_commu",
+        "SAM_ACS_AMR_Client"
+      ],
+      "totalLines": 674,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/sam_acs_package/sam_acs_driver.py": {
+      "filePath": "seer/SamDisplay/sam_acs_package/sam_acs_driver.py",
+      "contentHash": "df6009c5a07880d3870fb350e0da10d8840ec908d6c243a70b37cbf178f1db82",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ACS_Driver",
+          "methods": [
+            "__init__",
+            "convert_target_to_landmark",
+            "parse_landmark_from_c_command",
+            "drive_to_landmark",
+            "run_once",
+            "run_repeat"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 175
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.sam_acs_amr_client",
+          "specifiers": [
+            "SAM_ACS_AMR_Client"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "ACS_Driver"
+      ],
+      "totalLines": 187,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/sam_code/mock_acs.py": {
+      "filePath": "seer/SamDisplay/sam_code/mock_acs.py",
+      "contentHash": "d705e273521e14a19d04f597ccfcbf4661cabfb6cd8dd027e33e41d337b40c6a",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sam_acs_package.mock_sam_acs_commu",
+          "specifiers": [
+            "Mock_SAM_ACS_Server_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/sam_code/sam_drive.py": {
+      "filePath": "seer/SamDisplay/sam_code/sam_drive.py",
+      "contentHash": "8aad4a6794b155f1396cba8856e533e5457ebfae9514ea5c73cf168d1b2f3bf8",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "sam_acs_package.sam_acs_driver",
+          "specifiers": [
+            "ACS_Driver"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/amr_cord_test.py": {
+      "filePath": "seer/SamDisplay/test_code/amr_cord_test.py",
+      "contentHash": "d90906752ab13ccb6db9c215a54cc53fb529343cca4cb6f0c802bffa050995dd",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/aruco_detect.py": {
+      "filePath": "seer/SamDisplay/test_code/aruco_detect.py",
+      "contentHash": "4266059deff840cae9366d36426872c98484725652d406f4c2bc2659f2f002d2",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Detect_Aruco_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/battery_info_test.py": {
+      "filePath": "seer/SamDisplay/test_code/battery_info_test.py",
+      "contentHash": "0f28deb347a9fe4315f70991d70ab002c4f12149583687b339878dc8a79da419",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 47
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/charging_time.py": {
+      "filePath": "seer/SamDisplay/test_code/charging_time.py",
+      "contentHash": "83efa11d3b90f5fe0487302e4eb54fb6957df9e843a5bc408bca3d10806651ba",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/drive_test.py": {
+      "filePath": "seer/SamDisplay/test_code/drive_test.py",
+      "contentHash": "8517998f57accefb8760bb7e675282f9cc549c9d217ef608f05609a6c0b33adf",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Answer_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Detect_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "AMR_Aruco_dock_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/free_nav_test.py": {
+      "filePath": "seer/SamDisplay/test_code/free_nav_test.py",
+      "contentHash": "4acab930185950b76692321de4927064eefbc137ca5eb15310333ce40850d648",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/freenav_test.py": {
+      "filePath": "seer/SamDisplay/test_code/freenav_test.py",
+      "contentHash": "464fd556e6254794146902a2f415f7b72a8decd48bdab50e6c80f9327e4eca15",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/mqtt_test_publisher.py": {
+      "filePath": "seer/SamDisplay/test_code/mqtt_test_publisher.py",
+      "contentHash": "444fb8d84837455453a8fc0c9e4c5919f1a62f02438fe19b681d90cd24cea7cd",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.mqtt_commu",
+          "specifiers": [
+            "MQTT_Util"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/mqtt_test_subscriber.py": {
+      "filePath": "seer/SamDisplay/test_code/mqtt_test_subscriber.py",
+      "contentHash": "674a28a2a5c893275edb0420345007ac1c44e44a358e0066381fcbf52490cb27",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.mqtt_commu",
+          "specifiers": [
+            "MQTT_Util"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/simple_drive_test.py": {
+      "filePath": "seer/SamDisplay/test_code/simple_drive_test.py",
+      "contentHash": "883c48fbd92d752610a3f02a34b5f7e399f147d64666895e9546f5c65462b56d",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.seer_commu",
+          "specifiers": [
+            "SEER_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/test_code/tts_test.py": {
+      "filePath": "seer/SamDisplay/test_code/tts_test.py",
+      "contentHash": "5474f009e842c271a6e0a0f8cf98cf39395b3d3f4c2ed9106973f0d90706dcd3",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "custom_package.tts_commu",
+          "specifiers": [
+            "TTS_Util"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/vision_code/object_detect.py": {
+      "filePath": "seer/SamDisplay/vision_code/object_detect.py",
+      "contentHash": "3f599dc855d4b3b4fff3ab980650fd0b1815207839a98bb71f67b80a6c67f77b",
+      "functions": [
+        {
+          "name": "cal_distance",
+          "params": [
+            "depth",
+            "x1",
+            "y1",
+            "x2",
+            "y2"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 255
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "cv2",
+          "specifiers": [
+            "cv2"
+          ]
+        },
+        {
+          "source": "pyrealsense2",
+          "specifiers": [
+            "rs"
+          ]
+        },
+        {
+          "source": "ultralytics",
+          "specifiers": [
+            "YOLO"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "custom_package.mqtt_commu",
+          "specifiers": [
+            "MQTT_Util"
+          ]
+        }
+      ],
+      "exports": [
+        "cal_distance",
+        "main"
+      ],
+      "totalLines": 303,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/vision_code/save_answer_aruco.py": {
+      "filePath": "seer/SamDisplay/vision_code/save_answer_aruco.py",
+      "contentHash": "22c81d628390e2d0bfe4a58a2ccba72e2c56dbabe9d6130f0e69956b3c2143e2",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Answer_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Detect_Aruco_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "seer/SamDisplay/vision_code/shake_detect.py": {
+      "filePath": "seer/SamDisplay/vision_code/shake_detect.py",
+      "contentHash": "961003703d5fd83204e603795dc0877e4930b0e99dfb512a96a52d18d02a863f",
+      "functions": [
+        {
+          "name": "detect_shake",
+          "params": [
+            "tcp"
+          ],
+          "exported": true,
+          "lineCount": 178
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "custom_package.tcp_server_commu_sam",
+          "specifiers": [
+            "TCP_server_commu_sam"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Answer_Aruco_commu"
+          ]
+        },
+        {
+          "source": "custom_package.dock_commu",
+          "specifiers": [
+            "Detect_Aruco_commu"
+          ]
+        }
+      ],
+      "exports": [
+        "detect_shake",
+        "main"
+      ],
+      "totalLines": 247,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

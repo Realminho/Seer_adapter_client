@@ -1,0 +1,39 @@
+// Least-privilege control of the AMR adapter units for the WebUi service user.
+// Install to /etc/polkit-1/rules.d/10-amr-webui.rules and adjust unit names to match this host.
+//
+//   start/stop/restart (manage-units): scoped to the adapter units ONLY.
+//   enable/disable (manage-unit-files): systemd does NOT pass the unit name to polkit for
+//     these (it passes file paths), so per-unit scoping is impossible. We grant it to the
+//     WebUi service user for any unit. This is not full root sudo, but note it
+//     is broader than the per-unit start/stop/restart grant.
+//   reboot (login1): host-level action, explicitly exposed only through the
+//     WebUi control page with auth + CSRF + confirmation checkbox.
+polkit.addRule(function(action, subject) {
+    if (subject.user !== "__USER__") { return polkit.Result.NOT_HANDLED; }
+
+    if ([
+        "org.freedesktop.login1.reboot",
+        "org.freedesktop.login1.reboot-multiple-sessions",
+        "org.freedesktop.login1.reboot-ignore-inhibit",
+    ].indexOf(action.id) >= 0) {
+        return polkit.Result.YES;
+    }
+
+    // enable/disable — cannot be per-unit scoped; allow for the service user.
+    if (action.id === "org.freedesktop.systemd1.manage-unit-files") {
+        return polkit.Result.YES;
+    }
+
+    // start/stop/restart — scoped to the adapter units only.
+    if (action.id === "org.freedesktop.systemd1.manage-units") {
+        var unit = action.lookup("unit");
+        var managed = [
+__MANAGED_UNITS__
+        ];
+        var isManaged = managed.indexOf(unit) >= 0;
+__JIBOT_TEMPLATE_RULE__
+        if (isManaged) { return polkit.Result.YES; }
+    }
+
+    return polkit.Result.NOT_HANDLED;
+});

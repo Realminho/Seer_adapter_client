@@ -1,0 +1,17 @@
+[tools]
+python = "3.12"
+uv = "latest"
+
+[env]
+# uv가 mise/시스템 python을 쓰도록(별도 managed python 다운로드 방지)
+UV_PYTHON_PREFERENCE = "system"
+
+[tasks.test]
+description = "Run the test suite"
+# ROS 가 등록한 pytest 플러그인 entrypoint 때문에 맨 pytest 는 수집 전에 죽는다.
+# 자동 로드를 끄는 고정 진입점을 그대로 쓴다(사유는 스크립트 상단 주석 참조).
+run = "../scripts/run-tests.sh -q"
+
+[tasks.tui]
+description = "Launch the curses TUI control panel"
+run = "uv run python -m tui"

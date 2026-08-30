@@ -1,0 +1,13 @@
+[Unit]
+Description=AMR WiFi keeper (power save off, link recovery)
+After=network.target wpa_supplicant.service
+Wants=wpa_supplicant.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/amr-wifi-keeper.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+# AMR Adaptor WebUi
+[Unit]
+Description=AMR Adaptor WebUi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__WORKDIR__
+ExecStart=__WORKDIR__/run-web.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

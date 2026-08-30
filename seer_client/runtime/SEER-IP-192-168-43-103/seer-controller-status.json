@@ -1,0 +1,1 @@
+{"schema":1,"updated_at":1787880233.7653048,"current_station":"LM5","target_id":"LM5","task_status":4,"x":5052.1,"y":93.1,"theta":-0.011459155902616465,"robot_model":"SBA-400EU","robot_model_loaded":true,"robot_model_query_error":"","jack_supported":false,"jack_model_enabled":false,"jack_runtime_enabled":false,"jack_capability_reason":"robot.model Jack isEnabled=false/제어방식 none"}

@@ -1,0 +1,331 @@
+# extension 설정 예시: PIO/EZI/에어샤워/엘리베이터 튜닝과 선택적인
+# action module·plugin 등록을 한곳에서 관리한다.
+#
+# 사용:
+#   cp config/extensions.hcl.example config/extensions.hcl   # 값 수정 후
+#   sudo systemctl restart amr-adaptor.service
+#
+# config/extensions.py load_extensions()가 이 파일을 읽어 config.toml과 같은
+# 섹션 dict(pio/pio_advanced/ezi/air_shower_pio/elevator_pio/action_modules/
+# actions)로 병합한다. 필드 이름과 의미는 config.toml이 이 파일로 분리되기
+# 전에 쓰던 [pio]/[pio_advanced]/[ezi]/[air_shower_pio]/[elevator_pio]와
+# 동일하다.
+#
+# ezi_io/ezi_motor 주소는 여기 없다 — 로봇별 값이라 config/robots.hcl (또는
+# .example)의 robot 블록이 채운다.
+#
+# 주요 block:
+#   extension "pio" { ... }
+#     PIO(원격 IO) master 연결 설정. advanced = { ... } 속성은 PIO 타이밍 knob
+#     묶음이며 config.toml의 [pio_advanced]가 된다.
+#   extension "ezi" { ... }
+#     트레이 클램프 모터/센서 튜닝. ezi_io/ezi_motor(로봇 통신 주소)는 여기
+#     없고 robots.hcl에 있다.
+#   extension "airshower" { ... }
+#     에어샤워 워크플로우 타이밍/핀 설정.
+#   extension "elevator" { ... }
+#     엘리베이터 워크플로우 타이밍/핀 설정. motion_rules = [ ... ] 속성은
+#     노드 구간별 엘리베이터 동작 규칙이며 config.toml의
+#     elevator_pio.elevator_motion_rules가 된다.
+#   module "<python.package.path>" { enabled = true }
+#     선택. 추가 액션 모듈(action_specs() 제공 패키지)을 등록하거나, 내장
+#     모듈(extensions.clamp / extensions.pio / extensions.ezio)을
+#     enabled = false로 끌 때만 선언한다.
+#   action "<actionType>" { ... }
+#     선택. VDA5050 instant-action 커스텀 플러그인 등록, 또는 내장
+#     action_type을 enabled = false로 끌 때 선언한다.
+
+extension "pio" {
+  # 안정 경로를 권한다. ttyUSBn은 열거 순서라 재부팅·재연결로 바뀐다.
+  # 이 로봇의 값은 scripts/list-serial-ports.sh 로 확인한다.
+  pio_serial_port = "/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0"
+  pio_baudrate = 38400           # 직렬 통신 속도
+  media        = 2               # master/client 사이의 통신 매체 번호
+  port         = 0               # 설비 측 논리 포트
+  vehicle_num  = "OHT123"        # 설비에 전달할 OHT/AMR 식별자
+  # PIO 신호선은 직렬이 아니라 EZI IO가 구동한다. 같은 핀 번호가 입력·출력
+  # 레지스터에 각각 있고 방향만 다르다. 실배선에 맞춰 값을 고친다.
+  #
+  # PIO 1~8은 아래 output_pins 순서대로 EZI IO 0~7에 대응한다.
+  # 비순차 배선인 현장만 선택적으로 output_pin_map을 선언한다.
+  # 설비 신호 이름 → PIO out 번호. recipe/WebUI가 숫자 대신 이 이름으로 부른다.
+  # out 번호는 1-based, EZI IO 핀은 0-based다. 아래 extension "elevator"의
+  # open_door_pin/close_door_pin과 같은 점을 가리켜야 한다.
+  output_signals = {
+    elevatorOpen  = 5   # → output_pins[4] = EZI IO out4 = open_door_pin
+    elevatorClose = 4   # → output_pins[3] = EZI IO out3 = close_door_pin
+  }
+
+  # 리스트 i번째가 PIO out i+1에 대응한다.
+  output_pins  = [0, 1, 2, 3, 4, 5, 6, 7]   # PIO out 1~8 → EZI IO digital output
+  input_pins   = [0, 1, 2, 3, 4, 5, 6, 7]   # PIO in  1~8 → EZI IO digital input
+
+  # PIO timeout과 polling 설정이며 모든 시간 값의 단위는 초다.
+  advanced = {
+    init_default_timeout_sec     = 2.0   # pioInit의 기본 BC 응답 대기
+    read_default_timeout_sec     = 2.0   # pioReadIn의 기본 입력 응답 대기
+    write_output_timeout_sec     = 2.0   # pioWriteOut의 기본 출력 응답 대기
+    scenario_default_timeout_sec = 2.0   # pioScenario 단계별 기본 제한 시간
+    call_poll_interval_sec       = 0.05  # 입력 기대값 확인 주기
+    pair_timeout_sec             = 30.0  # GO가 올라올 때까지 BC를 재시도하는 총 예산
+    select_settle_sec            = 0.2   # SELECT on/off 전후 안정화 대기
+    pair_confirmation            = "bc_reply" # bc_reply 또는 go
+    select_off_timing            = "after_bc" # after_bc 또는 after_go
+    # 0.5는 현장 확정값이다(2026-08-18). 설비가 SELECT falling edge로 pairing을
+    # 확정하는 것으로 보여, 응답 직후 바로 내리면 놓치는 때가 있다.
+    select_off_delay_sec         = 0.5   # BC 응답/GO 확인 후 SELECT OFF까지 추가 유지
+    ping_default_timeout_sec     = 5.0   # pioPing의 기본 BC 응답 대기 시간
+    ping_output_hold_sec         = 0.2   # pioPing이 출력 1~8을 on/off할 때 유지 시간
+    unpair_default_timeout_sec   = 5.0   # pioDisconnect의 GO 내려감 대기 시간
+    socket_timeout_sec           = 0.2   # 직렬 포트 한 번 읽기의 timeout
+    connect_delay_sec            = 0.5   # 연결 직후 안정화 대기
+    read_frame_poll_sec          = 0.05  # 수신 frame 확인 주기
+    read_frames_wait_sec         = 2.0   # frame 수신 함수의 기본 대기
+    send_wait_sec                = 2.0   # 송신 후 응답 기본 대기
+  }
+}
+
+extension "ezi" {
+  tray_slot_pin = [8, 9, 10, 11, 12, 13] # 트레이 적재 여부 입력 핀
+  select = 15                           # PIO SELECT digital output 번호
+  go = 15                               # PIO GO digital input 번호
+  do_motor_test = 0                     # 0=시험 안 함, 1~5=기동 시 개폐 시험
+  motor_speed = 20000                   # 권장 클램프 속도: 10000~20000 pps
+  close_motor_before_motion = true      # 주행 전 트레이 모터 닫힘 확인
+  # servo 정책: auto_on_auto_off(기본, 이동 후 끔) / auto_on_keep_on(이동 후 유지) /
+  # manual(clampOn·clampOff로만 수동 제어).
+  # auto_on_* 정책은 이동 전 servo ON과 이동 완료를 드라이브 상태 플래그로 확인하며
+  # 진행한다. manual은 이 확인을 모두 건너뛰므로 servo ON과 이동 완료 확인은 운영자
+  # 책임이다.
+  clamp_servo_policy = "auto_on_auto_off"
+  clamp_servo_on_timeout_sec = 3.0      # servo ON 확인 대기 한계(초)
+  # 이동 시작 대기 한계(초); 초과하면 "이미 목표 위치"인지 확인하고 아니면 실패
+  clamp_motion_start_timeout_sec = 1.0
+  clamp_motion_timeout_sec = 30.0       # 이동 완료 대기 한계(초); 초과 시 move_stop 후 실패
+  # 절대 위치 이동의 도착 판정 허용 오차(엔코더 counts). "도착"과 "아예 안 움직임"을
+  # 가르는 값이라 ±16000 스트로크 기준으로 넉넉하게 잡았다.
+  clamp_position_tolerance = 500
+  origin_encoder_offset = 16000         # open_encoder_value = origin_encoder + origin_encoder_offset, close_encoder_value = origin_encoder - origin_encoder_offset
+  action_key = ["air_shower_pio", "elevator_pio", "motor"]       # for node action key related to the ezi control such as PIO and MOTOR
+  # --- clamp/unclamp targets (REQUIRED to use clamp/unclamp) -------------------
+  # Resolution per action (first set wins): instant-action `position` param >
+  # absolute *_position > origin_encoder + *_offset. If none is set the action
+  # FAILS instead of guessing: the old ±origin_encoder_offset fallback bore no
+  # relation to the axis travel, and a target past a hardware limit is silently
+  # dropped by the drive. Fill these with THIS robot's measured encoder values.
+  # clamp_position   = <measured>       # absolute close target (clamp)
+  # unclamp_position = <measured>       # absolute open target (unclamp)
+  # origin_encoder   = 0                # homed origin reference for *_offset below
+  # clamp_offset     = <measured>       # close = origin_encoder + clamp_offset
+  # unclamp_offset   = <measured>       # open  = origin_encoder + unclamp_offset
+  # --- min/max/home actions (absolute target if set, else hardware limits/origin)
+  # min_position     = 0                # clampMin abs target (else -limit sensor)
+  # max_position     = 32000            # clampMax abs target (else +limit sensor)
+  # home_position    = 16000            # clampHome abs target (else origin move)
+  motor_test_delay_sec = 2.0             # Delay (s) between steps in the motor-test sequence (do_motor_test > 0)
+  ezi_motor_poll_interval_sec = 0.1      # Poll interval (s) for EziMotorClient status-polling loops
+  # --- ezioWaitIn (wait until an input reaches the expected state)
+  wait_in_default_timeout_sec = 5.0      # Wait limit (s) when the action omits timeoutSec
+  wait_in_poll_interval_sec = 0.1        # Input re-read cadence (s) while waiting
+}
+
+extension "airshower" {
+  # 이 설비의 BC 주소다. extension "pio"의 station_id/channel에서 옮겨 왔다 —
+  # 에어샤워와 엘리베이터는 같은 station을 쓰지 않는다.
+  # 앞의 0이 살아 있어야 한다: BC 페이로드에 문자열 그대로 들어간다.
+  pio_station_id = "000030"   # 현장 확인값. 엘리베이터는 000010/000020
+  channel        = 250
+
+  failure = 7
+  occupied = 2                           # if other party is using the air shower
+  fun_working = 3                        # air shower working ( air cleaning )
+  door_pin = [0, 1]                      # air shower two doors' pins
+  timeout_paring_requesting = 0.5        # timeout in MINUTES to wait for PIO master & client paring (0.5~30)
+  timeout_open_requesting = 3            # timeout in MINUTES to wait for door open requesting (0.5~30)
+  timeout_close_requesting = 3           # timeout in MINUTES to wait for door close requesting (0.5~30)
+  timeout_vacancy_waiting = 30           # timeout in MINUTES to wait for vacancy to pass (0.5~30)
+  timeout_airflow_waiting = 30           # timeout in MINUTES to wait for air shower flow (0.5~30)
+  poll_interval_sec = 0.2                # ASWorkflow state-machine while-loop poll cadence (seconds)
+}
+
+extension "elevator" {
+  # 이 엘리베이터 시스템이 듣는 무선 채널이다. extension "pio"의 channel에서
+  # 옮겨 왔다. station은 층마다 다르지만(motion_rules의 pio_station_id) 채널은
+  # 설비 하나에 하나다.
+  channel = 250
+
+  open_door_pin = 4                      # Door open Pin
+  close_door_pin = 3                     # Door close Pin
+  solid_on_second = 3                    # to trace a requested pin number is SOLID ON ( not blinking ) ( for a given second is solid ON )
+  elevating_timing_second = 45           # Elevating timing in SECOND ( travelling time between floors)
+  door_open_close_timing_second = 15     # Door opening and closing time in SECOND
+  timeout_paring_requesting = 0.5        # timeout in MINUTES to wait for PIO master & client paring (0.5~30)
+  timeout_floor_requesting = 1           # timeout in MINUTES to wait for floor requesting (0.5~30)
+
+  # motion_rules: 노드 구간(from -> to)별 엘리베이터 동작 규칙. 한 항목 = 한 구간.
+  #   mode="enter": 로비/층 노드에서 엘리베이터 안으로 진입하며 호출.
+  #   mode="inside": 엘리베이터 안에서 층 이동 대기.
+  #   mode="passed": 엘리베이터에서 나와 해당 층 노드로 완전히 빠져나옴.
+  #   floor_pin: 이 구간에서 눌러야 할 층 버튼 PIO 핀.
+  #   pio_station_id: 이 구간에서 사용할 PIO station id — 로봇이 위 channel 위에서
+  #     어느 PIO 클라이언트와 pairing할지를 고른다. 층마다 다르다.
+  motion_rules = [
+    { from = "1_05", to = "2_01", mode = "enter", floor_pin = 0, pio_station_id = "000010" },
+    { from = "2_01", to = "3_01", mode = "inside", floor_pin = 1, pio_station_id = "000020" },
+    { from = "3_01", to = "3_02", mode = "passed", floor_pin = 1, pio_station_id = "000020" },
+    { from = "3_01", to = "2_01", mode = "enter", floor_pin = 1, pio_station_id = "000020" },
+    { from = "2_01", to = "1_05", mode = "inside", floor_pin = 0, pio_station_id = "000010" },
+    { from = "1_05", to = "1_04", mode = "passed", floor_pin = 0, pio_station_id = "000010" },
+  ]
+}
+
+# action module은 action_specs()를 제공하는 Python package다. 내장 module은
+# 끌 때만 선언하며 block label에는 파일 경로가 아닌 package 이름을 쓴다.
+# module "custom_actions.air_shower" {
+#   enabled = true
+# }
+#
+# module "extensions.pio" {
+#   enabled = false
+# }
+
+# 사용자 instant-action plugin 설정. 내장 action type은 중복 등록하지 않는다.
+#
+# inline은 같은 process에서 import하므로 신뢰된 비동기 취소 대응 코드에만 사용한다.
+# action "customCalibrate" {
+#   enabled     = true
+#   runner      = "inline"
+#   module      = "custom_actions.calibrate"
+#   timeout_sec = 30
+#   motion      = true
+# }
+#
+# subprocess는 stdin/stdout JSON으로 격리된 process와 통신한다.
+# action "customDoorOpen" {
+#   enabled         = true
+#   runner          = "subprocess"
+#   command         = ["python", "custom_actions/door_open.py"]
+#   timeout_sec     = 10
+#   motion          = false
+#   snapshot_fields = ["config.settings.debug_log"]
+# }
+#
+# 내장 extension/action을 끄려면 label과 enabled=false만 선언한다.
+# photoSensorRead를 끄면 EZIO 배경 센서 task도 시작하지 않는다.
+# action "pioReadIn" {
+#   enabled = false
+# }
+
+# Run an extension or recipe once when workingState is entered/left.
+# Supported states: IDLE, DRIVING, ACTING, CHARGING, PAUSED, BLOCKED, ERROR.
+# A running start is cancelled (including recipe cleanup) before end runs.
+# state_action "DRIVING" {
+#   start = {
+#     action = "drivingWarningOn"
+#     parameters = { signal = "warningLamp" }
+#   }
+#   end = {
+#     action = "drivingWarningOff"
+#     parameters = { signal = "warningLamp" }
+#   }
+# }
+
+# Ultimate 2 inputs verified through the 2.4 GHz receiver. PL/PR/R4 are not
+# exposed as independent Linux input events, so driving uses the triggers directly.
+joystick "ultimate2" {
+  enabled              = false
+  vendor_id            = "2dc8"
+  product_id           = "310b" # connected; receiver-only state is 3109
+  device_name_contains = "8BitDo"
+  forward_axis         = 5
+  reverse_axis         = 2
+  steering_axis        = 0
+  stop_button          = 5
+  speed_down_button    = 6
+  speed_up_button      = 7
+  dpad_x_axis          = 6
+  dpad_y_axis          = 7
+  a_button             = 1
+  b_button             = 0
+  x_button             = 3
+  y_button             = 2
+  trigger_threshold    = 0.1
+  # -/+ scale manual driving. 100% is the manual_control magnitude.
+  speed_step_percent   = 20
+  speed_min_percent    = 20
+  speed_max_percent    = 100
+  speed_start_percent  = 100
+  heartbeat_timeout_ms = 400
+  # Only one of ultimate2_enabled/micro_enabled may be true at a time.
+  ultimate2_enabled    = false
+  steering_deadzone    = 0.15
+  joystick_reconnect_sec = 1.0
+  # xboxdrv uinput fallback for kernels without joydev (/dev/input/jsN).
+  xboxdrv_device_name       = "Xbox Gamepad (userspace driver)"
+  xboxdrv_forward_axis_code = 9  # ABS_GAS / R2
+  xboxdrv_reverse_axis_code = 10 # ABS_BRAKE / L2
+  xboxdrv_steering_axis_code = 0 # ABS_X / left stick X
+  xboxdrv_stop_button_code  = 311 # BTN_TR / R1
+  xboxdrv_dpad_x_code       = 16  # ABS_HAT0X
+  xboxdrv_dpad_y_code       = 17  # ABS_HAT0Y
+  xboxdrv_a_button_code     = 304 # BTN_A
+  xboxdrv_b_button_code     = 305 # BTN_B
+  xboxdrv_x_button_code     = 307 # BTN_X
+  xboxdrv_y_button_code     = 308 # BTN_Y
+  xboxdrv_speed_down_button_code = 314 # BTN_SELECT
+  xboxdrv_speed_up_button_code   = 315 # BTN_START
+  # Stop driving once the receiver leaves the USB bus. The xboxdrv pad is
+  # virtual, so it goes quiet instead of disappearing with the receiver.
+  xboxdrv_receiver_guard    = true
+  # Master switch for the D-pad+ABXY slots. Keep
+  # false until this robot's slot list is reviewed: slots fire real actions.
+  actions_enabled           = false
+  # Bluetooth 8BitDo Micro (Switch mode, evdev Pro Controller 057e:2009).
+  # Keep false until low-speed testing is ready; requires read access to /dev/input/event*.
+  micro_enabled           = false
+  micro_device_name       = "Pro Controller"
+  micro_dpad_x_code       = 0
+  micro_dpad_y_code       = 1
+  micro_neutral_threshold = 1000
+  micro_stop_button       = 311 # physical R
+  micro_reconnect_sec     = 1.0
+}
+
+# Fixed slot order:
+#   1..4=Up+A/B/X/Y, 5..8=Right+A/B/X/Y,
+#   9..12=Down+A/B/X/Y, 13..16=Left+A/B/X/Y.
+# action may name a built-in/extension action or a recipe actionType.
+joystick_action "1"  { target = "extension"
+  action = "enableMotor" }
+joystick_action "2"  { target = "extension"
+  action = "disableMotor" }
+joystick_action "3"  { target = "action"
+  action = "startCharging" }
+joystick_action "4"  { target = "action"
+  action = "stopCharging" }
+joystick_action "5"  { target = "extension"
+  action = "clamp" }
+joystick_action "6"  { target = "extension"
+  action = "unclamp" }
+joystick_action "7"  { target = "extension"
+  action = "clampOn" }
+joystick_action "8"  { target = "extension"
+  action = "clampOff" }
+joystick_action "9"  { target = "action"
+  action = "loading" }
+joystick_action "10" { target = "action"
+  action = "stopLoading" }
+joystick_action "11" { target = "action"
+  action = "unloading" }
+joystick_action "12" { target = "action"
+  action = "stopUnloading" }
+joystick_action "13" { target = "extension"
+  action = "clampHome" }
+joystick_action "14" { target = "extension"
+  action = "clampStop" }
+# 문 recipe는 pairing할 station이 층마다 달라 이름 끝에 층이 붙는다. 슬롯은 16개뿐이라
+# 1층(000010)만 걸어 둔다 — 상층에서 쓰려면 action을 pioElevatorOpen2f/Close2f로 바꾼다.
+joystick_action "15" { target = "recipe"
+  action = "pioElevatorOpen1f" }
+joystick_action "16" { target = "recipe"
+  action = "pioElevatorClose1f" }

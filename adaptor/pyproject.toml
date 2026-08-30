@@ -1,0 +1,34 @@
+# unified-amr-adaptor 개발 환경 (uv + mise).
+# flat 멀티-엔트리포인트 앱(main.py / main_hexplorer.py / run_multi.py / tui)이라
+# 설치형 패키지가 아니다. uv는 .venv + 의존성만 관리한다(package = false).
+# 런타임은 `adaptor/`에서 `python -m tui` / `python main.py` 식으로 실행한다.
+[project]
+name = "unified-amr-adaptor"
+version = "0.0.1"
+description = "Unified AMR VDA5050 adaptor (JIBOT/Hexplorer) + curses TUI control panel"
+requires-python = ">=3.11"
+dependencies = [
+    "paho-mqtt==2.1.0",
+    "python-hcl2>=8,<9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-timeout>=2.3",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# flat 레이아웃: 앱이 `adaptor/`에서 실행되듯 테스트도 adaptor/를 sys.path에 둔다
+# (protocol/, tui/, adapter_jibot 등 1st-party 모듈 import용).
+pythonpath = ["."]
+# 어댑터 테스트는 무한 대기 루프(_wait_until_node_position_reached,
+# _wait_until_move_settled)를 다룬다. 회귀가 나면 실패가 아니라 "멈춤"으로
+# 나타나므로 상한을 둔다. scripts/run-tests.sh 가
+# PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 로 실행하므로 플러그인을 명시적으로 로드한다.
+addopts = ["-p", "pytest_timeout"]
+timeout = 60

@@ -1,0 +1,122 @@
+
+[2026-08-20 10:26:31] launch: C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\python.exe C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\run_adapter.py --config C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\config.toml --seer-extensions-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\extensions.hcl --seer-recipes-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\recipes.hcl --id SEER-REAL-001 --vehicle-ip 192.168.2.105 --mqtt-host 127.0.0.1 --mqtt-port 1883 --seer-state-port 19204 --seer-control-port 19205 --seer-task-port 19206 --seer-config-port 19207 --seer-other-port 19210
+[2026-08-20 10:26:33.763] pactl ('set-sink-volume', '70%') failed: [WinError 2] 지정된 파일을 찾을 수 없습니다
+[2026-08-20 10:27:25.907] sound player binary not found: mplayer (sound disabled)
+[2026-08-20 10:26:32.646] [JIBOT CONFIG] id=SEER-REAL-001 ip=192.168.2.105 port=19204 source=cli simulator=False
+[2026-08-20 10:26:32.647] [SEER CONFIG WARNING] SEER_MOTOR_NAMES is empty; enableMotor/disableMotor cannot control named motors
+[2026-08-20 10:26:33.682] [JIBOT API CONNECTING] command=UmConnect
+[2026-08-20 10:26:33.682] [JIBOT API CONNECTED] command=UmConnect sent
+[2026-08-20 10:26:33.739] [MQTT CONNECTING] robot=SEER-REAL-001 broker=127.0.0.1:1883 client_id=adaptor-SEER-REAL-001-38512 topic_prefix=amr/v3/SEER-REAL-001 keepalive=60 mode=async reconnect=automatic
+[2026-08-20 10:26:33.740] [EZI IO] no address configured (ezi.ezi_io); skipping
+[2026-08-20 10:26:33.740] [EZI MOTOR] no address configured (ezi.ezi_motor); skipping
+[2026-08-20 10:26:33.740] [VDA5050 CONNECTION PUBLISHED] topic=connection state=ONLINE qos=1 retain=True
+[2026-08-20 10:26:33.755] [VDA5050 FACTSHEET PUBLISHED] topic=factsheet qos=1 retain=True
+[2026-08-20 10:26:33.758] [HARDWARE SENSOR SERVICE SKIP] photoSensorRead action is disabled
+[2026-08-20 10:26:33.758] [MQTT CONNECTED] robot=SEER-REAL-001 broker=127.0.0.1:1883 client_id=adaptor-SEER-REAL-001-38512 rc=0
+[2026-08-20 10:26:33.758] publish_state is ready!
+[2026-08-20 10:26:33.766] subscribe ACS Command is ready!
+[2026-08-20 10:26:33.766] MQTT subscribing to topic 'amr/v3/SEER-REAL-001/order'
+[2026-08-20 10:26:33.766] MQTT subscribing to topic 'amr/v3/SEER-REAL-001/instantActions'
+[2026-08-20 10:26:33.766] [JIBOT RECONNECT] monitor ready; retry interval=5.0s rx_timeout=10s
+[2026-08-20 10:26:33.767] [SEER CONTROL TCP] listening on 127.0.0.1:23744
+[2026-08-20 10:26:34.769] [JIBOT STOP REASON] None -> NONE
+[2026-08-20 10:26:36.792] [LAST NODE FALLBACK] nearestNodeId=LM2 sequenceId=0 gap=3628.7
+[2026-08-20 10:27:03.818] [JIBOT RECONNECT] connection down; attempting to reconnect...
+[2026-08-20 10:27:05.441] [JIBOT RECONNECT] reconnected to JIBOT.
+[2026-08-20 10:27:09.300] [SEER POLL ERROR] 
+[2026-08-20 10:27:24.866] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:24.866] ================================================================================
+[2026-08-20 10:27:24.866] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:24.866] headerId=0 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:24.866]   instantAction id=e21f31a3-c6ba-44fc-9e1c-85e24ed9a821 type=seerJackLoad blockingType=NONE params=[]
+[2026-08-20 10:27:24.867] ================================================================================
+[2026-08-20 10:27:32.177] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:32.177] ================================================================================
+[2026-08-20 10:27:32.177] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:32.177] headerId=1 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:32.177]   instantAction id=0d1510cc-906d-4a39-88a7-dde61ef4c7f8 type=seerJackUnload blockingType=NONE params=[]
+[2026-08-20 10:27:32.177] ================================================================================
+[2026-08-20 10:27:43.457] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:43.457] ================================================================================
+[2026-08-20 10:27:43.457] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:43.457] headerId=2 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:43.457]   instantAction id=940e12f8-3b06-426c-9b5e-18e8205bc998 type=manualDrive blockingType=NONE params=[{'key': 'trans', 'value': '0.1'}, {'key': 'rot', 'value': '0'}, {'key': 'speed', 'value': '0.1'}, {'key': 'lat', 'value': '0'}]
+[2026-08-20 10:27:43.457] ================================================================================
+[2026-08-20 10:27:43.778] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:43.778] ================================================================================
+[2026-08-20 10:27:43.778] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:43.778] headerId=3 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:43.778]   instantAction id=3cf77d06-6fb0-43db-83d7-ee7c109e46be type=manualStop blockingType=NONE params=[]
+[2026-08-20 10:27:43.778] ================================================================================
+[2026-08-20 10:27:44.645] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:44.645] ================================================================================
+[2026-08-20 10:27:44.645] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:44.645] headerId=4 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:44.645]   instantAction id=2b3a7566-06a2-4579-af11-2c73ec9c0c0f type=manualDrive blockingType=NONE params=[{'key': 'trans', 'value': '0.1'}, {'key': 'rot', 'value': '0'}, {'key': 'speed', 'value': '0.1'}, {'key': 'lat', 'value': '0'}]
+[2026-08-20 10:27:44.645] ================================================================================
+[2026-08-20 10:27:45.158] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:45.158] ================================================================================
+[2026-08-20 10:27:45.158] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:45.158] headerId=5 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:45.158]   instantAction id=6a9fad39-140d-470d-ac70-5278f6eae42c type=manualStop blockingType=NONE params=[]
+[2026-08-20 10:27:45.158] ================================================================================
+[2026-08-20 10:27:46.887] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:46.887] ================================================================================
+[2026-08-20 10:27:46.887] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:46.887] headerId=6 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:46.887]   instantAction id=13f990a7-12de-43a7-bd6b-f42f2ca42c2e type=manualDrive blockingType=NONE params=[{'key': 'trans', 'value': '0.1'}, {'key': 'rot', 'value': '0'}, {'key': 'speed', 'value': '0.1'}, {'key': 'lat', 'value': '0'}]
+[2026-08-20 10:27:46.887] ================================================================================
+[2026-08-20 10:27:47.287] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:47.287] ================================================================================
+[2026-08-20 10:27:47.287] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:47.287] headerId=7 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:47.287]   instantAction id=bbc8fb0f-3c46-4679-90d4-63e39056ec1e type=manualStop blockingType=NONE params=[]
+[2026-08-20 10:27:47.288] ================================================================================
+[2026-08-20 10:27:48.822] [SEER POLL ERROR] 
+[2026-08-20 10:27:52.175] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:52.175] ================================================================================
+[2026-08-20 10:27:52.175] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:52.175] headerId=8 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:52.175]   instantAction id=044a732c-7f77-43c7-bc19-f5dd8341bbfd type=manualDrive blockingType=NONE params=[{'key': 'trans', 'value': '-0.1'}, {'key': 'rot', 'value': '0'}, {'key': 'speed', 'value': '0.1'}, {'key': 'lat', 'value': '0'}]
+[2026-08-20 10:27:52.175] ================================================================================
+[2026-08-20 10:27:52.492] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:27:52.492] ================================================================================
+[2026-08-20 10:27:52.492] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:27:52.492] headerId=9 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:27:52.492]   instantAction id=6870ccd5-9207-4f1f-b804-8630f0a18ac8 type=manualStop blockingType=NONE params=[]
+[2026-08-20 10:29:13] launch: C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\python.exe C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\run_adapter.py --config C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\config.toml --seer-extensions-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\extensions.hcl --seer-recipes-path C:\Users\Lenovo\OneDrive - lab to market inc\Desktop\Seer_Client\unified-amr-adaptor\seer_client\runtime\recipes.hcl --id SEER-REAL-001 --vehicle-ip 192.168.2.105 --mqtt-host 127.0.0.1 --mqtt-port 1883 --seer-state-port 19204 --seer-control-port 19205 --seer-task-port 19206 --seer-config-port 19207 --seer-other-port 19210
+[2026-08-20 10:29:14.890] pactl ('set-sink-volume', '70%') failed: [WinError 2] 지정된 파일을 찾을 수 없습니다
+[2026-08-20 10:29:18.764] sound player binary not found: mplayer (sound disabled)
+[2026-08-20 10:29:14.549] [JIBOT CONFIG] id=SEER-REAL-001 ip=192.168.2.105 port=19204 source=cli simulator=False
+[2026-08-20 10:29:14.549] [SEER CONFIG WARNING] SEER_MOTOR_NAMES is empty; enableMotor/disableMotor cannot control named motors
+[2026-08-20 10:29:14.847] [JIBOT API CONNECTING] command=UmConnect
+[2026-08-20 10:29:14.847] [JIBOT API CONNECTED] command=UmConnect sent
+[2026-08-20 10:29:14.872] [MQTT CONNECTING] robot=SEER-REAL-001 broker=127.0.0.1:1883 client_id=adaptor-SEER-REAL-001-29452 topic_prefix=amr/v3/SEER-REAL-001 keepalive=60 mode=async reconnect=automatic
+[2026-08-20 10:29:14.873] [EZI IO] no address configured (ezi.ezi_io); skipping
+[2026-08-20 10:29:14.873] [EZI MOTOR] no address configured (ezi.ezi_motor); skipping
+[2026-08-20 10:29:14.873] [VDA5050 CONNECTION PUBLISHED] topic=connection state=ONLINE qos=1 retain=True
+[2026-08-20 10:29:14.880] [VDA5050 FACTSHEET PUBLISHED] topic=factsheet qos=1 retain=True
+[2026-08-20 10:29:14.883] [MQTT CONNECTED] robot=SEER-REAL-001 broker=127.0.0.1:1883 client_id=adaptor-SEER-REAL-001-29452 rc=0
+[2026-08-20 10:29:14.884] [HARDWARE SENSOR SERVICE SKIP] photoSensorRead action is disabled
+[2026-08-20 10:29:14.884] publish_state is ready!
+[2026-08-20 10:29:14.893] subscribe ACS Command is ready!
+[2026-08-20 10:29:14.893] MQTT subscribing to topic 'amr/v3/SEER-REAL-001/order'
+[2026-08-20 10:29:14.893] MQTT subscribing to topic 'amr/v3/SEER-REAL-001/instantActions'
+[2026-08-20 10:29:14.893] [JIBOT RECONNECT] monitor ready; retry interval=5.0s rx_timeout=10s
+[2026-08-20 10:29:14.894] [SEER CONTROL TCP] listening on 127.0.0.1:23744
+[2026-08-20 10:29:15.895] [JIBOT STOP REASON] None -> NONE
+[2026-08-20 10:29:17.721] [CONTROL UDS] source_user=seer confirmed=True actions=1
+[2026-08-20 10:29:17.721] ================================================================================
+[2026-08-20 10:29:17.721] [VDA5050 v3.0 INSTANT ACTIONS RECEIVED]
+[2026-08-20 10:29:17.721] headerId=13 version=3.0.0 serialNumber=SEER-REAL-001 actions=1
+[2026-08-20 10:29:17.722]   instantAction id=00f7a269-2012-4538-b23d-e9a8e4663597 type=seerCustomAction blockingType=NONE params=[]
+[2026-08-20 10:29:17.722] ================================================================================
+[2026-08-20 10:29:22.481] [LAST NODE FALLBACK] nearestNodeId=LM2 sequenceId=0 gap=3587.7
+[2026-08-20 10:29:44.934] [JIBOT RECONNECT] connection down; attempting to reconnect...
+[2026-08-20 10:29:46.821] [JIBOT INFO LOOP] poll skipped: TimeoutError()
+[2026-08-20 10:29:46.963] [JIBOT RECONNECT] reconnected to JIBOT.
+
+[2026-08-20 10:29:50.643] Stopping the system...
+[2026-08-20 10:29:50.643] [VDA5050 CONNECTION PUBLISHED] topic=connection state=OFFLINE qos=1 retain=True
+[2026-08-20 10:29:50.644] [MQTT DISCONNECTED] robot=SEER-REAL-001 broker=127.0.0.1:1883 client_id=adaptor-SEER-REAL-001-29452 rc=0 reconnect=no
+[2026-08-20 10:29:50.647] System stopped

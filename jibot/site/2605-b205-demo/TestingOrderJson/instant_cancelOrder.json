@@ -1,0 +1,21 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-05-28T17:03:35",
+  "version": "3.0.0",
+  "manufacturer": "jibot",
+  "serialNumber": "HM-CAR-TR-002",
+  "instantActions": [
+    {
+      "actionType": "cancelOrder",
+      "actionId": 0,
+      "actionDescription": "InstantAction",
+      "blockingType": "NONE",
+      "actionParameter": [
+        {
+          "key": "",
+          "value": ""
+        }
+      ]
+    }
+  ]
+}

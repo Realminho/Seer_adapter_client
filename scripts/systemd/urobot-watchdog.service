@@ -1,0 +1,16 @@
+[Unit]
+Description=urobot 7273 health watchdog (auto-recover failed bringup and lost USB serial)
+After=urobot.service
+
+[Service]
+Type=oneshot
+Environment=PORT=7273 MIN_UPTIME=150 MAX_RESTARTS=3 MAX_REBINDS=3 MIN_SERIAL=4
+ExecStart=/usr/local/sbin/urobot-watchdog
+# xHCI 재바인드는 `systemctl stop urobot`을 기다린 뒤(STOP_TIMEOUT=45초로 제한)
+# 재열거를 최대 USB_SETTLE=25초 더 기다리므로, 한 번 실행이 약 75초까지 정상적으로
+# 걸릴 수 있다. 기본값 90초로 두면 재바인드 도중에 죽여 버스를 unbind 상태로
+# 남길 수 있으므로 넉넉히 잡는다.
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

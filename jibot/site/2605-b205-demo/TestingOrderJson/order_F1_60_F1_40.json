@@ -1,0 +1,115 @@
+{
+  "headerId": 1,
+  "timestamp": "2026-05-28T17:03:35",
+  "version": "3.0.0",
+  "manufacturer": "jibot",
+  "serialNumber": "HM-CAR-TR-002",
+  "orderId": "001",
+  "orderUpdateId": 1,
+  "nodes": [
+    {
+      "nodeId": "F1_60",
+      "sequenceId": 6,
+      "released": true,
+      "actions": [],
+      "nodePosition": {
+        "x": 12955.0,
+        "y": 4601.0,
+        "mapId": "F1",
+        "theta": 90.0,
+        "allowedDeviationXY": 2.0,
+        "allowedDeviationTheta": 5.0
+      }
+    },
+    {
+      "nodeId": "F1_50_AS",
+      "sequenceId": 8,
+      "released": true,
+      "actions": [],
+      "nodePosition": {
+        "x": 10145.0,
+        "y": 4648.0,
+        "mapId": "F1",
+        "theta": 90.0,
+        "allowedDeviationXY": 3.0,
+        "allowedDeviationTheta": 5.0
+      }
+    },
+    {
+      "nodeId": "F1_40",
+      "sequenceId": 10,
+      "released": true,
+      "actions": [],
+      "nodePosition": {
+        "x": 5953.0,
+        "y": 4854.0,
+        "mapId": "F1",
+        "theta": 90.0,
+        "allowedDeviationXY": 2.0,
+        "allowedDeviationTheta": 5.0
+      }
+    },
+    {
+      "nodeId": "F1_M01_030_S1IC",
+      "sequenceId": 12,
+      "released": false,
+      "actions": [],
+      "nodePosition": {
+        "x": 6175.0,
+        "y": 7314.0,
+        "mapId": "F1",
+        "theta": 90.0,
+        "allowedDeviationXY": 2.0,
+        "allowedDeviationTheta": 5.0
+      }
+    },
+    {
+      "nodeId": "F1_M01_041_S1CH",
+      "sequenceId": 14,
+      "released": false,
+      "actions": [],
+      "nodePosition": {
+        "x": 7290.0,
+        "y": 7268.0,
+        "mapId": "F1",
+        "theta": 90.0,
+        "allowedDeviationXY": 2.0,
+        "allowedDeviationTheta": 5.0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edgeId": "e7",
+      "sequenceId": 7,
+      "released": true,
+      "startNodeId": "F1_50_AS",
+      "endNodeId": "F1_60",
+      "actions": []
+    },
+    {
+      "edgeId": "e6",
+      "sequenceId": 9,
+      "released": true,
+      "startNodeId": "F1_50_AS",
+      "endNodeId": "F1_40",
+      "actions": []
+    },
+    {
+      "edgeId": "e4",
+      "sequenceId": 11,
+      "released": true,
+      "startNodeId": "F1_40",
+      "endNodeId": "F1_M01_030_S1IC",
+      "actions": []
+    },
+    {
+      "edgeId": "e1",
+      "sequenceId": 13,
+      "released": true,
+      "startNodeId": "F1_M01_030_S1IC",
+      "endNodeId": "F1_M01_041_S1CH",
+      "actions": []
+    }
+  ]
+}

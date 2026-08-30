@@ -1,0 +1,29 @@
+# JIBOT 하드웨어/펌웨어 특성 오버레이.
+#
+# config.toml(공용 베이스) 위에 항상 merge되며, JIBOT 고유의 하드웨어/펌웨어
+# 특성값(dock.approach_params, manual_control 등)만 둔다.
+# 맵/라우팅 공통 규칙인 motion_rules는 모든 AMR이 공유하므로 공용 config.toml로 옮겼다.
+
+# Recommended UmDock approach params for JIBOT docking firmware.
+# Uncomment and tune per robot firmware version and dock hardware.
+# [dock.approach_params]
+# detect_charging_signal = true
+# dock_move_additional_dist = 0.0
+# dock_rotate_additional_angle = 0.0
+# clearance_back_min = 0.0
+# clearance_front_min = 0.0
+
+# Manual jog/move (JIBOT-only: manualDrive -> UmDrive, manualMove -> UmSetRoutes+UmRoutes).
+# drive_trans/drive_rot are the WebUI jog-pad magnitudes (forward/back vs turn).
+[manual_control]
+enabled = true
+drive_trans = 200                      # UmDrive trans magnitude (↑/↓ forward/back)
+drive_rot = 30                         # UmDrive rot magnitude (←/→ turn)
+drive_speed = 200
+drive_lat = 0
+heartbeat_ms = 300
+watchdog_ms = 800
+step_distance_mm = 500
+default_move_speed = 100
+move_obs_avoid_dist = 1000
+move_side_avoid_dist = 50

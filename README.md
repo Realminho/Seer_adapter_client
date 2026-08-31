@@ -8,23 +8,25 @@
 
 ## Demo
 
-README에서는 큰 원본 MP4 대신 **가벼운 움직이는 GIF 미리보기**가 바로 재생됩니다. 아래 미리보기는 별도 다운로드 없이 바로 확인할 수 있고, 전체 영상은 저용량 MP4 링크로 열 수 있습니다.
+README에서는 **가벼운 움직이는 GIF 미리보기**가 바로 재생됩니다. GitHub는 저장소에 커밋된 MP4 파일을 README의 네이티브 동영상 플레이어로 안정적으로 표시하지 않으므로, 저장소 MP4를 직접 여는 링크는 사용하지 않습니다.
 
 ### SEER AMR 통합 테스트
 
 ![SEER AMR TEST inline preview](docs/media/seer_amr_test_inline.gif)
 
-**[▶ 전체 영상 바로 재생 · 저용량 MP4 약 4 MB](docs/media/seer_amr_test_web.mp4?raw=1)**  
-WebUI에서 실물 SEER AMR의 지도, 상태, 제어, VDA5050/Action, Block Builder 흐름 등을 확인하는 테스트 영상입니다. 전체 길이는 약 6분 18초입니다.
+WebUI에서 실물 SEER AMR의 지도, 상태, 제어, VDA5050/Action, Block Builder 흐름 등을 확인하는 테스트 영상입니다. 전체 원본은 `docs/media/seer_amr_test_web.mp4`에 보관되어 있으며 전체 길이는 약 6분 18초입니다.
+
+<!-- SEER_AMR_GITHUB_VIDEO: GitHub 웹 편집기에서 seer_amr_test_web.mp4를 업로드해 생성된 https://github.com/user-attachments/assets/... URL을 이 줄 아래에 단독으로 붙여넣으면 README에서 네이티브 동영상 플레이어로 표시할 수 있습니다. -->
 
 ### Camera Docking 성공 테스트
 
 ![SEER Camera Docking inline preview](docs/media/seer_docking_success_inline.gif)
 
-**[▶ 전체 영상 바로 재생 · 저용량 MP4 약 1.4 MB](docs/media/seer_docking_success_web.mp4?raw=1)**  
-RealSense RGB/Depth, AprilTag, LiDAR, IMU, SEER localization을 이용한 카메라 도킹 테스트 영상입니다. 전체 길이는 약 35초입니다.
+RealSense RGB/Depth, AprilTag, LiDAR, IMU, SEER localization을 이용한 카메라 도킹 테스트 영상입니다. 전체 원본은 `docs/media/seer_docking_success_web.mp4`에 보관되어 있으며 전체 길이는 약 35초입니다.
 
-> README의 GIF는 빠르게 동작을 확인하기 위한 미리보기입니다. 전체 영상 링크에는 브라우저에서 바로 스트리밍하기 쉽도록 H.264 MP4와 `faststart`를 적용한 저용량 파일을 사용합니다. ZIP에는 전체 길이를 유지한 저용량 재생용 MP4와 README용 GIF 미리보기만 포함해 저장소 용량을 줄였습니다.
+<!-- SEER_DOCKING_GITHUB_VIDEO: GitHub 웹 편집기에서 seer_docking_success_web.mp4를 업로드해 생성된 https://github.com/user-attachments/assets/... URL을 이 줄 아래에 단독으로 붙여넣으면 README에서 네이티브 동영상 플레이어로 표시할 수 있습니다. -->
+
+> GitHub README에서 전체 영상을 바로 재생하려면 저장소의 MP4 경로가 아니라 GitHub가 업로드 시 생성하는 `https://github.com/user-attachments/assets/...` 주소를 사용해야 합니다. 현재 ZIP에는 GitHub 업로드용 저용량 H.264 MP4와 README용 GIF 미리보기가 함께 포함되어 있습니다.
 
 ---
 
